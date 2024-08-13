@@ -1,0 +1,9 @@
+{
+    "registration": {
+        "role": {
+            "default": "Role",
+            "student": "Student",
+            "teacher": "Teacher"
+        }
+    }
+}

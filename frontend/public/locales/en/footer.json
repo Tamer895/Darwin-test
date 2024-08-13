@@ -1,0 +1,17 @@
+{
+    "navigation": {
+        "title": "Navigation",
+        "my_edu": "My education",
+        "courses": "Courses",
+        "bulletin_board": "Bulletin board",
+        "studio": "Studio"
+    },
+    "extra_links": {
+        "title": "Extra links",
+        "contact_us": "Contact us",
+        "faq": "FAQ",
+        "terms_and_conditions": "Terms and conditions",
+        "privacy_policy": "Privacy policy"
+    },
+    "text": "Founded by Nuralim Tamerlan, currently not copyrighted"
+}

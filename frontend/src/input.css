@@ -1,0 +1,40 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+
+/* flex containers */
+.flex-center-between {
+    @apply flex flex-row items-center justify-between;
+}
+
+.flex-col-center {
+    @apply flex flex-col items-center;
+}
+
+.flex-center {
+    @apply flex items-center justify-center;
+}
+
+
+/* borders */
+.thin-border {
+    @apply border border-black-10;
+}
+
+.border-top {
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+
+/* Animation */
+.transition-75 {
+    @apply duration-75 ease-linear
+}
+
+.box-shadow {
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.05);
+}
+
+

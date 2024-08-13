@@ -1,0 +1,22 @@
+.radio {
+    width: 100%;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content:left;
+}
+
+.radio .radioItem {
+    height: 48px;
+    padding: 0 10px;
+    margin-right: 5px;
+
+    @apply h-12 px-4 text-sm outline-none border-input_border border-2 rounded-md focus:border-primary-def text-black-50;
+}
+
+.radio .selected {
+    margin-right: 5px;
+
+    @apply h-12 px-4 text-sm outline-none border-primary-def border-2 rounded-md focus:border-primary-def text-primary-def;
+}

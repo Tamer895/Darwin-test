@@ -1,0 +1,39 @@
+.switcher {
+    display: flex;
+    align-items: center;
+
+    cursor: pointer
+}
+.switcher span {
+    @apply text-gray;
+}
+.switcher span:first-child {
+    margin-right: 5px;
+}
+.switcher span.lng {
+    margin-bottom: -2px;
+}
+
+
+
+.languages-list {
+    @apply list-none absolute mt-48;
+
+    background-color: white;
+    border-radius: 5px;
+    overflow: hidden;
+    padding: 15px;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+}
+
+.languages-list li button {
+    @apply flex items-center w-28 h-10 px-3;
+
+    transition: 150ms;
+    border-radius: 5px;
+}
+
+.languages-list li button:hover {
+    @apply bg-primary-def;
+    color: white;
+}
