@@ -16,8 +16,6 @@ class UserSerializer(serializers.ModelSerializer):
             'last_name', 
             'email', 
             'password',
-            'is_staff',
-            'is_active',
 
             'date_joined',
             'birth_date',
@@ -39,3 +37,8 @@ class UserSerializer(serializers.ModelSerializer):
     #         return obj.profile_photo.url
     #     else:
     #         return None
+    def create(self, validated_data):
+        user = User.objects.create(**validated_data)
+        user.set_password(validated_data['password'])
+        user.save()
+        return user

@@ -58,6 +58,7 @@ export default function Login() {
 
                 {/* inputs */}
                 <div className="flex flex-col mt-5 pt-5">
+                    
 
                     {/* Email */}
                     <label className='mb-2 font-medium' for="email">{t('login.email')}</label>
@@ -72,7 +73,7 @@ export default function Login() {
                     <br />
 
                     <Link>
-                      <span className='font-normal text-primary-def hover:underline'>{t('login.forgot_password')}</span>
+                      <span className='font-normal text-sm text-primary-def hover:underline'>{t('login.forgot_password')}</span>
                     </Link>
 
                     <br />

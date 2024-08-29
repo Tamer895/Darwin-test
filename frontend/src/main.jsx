@@ -2,6 +2,8 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App.jsx'
 import { BrowserRouter } from 'react-router-dom';
+import "./input.css"
+import "./media/fonts/font/stylesheet.css"
 
 import './utils/translator/i18n.js';
 

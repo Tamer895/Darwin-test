@@ -1,43 +1,21 @@
 import React from 'react'
-import PageTitle from '../../../components/layouts/PageTitle/PageTitle'
-import Feature from '../../../components/layouts/Containers/Feature/Feature'
+
+
+import Feature from '@components/layouts/Containers/Feature/Feature'
 import TransBtn from "@UI/Buttons/TransBtn/TransBtn"
-import Welcome from '../../../components/layouts/Welcome/Welcome'
+import Welcome from '@components/layouts/Welcome/Welcome'
 import AccordionComponent from '@components/UI/Accordion/Accordion'
 
 import Offer from "@UI/Cards/Offer/Offer"
-import Title from '../../../components/UI/Typography/Title/Title'
+import Title from '@components/UI/Typography/Title/Title'
+import { Helmet } from 'react-helmet-async'
+
+import faqIcon from "@media/icons/undraw/faq.svg"
+import { useTranslation } from 'react-i18next'
 
 export default function Home() {
+  const { t } = useTranslation('home');
 
-
-  // Images for carousel
-  const images = [
-    "https://i.pinimg.com/564x/25/01/1c/25011c90293c7de8aed7887f4a026761.jpg",
-    "https://i.pinimg.com/564x/13/e9/31/13e9317a6aa6a9fbe79f2cb3c3f5f746.jpg",
-    "https://i.pinimg.com/564x/25/01/1c/25011c90293c7de8aed7887f4a026761.jpg",
-    "https://i.pinimg.com/564x/13/e9/31/13e9317a6aa6a9fbe79f2cb3c3f5f746.jpg",
-    "https://i.pinimg.com/564x/25/01/1c/25011c90293c7de8aed7887f4a026761.jpg",
-    "https://i.pinimg.com/564x/13/e9/31/13e9317a6aa6a9fbe79f2cb3c3f5f746.jpg",
-    "https://i.pinimg.com/564x/25/01/1c/25011c90293c7de8aed7887f4a026761.jpg",
-    "https://i.pinimg.com/564x/13/e9/31/13e9317a6aa6a9fbe79f2cb3c3f5f746.jpg",
-    "https://i.pinimg.com/564x/25/01/1c/25011c90293c7de8aed7887f4a026761.jpg",
-    "https://i.pinimg.com/564x/13/e9/31/13e9317a6aa6a9fbe79f2cb3c3f5f746.jpg",
-    "https://i.pinimg.com/564x/25/01/1c/25011c90293c7de8aed7887f4a026761.jpg",
-    "https://i.pinimg.com/564x/13/e9/31/13e9317a6aa6a9fbe79f2cb3c3f5f746.jpg",
-    "https://i.pinimg.com/564x/25/01/1c/25011c90293c7de8aed7887f4a026761.jpg",
-    "https://i.pinimg.com/564x/13/e9/31/13e9317a6aa6a9fbe79f2cb3c3f5f746.jpg",
-    "https://i.pinimg.com/564x/25/01/1c/25011c90293c7de8aed7887f4a026761.jpg",
-    "https://i.pinimg.com/564x/13/e9/31/13e9317a6aa6a9fbe79f2cb3c3f5f746.jpg",
-    "https://i.pinimg.com/564x/25/01/1c/25011c90293c7de8aed7887f4a026761.jpg",
-    "https://i.pinimg.com/564x/13/e9/31/13e9317a6aa6a9fbe79f2cb3c3f5f746.jpg",
-    "https://i.pinimg.com/564x/25/01/1c/25011c90293c7de8aed7887f4a026761.jpg",
-    "https://i.pinimg.com/564x/13/e9/31/13e9317a6aa6a9fbe79f2cb3c3f5f746.jpg",
-    "https://i.pinimg.com/564x/25/01/1c/25011c90293c7de8aed7887f4a026761.jpg",
-    "https://i.pinimg.com/564x/13/e9/31/13e9317a6aa6a9fbe79f2cb3c3f5f746.jpg",
-    "https://i.pinimg.com/564x/25/01/1c/25011c90293c7de8aed7887f4a026761.jpg",
-    "https://i.pinimg.com/564x/13/e9/31/13e9317a6aa6a9fbe79f2cb3c3f5f746.jpg",
-  ]
 
 
   // Offers
@@ -49,7 +27,6 @@ export default function Home() {
       text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed nonummy mi in neque ullamcorper commodo.",
       value: "15",
       value_text: "Hours",
-      fade: "fade-right"
     },
     {
       to: "",
@@ -58,7 +35,6 @@ export default function Home() {
       text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed nonummy mi in neque ullamcorper commodo.",
       value: "15",
       value_text: "Hours",
-      fade: "fade-up"
     },
     {
       to: "",
@@ -67,25 +43,30 @@ export default function Home() {
       text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed nonummy mi in neque ullamcorper commodo.",
       value: "15",
       value_text: "Hours",
-      fade: "fade-left"
     },
+  ]
+
+  // Accordion items
+  const items = [
+    {title: t('FAQ.q1'), content: t('FAQ.a1')},
+    {title: t('FAQ.q2'), content: t('FAQ.a2')},
   ]
 
 
   return (
     <div>
+      <Helmet>
+        <title>Darwin: Главная</title>
+        <meta name="description" content="Узнайте больше о нашей платформе" />
+        <meta name="keywords" content="home, main, page" />
+      </Helmet>
 
       <Welcome />
-
-      <PageTitle
-        title="Welcome to the Home Page"
-        text="Lorem ipsum dolor sit amet, consectet ut labore et dolore magna"
-      />
 
 
       {/* What we can offer */}
 
-      <div className="w-full py-10 bg-light_bg flex-col-center mb-32">
+      <div className="w-full py-10 bg-none flex-col-center mb-32">
 
         <Title className="font-bold" size="2">What we can offer</Title>
         <p className='text-gray'>Three main opportunities we can offer to you</p>
@@ -95,7 +76,6 @@ export default function Home() {
           {offers.map((elem, index)=>(
             <Offer
               key={index}
-              aos={elem.fade}
               to={elem.to}
               style={{width: "300px", margin: "0 10px"}}
               icon={elem.icon}
@@ -111,48 +91,44 @@ export default function Home() {
 
 
       {/* Features */}
-      <div data-aos="fade-right">
-        <Feature
-          color="dodgerblue"
-          feature="Feature"
-          title="Reach users on every screen"
-          text="Deploy to multiple devices from a single codebase: mobile, web, desktop, and embedded devices."
-          img="https://storage.googleapis.com/cms-storage-bucket/ed2e069ee37807f5975a.jpg"
-        >
-          <TransBtn style={{borderRadius: "100px"}}>See the target platforms</TransBtn>
-        </Feature>
-      </div>
+      <Feature
+        color="dodgerblue"
+        feature="Feature"
+        title="Reach users on every screen"
+        text="Deploy to multiple devices from a single codebase: mobile, web, desktop, and embedded devices."
+        img="https://storage.googleapis.com/cms-storage-bucket/ed2e069ee37807f5975a.jpg"
+      >
+        <TransBtn style={{borderRadius: "100px"}}>See the target platforms</TransBtn>
+      </Feature>
 
 
-      <div data-aos="fade-left">
-        <Feature
-          direction="flex-row-reverse"
-          color="dodgerblue"
-          feature="Feature"
-          title="Reach users on every screen"
-          text="Deploy to multiple devices from a single codebase: mobile, web, desktop, and embedded devices."
-          img="https://storage.googleapis.com/cms-storage-bucket/ed2e069ee37807f5975a.jpg"
-        >
-          <TransBtn style={{borderRadius: "100px"}}>See the target platforms</TransBtn>
-        </Feature>
-      </div>
+      <Feature
+        direction="flex-row-reverse"
+        color="dodgerblue"
+        feature="Feature"
+        title="Reach users on every screen"
+        text="Deploy to multiple devices from a single codebase: mobile, web, desktop, and embedded devices."
+        img="https://storage.googleapis.com/cms-storage-bucket/ed2e069ee37807f5975a.jpg"
+      >
+        <TransBtn style={{borderRadius: "100px"}}>See the target platforms</TransBtn>
+      </Feature>
 
 
       {/* <Carousel images={images}/> */}
 
 
-      {/* Often questions */}
-      <section className='w-full flex-col-center py-40'>
-        <Title className="font-bold" size="2">Frequently asked questions</Title>
-        <p className='text-gray'>Find answers for your questions</p>
+      {/* Frequently asked questions */}
+      <section className='w-4/5 mx-auto flex items-start justify-between py-40'>
 
-        <br />
+        <div className="flex-col">
+          <img width={300} src={faqIcon} alt="" />
+          <h1 className="font-semibold leading-tight my-6 text-[40px]">{t('FAQ.title')}</h1>
+          <p className='text-black'>{t('FAQ.help')} <a className='text-primary-def hover:underline' href="/contacts">{t('FAQ.contact')}</a></p>
+        </div>
 
-        <div className="w-full px-48">
-          <AccordionComponent aria_controls="panel1-content" id="panel1-header" question="Title" answer="Loremsadwa" />
-          <AccordionComponent aria_controls="panel1-content" id="panel1-header" question="Title" answer="Loremsadwa" />
-          <AccordionComponent aria_controls="panel1-content" id="panel1-header" question="Title" answer="Loremsadwa" />
-          <AccordionComponent aria_controls="panel1-content" id="panel1-header" question="Title" answer="Loremsadwa" />
+
+        <div className="w-3/5">
+          <AccordionComponent items={items} />
         </div>
       </section>
 

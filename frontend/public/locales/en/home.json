@@ -5,5 +5,16 @@
         "description": "Are you aiming to elevate your portfolio and secure a spot at your dream university? At Student.com, we offer a comprehensive suite of courses and events designed to enhance your academic profile and make your application stand out.",
         "login": "Log in",
         "signup": "Sign up"
+    },
+    "FAQ": {
+        "title": "Frequently asked questions",
+        "help": "Still need help?",
+        "contact": "Contact us",
+
+        "q1": "What is the purpose of the Darwin.kz website?",
+        "a1": "The Darwin platform provides school students and university students with the opportunity to explore various subjects through courses offered by the community and to develop extracurricular activities.",
+
+        "q2": "How to create a course?",
+        "a2": "Курсы на Student.com строятся с использованием инструментов и сервисов, таких как Coursera, Udemy, и LinkedIn Learning. Вы можете создать свой курс, добавляя видео, текстовые упражнения, игры, и делиться его с сообществом."
     }
 }

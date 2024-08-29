@@ -1,5 +1,5 @@
 .welcome {
-    height: calc(100vh - 121px);
+    height: calc(100vh - 105px);
     background-image: url('../../../../media/images/background/services-bg.png');
     background-repeat: no-repeat;
     background-position: center;
@@ -7,10 +7,10 @@
 
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
 }
 
-.welcome .buttons > * {
+.welcome .buttons > .btn {
     margin: 0 5px;
-    padding: 0 30px;
+    /* padding: 0 30px; */
 }

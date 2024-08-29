@@ -33,8 +33,6 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'courses',
-    'elements',
     'users',
     'categories',
     'django.contrib.admin',
@@ -63,7 +61,7 @@ MIDDLEWARE = [
 CORS_ORIGIN_ALLOW_ALL = True
 
 CORS_ORIGIN_WHITELIST = [
-    'http://localhost:3000',
+    'http://localhost:5173',
 ]
 
 REST_FRAMEWORK = {

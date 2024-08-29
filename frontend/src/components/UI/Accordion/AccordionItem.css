@@ -1,0 +1,7 @@
+/* src/components/AccordionItem.css */
+.accordion-content {
+    overflow: hidden;
+    transition: max-height 0.3s ease-in-out;
+}
+
+  

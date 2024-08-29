@@ -1,0 +1,27 @@
+.list {
+    position: absolute;
+    list-style-type: none;
+
+
+    background-color: white;
+    border-radius: 5px;
+    overflow: hidden;
+    padding: 15px;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+}
+
+.list li button {
+    display: flex;
+    align-items: center;
+    height: 40px;
+    padding: 0 12px;
+
+    transition: 150ms;
+    border-radius: 5px;
+}
+
+.list li button:hover {
+    background-color: rgb(52, 71, 246);
+
+    color: white;
+}
