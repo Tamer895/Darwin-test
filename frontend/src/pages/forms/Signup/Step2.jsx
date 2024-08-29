@@ -47,9 +47,9 @@ export default function Step2() {
   const email = query.get('email');
   const password = query.get('password');
 
-  const items = [
-    {title: t('step2.student'), value: "student"},
-    {title: t('step2.tutor'), value: "tutor"},
+  const items_radio = [
+    {label: t('step2.student'), value: "student"},
+    {label: t('step2.tutor'), value: "tutor"},
   ];
 
 
@@ -85,11 +85,11 @@ export default function Step2() {
       const response = await axios.post('http://127.0.0.1:8000/users/register/', formData);
   
 
-      setAuthToken(response.data['refresh'], response.data['access'])
+      setAuthToken(response.data['refresh'], response.data['access'], response.data['id'])
 
       // Handle the response
       // console.log('Server Response:', response.data);
-      navigate('/');
+      window.location.href = '/';
     } catch (error) {
       console.error('Error submitting the form:', error);
     }
@@ -144,7 +144,7 @@ export default function Step2() {
 
                   <label className='mb-2 font-medium' for="password">{t('step2.role')}</label>
                   <Radio 
-                    items={items}
+                    items={items_radio}
                     setValue={setVal}
                   />
 

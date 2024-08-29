@@ -19,6 +19,7 @@ export default defineConfig({
       '@UI': path.resolve(__dirname, './src/components/UI'),
       '@layouts': path.resolve(__dirname, './src/components/layouts'),
       '@pages': path.resolve(__dirname, './src/pages'),
+      '@Stacks': path.resolve(__dirname, './src/components/layouts/Stacks'),
     },
   },
 })

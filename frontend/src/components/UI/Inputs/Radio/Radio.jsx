@@ -14,7 +14,7 @@ export default function Radio(props) {
     <div className={classes.radio}>
         {props.items.map((elem, index)=>(
             <button type="button" className={selected == index ? classes.selected : classes.radioItem} key={index} onClick={()=>handleChange(elem.value, index)}>
-                {elem.title}
+                {elem.label}
             </button>
         ))}
     </div>

@@ -33,13 +33,12 @@ export default function Login() {
       const response = await axios.post('http://127.0.0.1:8000/users/login/', formData);
   
 
-      setAuthToken(response.data['refresh'], response.data['access'])
+      setAuthToken(response.data['refresh'], response.data['access'], response.data['id'])
 
       // Handle the response
       // console.log('Server Response:', response.data);
-      navigate('/');
+      window.location.href = '/';
     } catch (error) {
-      console.error('Error submitting the form:', error);
     }
   };
 

@@ -1,5 +1,21 @@
 from rest_framework import serializers
 from .models import *
+from rest_framework_simplejwt.views import TokenObtainPairView
+from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
+
+
+
+
+class CustomTokenObtainPairSerializer(TokenObtainPairSerializer):
+    def validate(self, attrs):
+        data = super().validate(attrs)
+        
+        # Add user ID to the response
+        data['id'] = self.user.id
+
+        return data
+
+
 
 
 class UserSerializer(serializers.ModelSerializer):

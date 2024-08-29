@@ -10,7 +10,7 @@
     justify-content: space-between;
 }
 
-.welcome .buttons > .btn {
-    margin: 0 5px;
+.welcome .buttons .btn:last-child {
+    margin: 0 10px;
     /* padding: 0 30px; */
 }

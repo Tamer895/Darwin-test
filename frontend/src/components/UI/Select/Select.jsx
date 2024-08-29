@@ -6,7 +6,7 @@ import FormControl from '@mui/material/FormControl';
 import styled from '@emotion/styled';
 
 
-export default function SelectComponent({children, ...props}) {
+export default function SelectComponent(props) {
 
   const items = props.items;
 

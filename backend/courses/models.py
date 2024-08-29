@@ -41,27 +41,13 @@ class Course(models.Model):
     rating = models.FloatField(verbose_name="Rating", null=True, blank=True)
     level = models.CharField(verbose_name="Level", max_length=50)
 
-
-    lessons = models.ManyToManyField(Lesson, blank=True)
     # reviews = models.ManyToManyField(Review, blank=True)
-    intro_video = models.FileField(verbose_name="Intro video", upload_to="intro_videos/")
+    intro_video = models.FileField(verbose_name="Intro video", upload_to="intro_videos/", blank=True, null=True)
     # students 
-    preview = models.ImageField(verbose_name="Preview", upload_to="previews/")
+    preview = models.ImageField(verbose_name="Preview", upload_to="previews/", blank=True, null=True)
 
 
+    created_at = models.DateTimeField(verbose_name="Created at", auto_now_add=True)
+    updated_at = models.DateTimeField(verbose_name="Updated at", auto_now_add=True)
 
 
-# import smtplib
-# from email.mime.text import MIMEText
-
-# import smtplib
-# sender_email = "ahantamer@gmail.com"
-# rec_email = "tamernur7@gmail.com"
-# password = 'hrsn cgcf zrzn drfo'
-# message = "Hey, this was sent using python"
-# server = smtplib.SMTP('smtp.gmail.com', 587)
-# server.starttls()
-# server.login(sender_email, password)
-# print('login successful')
-# server.sendmail(sender_email, rec_email, message)
-# print('sendmail successful')

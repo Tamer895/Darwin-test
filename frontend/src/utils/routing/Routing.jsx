@@ -4,7 +4,7 @@ import {Routes, Route} from 'react-router-dom';
 import Home from '@pages/main_pages/Home/Home';
 import About from '@pages/main_pages/About/About';
 import CreateCourse from '@pages/studio/CreateCourse/CreateCourse';
-import Studio from '@pages/studio/Studio/Studio';
+import EditCourse from '@pages/studio/EditCourse/EditCourse';
 
 // forms
 import Login from '@pages/forms/Login/Login';
@@ -17,13 +17,15 @@ export default function Routing() {
     <Routes>
       <Route path="/" element={<Home/>} />
       <Route path="/about" element={<About/>} />
-      <Route path="/create_course" element={<CreateCourse/>} />
-      <Route path="/studio" element={<Studio/>} />
 
       {/* forms */}
       <Route path="/login" element={<Login/>} />
       <Route path="/step1" element={<Step1/>} />
       <Route path="/step2" element={<Step2/>} />
+
+      {/* studio */}
+      <Route path="/createcourse" element={<CreateCourse/>} />
+      <Route path="/editor"element={<EditCourse/>} />
     </Routes>
   )
 }

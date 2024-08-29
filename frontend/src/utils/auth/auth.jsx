@@ -4,9 +4,10 @@ import React, {useState, useEffect} from 'react'
 
 
 
-function setAuthToken(refreshToken, accessToken) {
+function setAuthToken(refreshToken, accessToken, id) {
   localStorage.setItem('refresh_token', refreshToken);
   localStorage.setItem('access_token', accessToken);
+  localStorage.setItem('user_id', id);
 }
 
 
@@ -56,7 +57,7 @@ function isAuthenticated() {
   useEffect(() => {
 
       const checkAuth = async () => {
-        const token = await localStorage.getItem('acess_token')
+        const token = await localStorage.getItem('access_token')
         setAuth(token == null ? false : true)
       }
       
