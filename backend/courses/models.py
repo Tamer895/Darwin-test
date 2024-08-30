@@ -37,8 +37,8 @@ class Course(models.Model):
     is_private = models.BooleanField(verbose_name="Is private", default=False)
 
 
-    category = models.ManyToManyField(Category, blank=True)
-    rating = models.FloatField(verbose_name="Rating", null=True, blank=True)
+    category = models.JSONField(default=list, null=True, blank=True)
+    rating = models.FloatField(verbose_name="Rating", default=0)
     level = models.CharField(verbose_name="Level", max_length=50)
 
     # reviews = models.ManyToManyField(Review, blank=True)

@@ -20,7 +20,7 @@ class LessonSerializer(serializers.ModelSerializer):
         ]
 
 class CourseSerializer(serializers.ModelSerializer):
-    preview_url = serializers.SerializerMethodField()
+    preview_url = serializers.SerializerMethodField('get_preview_url')
 
     class Meta:
         model = Course

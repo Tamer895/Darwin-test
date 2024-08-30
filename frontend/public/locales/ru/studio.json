@@ -1,6 +1,22 @@
 {
-    "welcome": {
-        "title": "Добро пожаловать в Darwin Studio",
-        "description": "Создавайте и управляйте своими курсами легко и просто"
+    "sidebar": {
+        "edit_courses": "Редактировать курсы",
+        "create_courses": "Создать курсы",
+        "give_access": "Дать доступ"
+    },
+
+    "create_courses": {
+        "name": "Название",
+        "description": "Описание",
+        "language": "Язык",
+        "status": "Открытый или Закрытый?",
+        "public": "Открытый",
+        "private": "Закрытый",
+        "categories": "Категории курса",
+        "level": "Уровень знаний",
+        "beginner": "Начинающий",
+        "intermediate": "Средний",
+        "advanced": "Продвинутый",
+        "submit": "Создать курс"
     }
 }

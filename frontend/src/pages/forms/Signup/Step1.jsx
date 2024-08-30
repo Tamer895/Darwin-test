@@ -1,4 +1,5 @@
 import React, {useEffect, useState} from 'react'
+import { Link } from 'react-router-dom';
 import Authentication from '@components/layouts/Authentication/Authentication'
 import Title from '@components/UI/Typography/Title/Title'
 import TextInput from '@components/UI/Inputs/TextInput/TextInput';
@@ -101,6 +102,9 @@ export default function Step1() {
 
                 <br />
 
+                <Link to="/login"><span className='font-normal text-sm text-primary-def hover:underline'>{t('step1.have_account')}</span></Link>
+
+                <br />
 
                 <Button onClick={handleSubmit}>Get code</Button>
             </div>

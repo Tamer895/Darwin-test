@@ -46,7 +46,7 @@ function Header() {
     },
     {
       title: t('links.studio'),
-      path: '/studio',
+      path: '/createcourse',
     }
   ];
 
@@ -98,7 +98,7 @@ function Header() {
         {links.map((elem, index) => (
 
           // Links of the header
-          <Link key={index} to={elem.path}>
+          <a key={index} href={elem.path}>
             <button 
               onClick={()=>navigate(index)} 
               style={page == elem.path ? {borderBottomWidth: '3px'} : {borderBottomWidth: "0"}}
@@ -106,7 +106,7 @@ function Header() {
             >
               {elem.title}
             </button>
-          </Link>
+          </a>
 
 
         ))}  

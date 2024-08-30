@@ -1,6 +1,22 @@
 {
-    "welcome": {
-        "title": "Darwin Studio-ға қош келдіңіз",
-        "description": "Курстарыңызды оңай құрып, оңай басқарыңыз"
+    "sidebar": {
+        "edit_courses": "Курстарды өңдеу",
+        "create_courses": "Курсты жасау",
+        "give_access": "Адамдарды қосу"
+    },
+
+    "create_courses": {
+        "name": "Курстың атауы",
+        "description": "Курстың сипаттамасы",
+        "language": "Курстың тілі",
+        "status": "Ашық немесе Жабық курс?",
+        "public": "Ашық",
+        "private": "Жабық",
+        "categories": "Курстың санаты",
+        "level": "Қажетті білім деңгейі",
+        "beginner": "Бастауыш",
+        "intermediate": "Орта",
+        "advanced": "Озат",
+        "submit": "Курсты ашу"
     }
 }

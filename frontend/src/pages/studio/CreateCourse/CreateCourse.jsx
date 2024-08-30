@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-import React, { useState} from 'react'
+import React, { useState, useEffect} from 'react'
 import { useTranslation } from 'react-i18next';
 
 import Flexbox from '@components/layouts/Stacks/Flexbox/Flexbox';
@@ -9,11 +9,15 @@ import Content from '@components/layouts/Stacks/Content/Content';
 import Form from '@components/layouts/Stacks/Form/Form';
 
 import InputContainer from '@components/UI/Inputs/InputContainer/InputContainer';
+import FileField from '@components/UI/Inputs/FileField/FileField';
 import TextInput from '@components/UI/Inputs/TextInput/TextInput';
 import Textarea from '@components/UI/Inputs/Textarea/Textarea';
 import SelectComponent from '@components/UI/Select/Select';
 import Radio from '@components/UI/Inputs/Radio/Radio';
 import Button from '@components/UI/Buttons/Button/Button';
+import ChipsInput from '@components/UI/Inputs/ChipsInput/ChipsInput';
+import Course from '@components/UI/Cards/Course/Course';
+import fetchDataID from '@utils/api/users/datasets/fetchDataID';
 
 
 
@@ -30,44 +34,72 @@ export default function CreateCourse() {
 
 
   const isPrivate = [
-    {label: "Public", value: false},
-    {label: "Private", value: true}
+    {label: t('create_courses.public'), value: false},
+    {label: t('create_courses.private'), value: true}
   ]
 
 
   const levels = [
-      {label: "Beginner", value: "beginner"},
-      {label: "Intermediate", value: "intermediate"},
-      {label: "Advanced", value: "advanced"}
+      {label: t('create_courses.beginner'), value: "beginner"},
+      {label: t('create_courses.intermediate'), value: "intermediate"},
+      {label: t('create_courses.advanced'), value: "advanced"}
     ]
 
 
+    const user_id = localStorage.getItem('user_id');
 
+
+    const [userdatas, setData] = useState([]);
+    const [error, setError] = useState(null); // Added error state
+
+
+    // Fetching user('author') datas from Server
+    useEffect(() => {
+      const getData = async () => { // Define async function inside useEffect
+        try {
+          const result = await fetchDataID(user_id); // Await the result of the async function
+          setData(result);
+        } catch (error) {
+          setError(error); // Handle error
+          console.error('Error fetching data:', error);
+        }
+      };
+
+      getData();
+    }, []);
+
+
+
+    // Preparing datas for formDATA
+    const [image, setImage] = useState();
+    const [imageURL, setImageURL] = useState();
     const [name, setName] = useState('');
     const [desc, setDesc] = useState('');
-    const [language, setLang] = useState('');
-    const [status, setStatus] = useState();
-    const [level, setLevel] = useState('');
+    const [language, setLang] = useState('ru');
+    const [status, setStatus] = useState(false);
+    const [chips, setChips] = useState([]);
+    const [level, setLevel] = useState('beginner');
+
+
   
   
-  
+    // Submitting datas
     const handleSubmit = async (e) => {
       e.preventDefault();
   
       const formData = new FormData();
 
-      const user_id = localStorage.getItem('user_id');
-      const user_data = await axios.get(`http://127.0.0.1:8000/users/user_info/${user_id}/`);
-  
+      
       formData.append('name', name);
       formData.append('author', user_id);
       formData.append('description', desc);
       formData.append('language', language);
       formData.append('is_private', status);
+      formData.append('category', JSON.stringify(chips))
+      formData.append('preview', image);  // Added image to FormData
       formData.append('level', level);
 
       try {
-        console.log(formData);
         const response = await axios.post('http://127.0.0.1:8000/courses/course/', formData);
 
         window.location.href = '/editor';
@@ -85,41 +117,69 @@ export default function CreateCourse() {
 
 
 
-      <Content width="78%" className="bg-white border-black-10 border-solid border-2 rounded-xl py-5">
+      <Content width="78%" className="flex-col items-center bg-white border-black-10 border-solid border-2 rounded-xl py-10">
+
+
+          {/* Example of course */}
+          <Course 
+              style={{marginBottom: 25}}      
+              name={name}
+              to=""
+              img={imageURL}
+              avatar={userdatas.profile_photo}
+              username={userdatas.username}
+              language={language}
+              rating={5}
+              level={level}
+              categories={chips}
+          />
+
+
+        {/* Course creating form */}
         <Form onSubmit={handleSubmit}>
+
+          <FileField setURL={setImageURL} setImage={setImage} />
+
+          <br />
           
-          <InputContainer className="w-96" for="username" title="Course name">
-            <TextInput onChange={(e) => setName(e.target.value)} className="w-full" type="text" name="username" />
+          <InputContainer className="w-96" for="name" title={t('create_courses.name')}>
+            <TextInput onChange={(e) => setName(e.target.value)} className="w-full" type="text" name="name" />
           </InputContainer>
 
           <br />
 
-          <InputContainer className="w-96" for="username" title="Your course description">
-            <Textarea onChange={(e) => setDesc(e.target.value)} className="w-full" type="text" name="username"></Textarea>
+          <InputContainer className="w-96" for="description" title={t('create_courses.description')}>
+            <Textarea onChange={(e) => setDesc(e.target.value)} className="w-full" type="text" name="description"></Textarea>
           </InputContainer>
 
           <br />
 
-          <InputContainer className="w-96" for="username" title="Language">
+          <InputContainer className="w-96" for="lang" title={t('create_courses.language')}>
             <SelectComponent items={lang} value={language} onChange={(e) => setLang(e.target.value)} />
           </InputContainer>
 
           <br />
 
-          <InputContainer className="w-96" for="username" title="Private or Public?">
+          <InputContainer className="w-96" for="status" title={t('create_courses.status')}>
             <SelectComponent items={isPrivate} value={status} onChange={(e) => setStatus(e.target.value)} />
           </InputContainer>
 
           <br />
 
-          <InputContainer className="w-96" for="username" title="Level">
+          <InputContainer className="w-96" for="categories" title={t('create_courses.categories')}>
+            <ChipsInput onChange={setChips} items={chips} placeholder="Category" />
+          </InputContainer>
+
+          <br />
+
+          <InputContainer className="w-96" for="level" title={t('create_courses.level')}>
             <Radio items={levels} setValue={setLevel} />
           </InputContainer>
 
           <br />
           <br />
 
-          <Button type="submit">Submit</Button>
+          <Button type="submit">{t('create_courses.submit')}</Button>
 
         </Form>
       </Content>

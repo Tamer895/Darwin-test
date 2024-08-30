@@ -3,20 +3,29 @@ import { Link } from 'react-router-dom';
 import Avatar from '@mui/material/Avatar';
 import Rating from '@mui/material/Rating';
 import Chip from '@mui/material/Chip';
+import { useTranslation } from 'react-i18next';
 
 export default function Course(props) {
+
+  const [t] = useTranslation('course');
 
 
   const truncatedText = props.name.length > 40 ? props.name.slice(0, 40) + '...' : props.name;
 
   const chips = props.categories;
 
+  const langs = {
+    en: 'English',
+    ru: 'Русский',
+    kz: 'Қазақша',
+  }
+
   return (
     <Link to={props.to}>
-        <div style={props.style} className="card card-hover flex-col-center border-2 border-black-10 rounded-2xl overflow-hidden text-sm">
+        <div style={props.style} className="w-80 card card-hover flex-col-center border-2 border-black-10 rounded-2xl overflow-hidden text-sm">
 
             {/* Image  */}
-            <div className="w-full h-40 overflow-hidden flex items-center justify-center">
+            <div className="w-full h-40 overflow-hidden flex items-center justify-center border-0">
                 <img className='w-full h-40 object-cover' src={props.img} alt="" />
             </div>
 
@@ -29,14 +38,14 @@ export default function Course(props) {
                         
                         <span className='ml-2 text-gray'>{props.username}</span>
 
-                        <span style={{fontSize: 15}} className="material-symbols-rounded ml-1 text-primary-def">
+                        {props.is_verified ? <span style={{fontSize: 15}} className="material-symbols-rounded ml-1 text-primary-def">
                         verified
-                        </span>
+                        </span> : ""}
                     </div>
 
                     <p className='font-medium mt-3 mb-2 text-md text-black-def'>{truncatedText}</p>
 
-                    <span className='text-sm text-black-50'>{props.level}</span>
+                    <span className='text-sm text-black-50'>{t(`levels.${props.level}`)} | {langs[props.language]}</span>
 
                     <div className="flex-col">
                         <div className="flex items-center mb-3 mt-2">
@@ -56,7 +65,7 @@ export default function Course(props) {
                                     marginBottom: "5px",
                                 }}
                                 variant="outlined" 
-                                label={elem.label} 
+                                label={elem} 
                                 size="small" 
                             />
                         ))}

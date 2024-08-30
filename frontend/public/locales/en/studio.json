@@ -1,6 +1,24 @@
 {
-    "welcome": {
-        "title": "Welcome to Darwin Studio",
-        "description": "Create and manage your courses easily"
+    "sidebar": {
+        "edit_courses": "Edit courses",
+        "create_courses": "Create courses",
+        "give_access": "Give an access"
+    },
+
+    "create_courses": {
+        "name": "Course name",
+        "description": "Course description",
+        "language": "Language",
+
+
+        "status": "Public or Private?",
+        "public": "Public",
+        "private": "Private",
+        "categories": "Course categories",
+        "level": "Course level",
+        "beginner": "Beginner",
+        "intermediate": "Intermediate",
+        "advanced": "Advanced",
+        "submit": "Create course"
     }
 }

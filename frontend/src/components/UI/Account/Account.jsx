@@ -22,6 +22,7 @@ export default function Account() {
       await axios.post('http://127.0.0.1:8000/users/logout/', { refresh_token });
       localStorage.removeItem('access_token');
       localStorage.removeItem('refresh_token');
+      localStorage.removeItem('user_id');
       window.location.href = '/';
     } catch (error) {
       console.error(error);
@@ -30,11 +31,11 @@ export default function Account() {
 
   return (
     <div>
-      <div className="cursor-pointer" onClick={toggleMenu}>
+      <div id="menu" className="cursor-pointer" onClick={toggleMenu}>
         <AvatarCircle alt="Nuralim Tamerlan" />
       </div>
 
-      <Menu className="right-0" isOpen={isOpen}>
+      <Menu id="menu" className="right-0" isOpen={isOpen} onOpen={setIsOpen}>
         <li><button onClick={handleLogout}>Log out</button></li>
       </Menu>
     </div>

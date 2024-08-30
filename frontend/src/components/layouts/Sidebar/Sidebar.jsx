@@ -2,14 +2,16 @@ import React from 'react'
 import Flexbox from '@Stacks/Flexbox/Flexbox'
 import Block from '@Stacks/Block/Block'
 import { Link } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
 
 export default function Sidebar(props) {
 
+  const {t} = useTranslation('studio')
+
   const blocks = [
-    {title: "Edit courses", href: "/editor"},
-    {title: "Create course", href: "/createcourse"},
-    {title: "Course settings", href: "/editor"},
-    {title: "Edit courses", href: "/editor"},
+    {title: t('sidebar.edit_courses'), href: "/editor"},
+    {title: t('sidebar.create_courses'), href: "/createcourse"},
+    {title: t('sidebar.give_access'), href: "/editor"},
   ]
 
   return (
