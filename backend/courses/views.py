@@ -18,6 +18,7 @@ class CourseAuthorID(APIView):
 
         # Serialize the data
         serializer = CourseSerializer(courses, many=True)
+        print(serializer.data)
 
         # Return the serialized data
         return Response(serializer.data)

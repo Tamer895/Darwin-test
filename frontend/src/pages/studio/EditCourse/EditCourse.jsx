@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import Filter from '@utils/api/courses/datasets/Filter';
-import fetchDataID from '@utils/api/users/datasets/fetchDataID';
 
 import Flexbox from '@components/layouts/Stacks/Flexbox/Flexbox';
 import Sidebar from '@components/layouts/Sidebar/Sidebar';
@@ -12,18 +11,16 @@ import Course from '../../../components/UI/Cards/Course/Course';
 export default function EditCourse() {
   const { t } = useTranslation('studio');
   const [datas, setData] = useState([]);
-  const [userDatas, setUserDatas] = useState([]);
   const [error, setError] = useState(null); 
 
   useEffect(() => {
     const getData = async () => { 
       try {
-        const user_id = localStorage.getItem('user_id');
+        const user_id = localStorage.getItem('user_id'); // Get user_id from local storage
 
         const result = await Filter(user_id);
-        const userDatas = await fetchDataID(user_id);
+        console.log(result);
         setData(result);
-        setUserDatas(userDatas);
 
       } catch (error) {
 
@@ -51,8 +48,8 @@ export default function EditCourse() {
                 img={"http://localhost:8000"+data.preview}
                 avatar={""}
                 language={data.language}
-                is_verified={userDatas.is_verificated} // Added is_verified prop
-                username={userDatas.username}
+                is_verified={data.author.is_verificated} // Added is_verified prop
+                username={data.author.username}
                 rating={5}
                 level={data.level}
                 categories={data.category}

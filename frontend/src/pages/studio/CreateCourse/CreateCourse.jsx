@@ -79,8 +79,6 @@ export default function CreateCourse() {
     const [status, setStatus] = useState(false);
     const [chips, setChips] = useState([]);
     const [level, setLevel] = useState('beginner');
-
-
   
   
     // Submitting datas
@@ -91,7 +89,7 @@ export default function CreateCourse() {
 
       
       formData.append('name', name);
-      formData.append('author', user_id);
+      formData.append('author', parseInt(user_id));
       formData.append('description', desc);
       formData.append('language', language);
       formData.append('is_private', status);
@@ -100,7 +98,11 @@ export default function CreateCourse() {
       formData.append('level', level);
 
       try {
-        const response = await axios.post('http://127.0.0.1:8000/courses/course/', formData);
+        const response = await axios.post('http://127.0.0.1:8000/courses/course/', formData, {
+          headers: {
+            'Content-Type': 'multipart/form-data'
+          }
+        });
 
         window.location.href = '/editor';
       } catch (error) {
