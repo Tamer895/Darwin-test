@@ -21,8 +21,8 @@ export default function Course(props) {
   }
 
   return (
-    <Link to={props.to}>
-        <div style={props.style} className="w-80 card card-hover flex-col-center border-2 border-black-10 rounded-2xl overflow-hidden text-sm">
+    <Link className='box-border' style={props.style} to={props.to}>
+        <div className="w-full box-border card card-hover flex-col-center border-2 border-black-10 rounded-2xl overflow-hidden text-sm">
 
             {/* Image  */}
             <div className="w-full h-40 overflow-hidden flex items-center justify-center border-0">

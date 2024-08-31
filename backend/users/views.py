@@ -40,6 +40,12 @@ class GetCode(APIView):
                 "boolean": True 
             })
         
+        elif (email == ""):
+            return Response({
+                "message": "Required field",
+                "boolean": True 
+            })
+
         else:
             try:    
                 sender_email = "ahantamer@gmail.com"

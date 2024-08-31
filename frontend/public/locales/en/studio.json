@@ -14,7 +14,7 @@
         "status": "Public or Private?",
         "public": "Public",
         "private": "Private",
-        "categories": "Course categories",
+        "categories": "Keywords",
         "level": "Course level",
         "beginner": "Beginner",
         "intermediate": "Intermediate",

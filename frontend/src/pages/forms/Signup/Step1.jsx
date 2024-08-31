@@ -16,6 +16,8 @@ export default function Step1() {
     const [formData, setFormData] = useState({ password: '', repeated_password: '', email: '' });
     const [code, setCode] = useState("");
     const [enteredCode, setEnteredCode] = useState("")
+
+    const [emailError, setEmailError] = useState("");
     const navigate = useNavigate();
   
 
@@ -37,7 +39,7 @@ export default function Step1() {
 
 
           if(response.data['boolean']) {
-            alert(response.data['message'])
+            setEmailError(response.data['message'])
           }
           else {
             setCode(response.data['code']);
@@ -86,19 +88,20 @@ export default function Step1() {
 
                 {/* Email */}
                 <label className='mb-2 font-medium' for="email">{t('step1.email')}</label>
-                <TextInput value={formData.email} onChange={handleChange}  type="email" placeholder="example@gmail.com" name="email" />
+                <TextInput required value={formData.email} onChange={handleChange}  type="email" placeholder="example@gmail.com" name="email" />
+                <span className='text-sm text-red-500'>{emailError}</span>
 
                 <br />
 
                 {/* Password  */}
                 <label className='mb-2 font-medium' for="password">{t('step1.password')}</label>
-                <Password value={formData.password} onChange={handleChange}  placeholder={t('step1.password')} name="password" />
+                <Password required value={formData.password} onChange={handleChange}  placeholder={t('step1.password')} name="password" />
 
                 <br />
 
                 {/* Repeat Password  */}
                 <label className='mb-2 font-medium' for="password">{t('step1.repeat')}</label>
-                <Password value={formData.repeated_password} onChange={handleChange}  placeholder={t('step1.password')} name="repeated_password" />
+                <Password required value={formData.repeated_password} onChange={handleChange}  placeholder={t('step1.password')} name="repeated_password" />
 
                 <br />
 

@@ -122,14 +122,21 @@ export default function CreateCourse() {
       <Content width="78%" className="flex-col items-center bg-white border-black-10 border-solid border-2 rounded-xl py-10">
 
 
+          
+
+          
+
+        {/* Course creating form */}
+        <Form className="w-1/2 mx-auto" onSubmit={handleSubmit}>
           {/* Example of course */}
           <Course 
-              style={{marginBottom: 25}}      
+              style={{width: "100%", marginBottom: 25}}      
               name={name}
               to=""
               img={imageURL}
               avatar={userdatas.profile_photo}
               username={userdatas.username}
+              is_verified={userdatas.is_verificated} // Added is_verified prop
               language={language}
               rating={5}
               level={level}
@@ -137,44 +144,44 @@ export default function CreateCourse() {
           />
 
 
-        {/* Course creating form */}
-        <Form onSubmit={handleSubmit}>
-
           <FileField setURL={setImageURL} setImage={setImage} />
 
           <br />
           
-          <InputContainer className="w-96" for="name" title={t('create_courses.name')}>
+          <InputContainer className="w-full" for="name" title={t('create_courses.name')}>
             <TextInput onChange={(e) => setName(e.target.value)} className="w-full" type="text" name="name" />
           </InputContainer>
 
           <br />
 
-          <InputContainer className="w-96" for="description" title={t('create_courses.description')}>
+          <InputContainer className="w-full" for="description" title={t('create_courses.description')}>
             <Textarea onChange={(e) => setDesc(e.target.value)} className="w-full" type="text" name="description"></Textarea>
           </InputContainer>
 
           <br />
 
-          <InputContainer className="w-96" for="lang" title={t('create_courses.language')}>
-            <SelectComponent items={lang} value={language} onChange={(e) => setLang(e.target.value)} />
-          </InputContainer>
+
+          <Flexbox direction="row" items='center' justify="center">
+            <InputContainer for="lang" title={t('create_courses.language')}>
+              <SelectComponent items={lang} value={language} onChange={(e) => setLang(e.target.value)} />
+            </InputContainer>
+            
+
+
+            <InputContainer className="ml-5" for="status" title={t('create_courses.status')}>
+              <SelectComponent items={isPrivate} value={status} onChange={(e) => setStatus(e.target.value)} />
+            </InputContainer>
+          </Flexbox>
 
           <br />
 
-          <InputContainer className="w-96" for="status" title={t('create_courses.status')}>
-            <SelectComponent items={isPrivate} value={status} onChange={(e) => setStatus(e.target.value)} />
-          </InputContainer>
-
-          <br />
-
-          <InputContainer className="w-96" for="categories" title={t('create_courses.categories')}>
+          <InputContainer className="w-full" for="categories" title={t('create_courses.categories')}>
             <ChipsInput onChange={setChips} items={chips} placeholder="Category" />
           </InputContainer>
 
           <br />
 
-          <InputContainer className="w-96" for="level" title={t('create_courses.level')}>
+          <InputContainer className="w-full" for="level" title={t('create_courses.level')}>
             <Radio items={levels} setValue={setLevel} />
           </InputContainer>
 

@@ -37,11 +37,14 @@ export default function EditCourse() {
     <Flexbox direction="row" items="flex-start" justify="space-between" className="px-40 py-16 bg-light_bg">
       <Sidebar focused="0" />
       <Content width="78%" className="bg-white border-black-10 border-solid border-2 rounded-xl">
-        <Flexbox className="w-full" items="center" justify="space-between" wrap="wrap">
+        <Flexbox className="w-full p-6" items="flex-start" justify="space-between" wrap="wrap">
           {datas.length > 0 ? (
             datas.map((data, index) => (
               <Course
-                style={{margin: 25}}
+                style={{
+                  width: '50%',
+                  padding: "10px"
+                }} // Added style prop to customize card size
                 key={index} // Added key prop
                 name={data.name}
                 to={`/${data.id}`}
