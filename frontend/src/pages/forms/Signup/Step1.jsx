@@ -1,4 +1,6 @@
 import React, {useEffect, useState} from 'react'
+
+import Form from '@components/layouts/Stacks/Form/Form';
 import { Link } from 'react-router-dom';
 import Authentication from '@components/layouts/Authentication/Authentication'
 import Title from '@components/UI/Typography/Title/Title'
@@ -15,11 +17,14 @@ import {useNavigate, useLocation} from 'react-router-dom'
 export default function Step1() {
     const [formData, setFormData] = useState({ password: '', repeated_password: '', email: '' });
     const [code, setCode] = useState("");
-    const [enteredCode, setEnteredCode] = useState("")
+    const [enteredCode, setEnteredCode] = useState(null)
 
     const [emailError, setEmailError] = useState("");
     const navigate = useNavigate();
   
+    const { t } = useTranslation('auth');
+
+    const emailErrorText = emailError != "" ? t(`email_errors.${emailError}`) : "";
 
 
 
@@ -50,7 +55,10 @@ export default function Step1() {
             if(enteredCode == code){
                 // window.location.href = "/step2";
                 navigate(`/step2?email=${encodeURIComponent(formData.email)}&password=${encodeURIComponent(formData.password)}`);
-            } else {
+            } else if (enteredCode == null) {
+                alert("code is not correct")
+            } 
+            else {
                 alert("code is not correct")
             }
           }
@@ -68,7 +76,6 @@ export default function Step1() {
 
   
 
-  const { t } = useTranslation('auth');
 
   return (
     <Authentication>
@@ -84,12 +91,12 @@ export default function Step1() {
 
 
             {/* inputs */}
-            <div className="flex flex-col mt-5 pt-5">
+            <form className="flex flex-col mt-5 pt-5">
 
                 {/* Email */}
                 <label className='mb-2 font-medium' for="email">{t('step1.email')}</label>
                 <TextInput required value={formData.email} onChange={handleChange}  type="email" placeholder="example@gmail.com" name="email" />
-                <span className='text-sm text-red-500'>{emailError}</span>
+                <span className='text-sm text-red-500'>{emailErrorText}</span>
 
                 <br />
 
@@ -110,7 +117,7 @@ export default function Step1() {
                 <br />
 
                 <Button onClick={handleSubmit}>Get code</Button>
-            </div>
+            </form>
         </div>
     </form>
     </Authentication>

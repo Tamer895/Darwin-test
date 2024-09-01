@@ -36,13 +36,18 @@ class GetCode(APIView):
 
         if User.objects.filter(email=email).exists():
             return Response({
-                "message": "User with this email already exists",
+                "message": "exists",
                 "boolean": True 
             })
         
         elif (email == ""):
             return Response({
-                "message": "Required field",
+                "message": "empty",
+                "boolean": True 
+            })
+        elif ("@" not in email or not email.endswith("@gmail.com")):
+            return Response({
+                "message": "invalid",
                 "boolean": True 
             })
 

@@ -2,7 +2,7 @@ import React from 'react'
 
 export default function Button({children, ...props}) {
   return (
-    <button className='standart-button rounded-md' {...props}>
+    <button {...props} className='standart-button rounded-md'>
         {children}
     </button>
   )
