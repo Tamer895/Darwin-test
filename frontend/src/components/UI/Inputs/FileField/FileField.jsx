@@ -20,7 +20,21 @@ export default function FileField({ ...props }) {
 
 
     return (
-      <input onChange={imagename} {...props} type="file" className={`h-12 px-4 text-sm outline-none border-input_border border-2 rounded-md focus:border-primary-def placeholder:text-black-50 ${props.className}`} />
+      <div className={`relative inline-block ${props.className}`}>
+        <label
+          htmlFor="file-upload"
+          className={`block flex-center h-12 px-4 text-sm text-white bg-primary-def rounded-md cursor-pointer text-center leading-12`}
+        >
+          Выберите файл
+        </label>
+        <input
+          id="file-upload"
+          onChange={imagename}
+          type="file"
+          className="hidden"
+        />
+      </div>
+
     )
   }
   

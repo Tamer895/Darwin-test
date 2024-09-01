@@ -144,7 +144,7 @@ export default function CreateCourse() {
           />
 
 
-          <FileField setURL={setImageURL} setImage={setImage} />
+          <FileField className="w-full" setURL={setImageURL} setImage={setImage} />
 
           <br />
           
