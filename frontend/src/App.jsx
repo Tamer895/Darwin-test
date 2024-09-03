@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Header from '@layouts/Header/Header'
 import Routing from '@utils/routing/Routing';
 import Footer from '@components/layouts/Footer/Footer';
@@ -8,6 +8,12 @@ import Provider from '@utils/alert/Provider';
 
 
 function App( ) {
+
+  // useEffect(() => {
+  //   localStorage.removeItem('access_token');
+  //   localStorage.removeItem('refresh_token');
+  //   localStorage.removeItem('user_id');
+  // }, []);
 
   return (
     <HelmetProvider>

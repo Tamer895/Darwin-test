@@ -2,7 +2,7 @@ from rest_framework import serializers
 from .models import *
 from rest_framework_simplejwt.views import TokenObtainPairView
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
-
+from courses.models import Course
 
 
 
@@ -21,8 +21,15 @@ class CustomTokenObtainPairSerializer(TokenObtainPairSerializer):
 class UserSerializer(serializers.ModelSerializer):
     password = serializers.CharField(write_only=True)
 
-    # profile_photo_url = serializers.SerializerMethodField('get_profile_photo_url')
-    
+
+    profile_photo_url = serializers.SerializerMethodField('get_profile_photo_url')
+
+    my_courses = serializers.PrimaryKeyRelatedField(queryset=Course.objects.all(), many=True)
+    active_courses = serializers.PrimaryKeyRelatedField(queryset=Course.objects.all(), many=True)
+    finished_courses = serializers.PrimaryKeyRelatedField(queryset=Course.objects.all(), many=True)
+    saved_courses = serializers.PrimaryKeyRelatedField(queryset=Course.objects.all(), many=True)
+
+
     class Meta:
         model = User
         fields = [
@@ -39,20 +46,21 @@ class UserSerializer(serializers.ModelSerializer):
             'role',
             'is_verificated',
             'preferences',
-            # 'profile_photo',
-            # 'profile_photo_url',
+            'profile_photo',
+            'profile_photo_url',
 
-            # 'active_courses',
-            # 'finished_courses',
-            # 'saved_courses',
-            # 'certificates',
+            'my_courses',
+            'active_courses',
+            'finished_courses',
+            'saved_courses',
         ]
 
-    # def get_profile_photo_url(self, obj):
-    #     if obj.profile_photo:
-    #         return obj.profile_photo.url
-    #     else:
-    #         return None
+    def get_profile_photo_url(self, obj):
+        if obj.profile_photo:
+            return obj.profile_photo.url
+        else:
+            return None
+        
     def create(self, validated_data):
         user = User.objects.create(**validated_data)
         user.set_password(validated_data['password'])

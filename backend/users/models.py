@@ -2,6 +2,10 @@ from django.db import models
 from django.contrib.auth.models import AbstractUser
 from categories.models import Category
 
+
+
+
+
 # Create your models here.
 class User(AbstractUser):
     # AbstractUser datas...
@@ -14,13 +18,14 @@ class User(AbstractUser):
     is_verificated = models.BooleanField(default=False)
     preferences = models.JSONField(default=list, null=True, blank=True)
 
+    # Custom datas 
+    profile_photo = models.ImageField(verbose_name="Profile photo", upload_to="profile_photos/")
 
-    # Custom datas
-    # profile_photo = models.ImageField(verbose_name="Profile photo", upload_to="profile_photos/")
-    # active_courses = models.ManyToManyField(Course, blank=True)
-    # finished_courses = models.ManyToManyField(Course, blank=True
-    # saved_courses = models.ManyToManyField(Course, blank=True)
-    # certificates = models.ManyToManyField(Certificate, blank=True)
+    # Courses datas
+    my_courses = models.ManyToManyField('courses.Course', blank=True, related_name='my_courses')
+    active_courses = models.ManyToManyField('courses.Course', blank=True, related_name='active_courses')
+    finished_courses = models.ManyToManyField('courses.Course', blank=True, related_name='finished_courses')
+    saved_courses = models.ManyToManyField('courses.Course', blank=True, related_name='saved_courses')
 
 
     def __str__(self):
