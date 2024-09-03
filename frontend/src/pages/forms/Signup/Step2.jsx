@@ -2,6 +2,8 @@ import React, {useEffect, useState} from 'react';
 
 
 import Authentication from '@components/layouts/Authentication/Authentication';
+
+import AvatarCircle from '@components/UI/Avatar/Avatar';
 import Title from '@components/UI/Typography/Title/Title';
 import TextInput from '@components/UI/Inputs/TextInput/TextInput';
 import Password from "@UI/Inputs/Password/Password";
@@ -9,11 +11,15 @@ import Button from '@components/UI/Buttons/Button/Button';
 import Textarea from "@components/UI/Inputs/Textarea/Textarea";
 import Radio from '@components/UI/Inputs/Radio/Radio';
 import ChipsInput from '@components/UI/Inputs/ChipsInput/ChipsInput';
+import FileField from '@components/UI/Inputs/FileField/FileField';
 
 
 import { useTranslation } from 'react-i18next';
 import { setAuthToken } from '@utils/auth/auth';
 import {useNavigate, useLocation} from 'react-router-dom';
+
+import "./styles/style.css"
+
 import axios from 'axios';
 
 
@@ -55,6 +61,25 @@ export default function Step2() {
 
 
 
+  const [image, setImage] = useState(null);
+  const [imageURL, setImageURL] = useState();
+
+
+
+    function imagename(e){
+    
+      const selectedFile = e.target.files[0];
+    
+        // Дополнительные проверки размеров и соотношения сторон
+      const image = new Image();
+      image.onload = () => {
+        setImage(selectedFile);
+        setImageURL(URL.createObjectURL(selectedFile));
+      };
+      image.src = URL.createObjectURL(selectedFile);
+    }
+
+
   const [val, setVal] = useState("student");
   const [chips, setChips] = useState([]);
   const [nickname, setNickname] = useState("");
@@ -77,6 +102,7 @@ export default function Step2() {
     formData.append('first_name', firstName);
     formData.append('last_name', lastName);
     formData.append('description', description);
+    formData.append('profile_photo', image);  // Added image to FormData
     formData.append('role', val);
     formData.append('preferences', JSON.stringify(chips))
 
@@ -111,7 +137,21 @@ export default function Step2() {
   
               {/* inputs */}
               <div className="flex flex-col mt-5 pt-5">
-  
+
+                  <div className="w-full flex-center py-5">
+                  
+                    <input 
+                      type="file" 
+                      className='fileUpload'
+                      style={{display: "none"}}
+                      id="avatar-upload"
+                      onChange={imagename}
+                    />
+                    <label htmlFor="avatar-upload">
+                      <AvatarCircle className="hover:cursor-pointer" sx={{ width: 100, height: 100 }} avatar={imageURL} />
+                    </label>
+                  </div>
+
                   {/* Name */}
                   <label className='mb-2 font-medium' for="nickname">{t('step2.nickname')}</label>
                   <TextInput required onChange={(e)=>setNickname(e.target.value)} type="text" placeholder="Alex123" name="nickname" />

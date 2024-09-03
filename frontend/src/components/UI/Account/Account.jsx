@@ -36,6 +36,7 @@ export default function Account() {
       </div>
 
       <Menu id="menu" className="right-0" isOpen={isOpen} onOpen={setIsOpen}>
+        <li><button onClick={handleLogout}>My profile</button></li>
         <li><button onClick={handleLogout}>Log out</button></li>
       </Menu>
     </div>

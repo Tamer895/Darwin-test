@@ -1,0 +1,21 @@
+
+  
+.fileUpload[type="file"] {
+    position: relative;
+    left: 0;
+    top: 0;
+    /* opacity: 0; */
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+}
+  
+.label {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: #fff;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+}

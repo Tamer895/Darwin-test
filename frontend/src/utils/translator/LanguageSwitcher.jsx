@@ -20,7 +20,7 @@ const LanguageSwitcher = () => {
 
   useEffect(() => {
     i18n.changeLanguage(currentLanguage);
-  });
+  }, []);
 
   const { i18n } = useTranslation();
 
@@ -48,13 +48,13 @@ const LanguageSwitcher = () => {
         onClick={ state == "hidden" ? () => setState("") : () => setState("hidden") } 
         className='switcher'
       >
-        <span class="material-symbols-outlined text-black-70 text-2xl">
+        <span className="material-symbols-outlined text-black-70 text-2xl">
         language
         </span>
 
         <span className='lng'>{langs[selectedLanguage]}</span>
 
-        <span class="material-symbols-outlined">
+        <span className="material-symbols-outlined">
           arrow_drop_down
         </span>
       </div>

@@ -10,7 +10,7 @@ export default function Offer(props) {
 
             {/* Top container */}
             <div className="w-3/4 flex-col-center py-5">
-                <span style={{fontSize: 35}} class="material-symbols-outlined text-primary-def">
+                <span style={{fontSize: 35}} className="material-symbols-outlined text-primary-def">
                   {props.icon}
                 </span>
 
@@ -31,7 +31,7 @@ export default function Offer(props) {
             <button className='w-full flex-center-between standart-button m-0 py-3 px-5 font-normal'>
               <span>Explore</span>
 
-              <span class="material-symbols-outlined ">
+              <span className="material-symbols-outlined ">
                 arrow_forward
               </span>
             </button>

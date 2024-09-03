@@ -37,13 +37,16 @@ const StyledBadge = styled(Badge)(({ theme }) => ({
   }));
 
 
-export default function AvatarCircle(props) {
+export default function AvatarCircle({...props}) {
   return (
     <StyledBadge 
-    overlap="circular"
-    anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
-    variant="dot">
-        <Avatar alt={props.alt} src={props.avatar} />
+    
+    // overlap="circular"
+    // anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
+    // variant="dot"
+      // {...props}
+    >
+        <Avatar {...props} alt={props.alt} src={props.avatar} />
       
     </StyledBadge>
   )
