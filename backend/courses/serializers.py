@@ -7,8 +7,9 @@ from users.models import User
 
 
 class LessonSerializer(serializers.ModelSerializer):
-    videos = VideoSerializer(many=True, read_only=True)
-    text = TextSerializer(many=True, read_only=True)
+    videos = VideoSerializer(many=True)
+    text = TextSerializer(many=True)
+    # course = serializers.PrimaryKeyRelatedField(queryset=Course.objects.all())
 
     class Meta:
         model = Lesson
@@ -16,15 +17,37 @@ class LessonSerializer(serializers.ModelSerializer):
             'id',
             'title',
             'description',
+            'course',
             'videos',
             'text',
             'created_at',
             'updated_at',
         ]
+    # def to_representation(self, instance):
+    #     representation = super().to_representation(instance)
+    #     representation['course'] = CourseSerializer(instance.course).data
+    #     return representation
+
+class LessonShortSerializer(serializers.ModelSerializer):
+    # course = serializers.PrimaryKeyRelatedField(queryset=Course.objects.all())
+
+    class Meta:
+        model = Lesson
+        fields = [
+            'id',
+            'title',
+            'description',
+            'course',
+            'created_at',
+            'updated_at',
+        ]
+
+
 
 class CourseSerializer(serializers.ModelSerializer):
     preview_url = serializers.SerializerMethodField('get_preview_url')
     author = serializers.PrimaryKeyRelatedField(queryset=User.objects.all())
+    lessons = LessonShortSerializer(many=True, read_only=True) 
 
 
     class Meta:
@@ -40,6 +63,7 @@ class CourseSerializer(serializers.ModelSerializer):
             'category',
             'rating',
             'level',
+            'lessons',
             'intro_video',
             'created_at',
             'updated_at',

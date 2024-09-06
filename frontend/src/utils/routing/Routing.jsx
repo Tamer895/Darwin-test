@@ -7,7 +7,8 @@ import IsAuthenticated from '../auth/IsAuthenticated';
 import Home from '@pages/main_pages/Home/Home';
 import About from '@pages/main_pages/About/About';
 import CreateCourse from '@pages/studio/CreateCourse/CreateCourse';
-import EditCourse from '@pages/studio/EditCourse/EditCourse';
+import MyCourses from '@pages/studio/EditCourse/MyCourses';
+import EditCourse from '../../pages/studio/EditCourse/EditCourse';
 
 // forms
 import Login from '@pages/forms/Login/Login';
@@ -28,7 +29,8 @@ export default function Routing() {
 
       {/* studio */}
       <Route path="/createcourse" element={<IsAuthenticated><CreateCourse/></IsAuthenticated>} />
-      <Route path="/editor"element={<EditCourse/>} />
+      <Route path="/editor"element={<MyCourses/>} />
+      <Route path="/editcourse/:id" element={<EditCourse/>} />
     </Routes>
   )
 }

@@ -11,6 +11,18 @@ class CourseModelViewSet(viewsets.ModelViewSet):
     serializer_class = CourseSerializer
 
 
+class LessonID(APIView):
+    def get(self, request, pk):
+        # Filter courses by author
+        courses = Lesson.objects.filter(id=pk)
+
+        # Serialize the data
+        serializer = LessonSerializer(courses, many=True)
+
+        # Return the serialized data
+        return Response(serializer.data)
+
+
 class CourseAuthorID(APIView):
     def get(self, request, pk):
         # Filter courses by author
@@ -18,7 +30,6 @@ class CourseAuthorID(APIView):
 
         # Serialize the data
         serializer = CourseSerializer(courses, many=True)
-        print(serializer.data)
 
         # Return the serialized data
         return Response(serializer.data)

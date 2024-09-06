@@ -11,6 +11,7 @@ class Lesson(models.Model):
     title = models.CharField(verbose_name="Title", max_length=100)
     description = models.CharField(verbose_name="Description", max_length=1000)
 
+    course = models.ForeignKey('courses.Course', related_name="lessons", on_delete=models.CASCADE)
 
     # Structure 
     videos = models.ManyToManyField(Video, blank=True)
@@ -46,6 +47,7 @@ class Course(models.Model):
     # students 
     preview = models.ImageField(verbose_name="Preview", upload_to="previews/", blank=True, null=True)
 
+    # lessons = models.ManyToManyField('courses.Lesson', null=True, blank=True, related_name="lessons")
 
     created_at = models.DateTimeField(verbose_name="Created at", auto_now_add=True)
     updated_at = models.DateTimeField(verbose_name="Updated at", auto_now_add=True)
