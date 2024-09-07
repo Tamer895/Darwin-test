@@ -121,7 +121,7 @@ export default function Home() {
       <section className='w-4/5 mx-auto flex items-start justify-between py-40'>
 
         <div className="flex-col">
-          <img width={300} src={faqIcon} alt="" />
+          <img width={300} src={faqIcon} alt="" loading='lazy' />
           <h1 className="font-semibold leading-tight my-6 text-[40px]">{t('FAQ.title')}</h1>
           <p className='text-black'>{t('FAQ.help')} <a className='text-primary-def hover:underline' href="/contacts">{t('FAQ.contact')}</a></p>
         </div>

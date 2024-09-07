@@ -29,8 +29,13 @@ export default function Routing() {
 
       {/* studio */}
       <Route path="/createcourse" element={<IsAuthenticated><CreateCourse/></IsAuthenticated>} />
-      <Route path="/editor"element={<MyCourses/>} />
-      <Route path="/editcourse/:id" element={<EditCourse/>} />
+      <Route path="/editor"element={<IsAuthenticated><MyCourses/></IsAuthenticated>} />
+      <Route path="/editcourse/:id" element={<IsAuthenticated><EditCourse/></IsAuthenticated>} />
+
+      {/* Lessons */}
+      <Route path="editcourse/lesson/:id" />
+
+      {/* <Routes></Routes> */}
     </Routes>
   )
 }

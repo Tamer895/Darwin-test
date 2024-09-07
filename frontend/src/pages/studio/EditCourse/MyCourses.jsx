@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import Filter from '@utils/api/courses/datasets/Filter';
+import FilterAuthorID from '@utils/api/courses/datasets/FilterAuthorID';
 
 import Flexbox from '@components/layouts/Stacks/Flexbox/Flexbox';
 import Sidebar from '@components/layouts/Sidebar/Sidebar';
@@ -18,7 +18,7 @@ export default function MyCourses() {
       try {
         const user_id = localStorage.getItem('user_id'); // Get user_id from local storage
 
-        const result = await Filter(user_id);
+        const result = await FilterAuthorID(user_id);
         console.log(result);
         setData(result);
 

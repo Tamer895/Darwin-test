@@ -14,7 +14,7 @@ export default function Feature({children, ...props}) {
         {children}
       </div>
       <div className="">
-        <img loading='lazy' width="450" src={props.img} alt="" />
+        <img loading='lazy' width="450" src={props.img} alt=""/>
       </div>
     </div>
   )

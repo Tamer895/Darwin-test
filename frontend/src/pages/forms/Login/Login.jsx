@@ -60,7 +60,7 @@ export default function Login() {
                     
 
                     {/* Email */}
-                    <label className='mb-2 font-medium' for="email">{t('login.email')}</label>
+                    <label className='mb-2 font-medium' for="email">{t('login.nickname')}</label>
                     <TextInput onChange={(e) => setUsername(e.target.value)} type="text" placeholder="Alex" name="username" />
 
                     <br />

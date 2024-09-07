@@ -34,8 +34,8 @@ export default function Welcome() {
         </div>       
       </div>
 
-      <div className="">
-        <img width={400} src={studyIcon} alt="" />
+      <div>
+        <img width={400} src={studyIcon} alt="" loading='lazy' />
       </div>
     </div>
   )

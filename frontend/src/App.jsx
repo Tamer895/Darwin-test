@@ -9,7 +9,7 @@ import Provider from '@utils/alert/Provider';
 
 function App( ) {
 
-  console.log = function() {}
+  // console.log = function() {}
   // useEffect(() => {
   //   localStorage.removeItem('access_token');
   //   localStorage.removeItem('refresh_token');

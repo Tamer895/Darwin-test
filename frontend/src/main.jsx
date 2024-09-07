@@ -6,22 +6,16 @@ import "./input.css"
 import "./media/fonts/font/stylesheet.css"
 
 import './utils/translator/i18n.js';
-
-import AOS from 'aos';
-import 'aos/dist/aos.css'; // Import AOS styles
-
-
-
-
-AOS.init();
-
-
+import { Provider } from 'react-redux';
+import store from './store';
 
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <BrowserRouter>
-      <App />
+      <Provider store={store}>
+        <App />
+      </Provider>
     </BrowserRouter>
   </React.StrictMode>,
 )
