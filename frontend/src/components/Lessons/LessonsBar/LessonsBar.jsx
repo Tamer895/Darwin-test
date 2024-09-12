@@ -23,9 +23,8 @@ export default function LessonsBar() {
 
   return (
     <div className="w-1/5">
-      <div className='w-full bg-white rounded-xl overflow-hidden border border-black-10 border-solid'>
 
-
+      <div className="w-full bg-white duration-200 ease-linear cursor-pointer rounded-xl overflow-hidden border border-black-10 border-solid mb-5">
         {/* Introduction lesson */}
         <div className={`w-full p-3 border-b border-b-black-10 border-b-solid last:border-b-0 ${currentLesson == 0 ? 'bg-primary-def' : 'bg-white'}`}>
 
@@ -38,11 +37,17 @@ export default function LessonsBar() {
             <span className={`text-[12px] ${currentLesson == 0 ? "text-white" : "text-gray"}`}>{localizer(courseData.created_at)}</span>
 
         </div>
+      </div>
+
+      <div className='w-full bg-white rounded-xl overflow-hidden border border-black-10 border-solid'>
+
+
+        
 
 
         {/* Lessons list */}
         {lessons.map((e, index) => (
-          <div className={`w-full p-3 border-b border-b-black-10 border-b-solid last:border-b-0 ${currentLesson == index+1 ? "bg-primary-def" : "bg-white"}`}>
+          <div className={`w-full duration-100 ease-linear cursor-pointer p-3 border-b border-b-black-10 border-b-solid last:border-b-0 ${currentLesson == index+1 ? "bg-primary-def" : "bg-white hover:bg-primary-5"}`}>
             <p className='text-sm font-semibold' key={index}><span className='text-primary-def'>Lesson {index+1}</span> {e.title}</p>
 
             <span className='text-[12px] text-gray'>{localizer(e.created_at)}</span>

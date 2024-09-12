@@ -6,6 +6,7 @@ import { HelmetProvider } from 'react-helmet-async';
 
 import Provider from '@utils/alert/Provider';
 
+import Snowfall from 'react-snowfall';
 
 function App( ) {
 
@@ -18,6 +19,7 @@ function App( ) {
 
   return (
     <HelmetProvider>
+      <Snowfall snowflakeCount={150} />
       <Header />
       {/* <Loader/> */}
       {/* <Message severity="error">This is a custom alert component.</Message> */}
