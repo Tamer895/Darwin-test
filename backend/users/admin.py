@@ -18,7 +18,7 @@ class UserAdmin(BaseUserAdmin):
     add_fieldsets = (
         (None, {
             'classes': ('wide',),
-            'fields': ('username', 'password1', 'password2', 'email', 'birth_date', 'description', 'role', 'is_verificated', 'preferences'),
+            'fields': ('username', 'password1', 'password2', 'email', 'description', 'role', 'is_verificated', 'preferences'),
         }),
     )
 

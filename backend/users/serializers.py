@@ -62,7 +62,23 @@ class UserSerializer(serializers.ModelSerializer):
             return None
         
     def create(self, validated_data):
+    # Извлекаем ManyToMany поля отдельно
+        my_courses = validated_data.pop('my_courses', [])
+        active_courses = validated_data.pop('active_courses', [])
+        finished_courses = validated_data.pop('finished_courses', [])
+        saved_courses = validated_data.pop('saved_courses', [])
+
+        # Создаем пользователя без ManyToMany полей
         user = User.objects.create(**validated_data)
+        
+        # Устанавливаем пароль
         user.set_password(validated_data['password'])
         user.save()
+
+        # Привязываем ManyToMany поля после создания пользователя
+        user.my_courses.set(my_courses)
+        user.active_courses.set(active_courses)
+        user.finished_courses.set(finished_courses)
+        user.saved_courses.set(saved_courses)
+
         return user
