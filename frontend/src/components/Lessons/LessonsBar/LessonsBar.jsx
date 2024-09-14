@@ -2,8 +2,12 @@ import React from 'react'
 import { useSelector } from 'react-redux';
 
 // import CurrentLesson from '@store/CurrentLesson';
+import { useTranslation } from 'react-i18next';
 
 export default function LessonsBar() {
+
+  const {t} = useTranslation('lesson');
+
 
   const courseData = useSelector((state) => state.courseID.courseData);
   const currentLesson = useSelector((state) => state.currentLesson.id)
@@ -21,6 +25,15 @@ export default function LessonsBar() {
     return `${day}.${month}.${year}`;
   }
 
+  
+
+  const handleRightClick = (event) => {
+    event.preventDefault(); // Отключаем стандартное контекстное меню
+    alert('Правая кнопка мыши нажата на блоке');
+  };
+
+
+
   return (
     <div className="w-1/5">
 
@@ -30,7 +43,7 @@ export default function LessonsBar() {
 
             <p className={`text-sm font-semibold ${currentLesson == 0 ? 'text-white' : 'text-primary-def'}`}>
 
-              <span className={currentLesson == 0 ? 'text-white' : 'text-primary-def'}>Lesson 0</span> Introduction
+              <span className={currentLesson == 0 ? 'text-white' : 'text-primary-def'}>{t('lesson')} 0</span> Introduction
 
             </p>
 
@@ -47,8 +60,8 @@ export default function LessonsBar() {
 
         {/* Lessons list */}
         {lessons.map((e, index) => (
-          <div className={`w-full duration-100 ease-linear cursor-pointer p-3 border-b border-b-black-10 border-b-solid last:border-b-0 ${currentLesson == index+1 ? "bg-primary-def" : "bg-white hover:bg-primary-5"}`}>
-            <p className='text-sm font-semibold' key={index}><span className='text-primary-def'>Lesson {index+1}</span> {e.title}</p>
+          <div onContextMenu={handleRightClick} className={`w-full duration-100 ease-linear cursor-pointer p-3 border-b border-b-black-10 border-b-solid last:border-b-0 ${currentLesson == index+1 ? "bg-primary-def" : "bg-white hover:bg-primary-5"}`}>
+            <p className='text-sm font-semibold' key={index}><span className='text-primary-def'>{t('lesson')} {index+1}</span> {e.title}</p>
 
             <span className='text-[12px] text-gray'>{localizer(e.created_at)}</span>
           </div>
@@ -66,7 +79,7 @@ export default function LessonsBar() {
           </span>
         </div>
 
-        <span className='text-sm mt-2 text-black-def'>Add new lesson</span>
+        <span className='text-sm mt-2 text-black-def'>{t('add_new')}</span>
         
       </div>
     </div>

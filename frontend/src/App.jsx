@@ -19,7 +19,7 @@ function App( ) {
 
   return (
     <HelmetProvider>
-      <Snowfall snowflakeCount={150} />
+      {/* <Snowfall snowflakeCount={150} /> */}
       <Header />
       {/* <Loader/> */}
       {/* <Message severity="error">This is a custom alert component.</Message> */}
