@@ -2,7 +2,7 @@
 from rest_framework import viewsets, status
 from rest_framework.response import Response
 from .models import Course, Lesson
-from .serializers import CourseSerializer, LessonSerializer
+from .serializers import *
 from rest_framework.views import APIView
 
 
@@ -29,7 +29,7 @@ class CourseAuthorID(APIView):
         courses = Course.objects.filter(author=pk)
 
         # Serialize the data
-        serializer = CourseSerializer(courses, many=True)
+        serializer = CourseShortSerializer(courses, many=True)
 
         # Return the serialized data
         return Response(serializer.data)
