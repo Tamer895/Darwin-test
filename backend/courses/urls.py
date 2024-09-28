@@ -7,6 +7,7 @@ from django.conf.urls.static import static
 
 router = DefaultRouter()
 router.register(r'course', CourseModelViewSet)
+router.register(r'lesson', LessonModelViewSet)
 
 urlpatterns = [
     path('', include(router.urls)),

@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const Lessons = createSlice({
     name: 'lessonId',
     initialState: {
-        lessonData: [],  // Массив для хранения данных уроков
+        lessonData: {},  // Массив для хранения данных уроков
     },
     reducers: {
         // Устанавливаем данные урока

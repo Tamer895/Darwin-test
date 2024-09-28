@@ -47,7 +47,7 @@ export default function MyCourses() {
                 }} // Added style prop to customize card size
                 key={index} // Added key prop
                 name={data.name}
-                to={`/editcourse/${data.id}`}
+                to={`/intro_lesson/${data.id}`}
                 img={"http://localhost:8000"+data.preview}
                 avatar={""}
                 language={data.language}

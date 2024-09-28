@@ -10,6 +10,10 @@ class CourseModelViewSet(viewsets.ModelViewSet):
     queryset = Course.objects.all()
     serializer_class = CourseSerializer
 
+class LessonModelViewSet(viewsets.ModelViewSet):
+    queryset = Lesson.objects.all()
+    serializer_class = LessonSerializer
+
 
 class LessonID(APIView):
     def get(self, request, pk):

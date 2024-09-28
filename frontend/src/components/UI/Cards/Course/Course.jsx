@@ -21,7 +21,7 @@ export default function Course(props) {
   }
 
   return (
-    <Link className='box-border' style={props.style} to={props.to}>
+    <a className='box-border' style={props.style} href={props.to}>
         <div className="w-full box-border card card-hover flex-col-center border-2 border-black-10 rounded-2xl overflow-hidden text-sm">
 
             {/* Image  */}
@@ -75,6 +75,6 @@ export default function Course(props) {
                 </div>
             </div>
         </div>
-    </Link>
+    </a>
   )
 }
