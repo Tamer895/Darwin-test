@@ -14,6 +14,11 @@ class LessonModelViewSet(viewsets.ModelViewSet):
     queryset = Lesson.objects.all()
     serializer_class = LessonSerializer
 
+    # def get_serializer_class(self):
+    #     if self.action == 'list' or self.action == 'retrieve':
+    #         return LessonSerializer
+    #     return LessonShortSerializer
+
 
 class LessonID(APIView):
     def get(self, request, pk):

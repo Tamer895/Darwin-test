@@ -119,7 +119,7 @@ export default function CreateCourse() {
 
 
 
-      <Content width="78%" className="flex-col items-center bg-white border-black-10 border-solid border-2 rounded-xl py-10">
+      <Content width="78%" className="flex-col items-center bg-white border-black-10 border-solid border rounded-xl py-10">
 
 
           

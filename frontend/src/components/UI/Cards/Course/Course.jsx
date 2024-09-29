@@ -25,8 +25,8 @@ export default function Course(props) {
         <div className="w-full box-border card card-hover flex-col-center border-2 border-black-10 rounded-2xl overflow-hidden text-sm">
 
             {/* Image  */}
-            <div className="w-full h-40 overflow-hidden flex items-center justify-center border-0">
-                <img className='w-full h-40 object-cover' src={props.img} alt="" />
+            <div className="w-full h-52 overflow-hidden flex items-center justify-center border-0">
+                <img className='w-full h-52 object-cover' src={props.img} alt="" />
             </div>
 
             {/* Content */}

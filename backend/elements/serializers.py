@@ -7,7 +7,7 @@ class VideoSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Video
-        fields = ['id', 'title', 'video', 'video_url']
+        fields = ['id', 'title', 'video', 'video_url', 'order']
 
     def get_video_url(self, obj):
         if obj.video:
@@ -18,4 +18,4 @@ class VideoSerializer(serializers.ModelSerializer):
 class TextSerializer(serializers.ModelSerializer):
     class Meta:
         model = Text
-        fields = ['id', 'title', 'text']
+        fields = ['id', 'title', 'text', 'order']

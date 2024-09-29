@@ -27,6 +27,28 @@ class LessonSerializer(serializers.ModelSerializer):
     #     representation = super().to_representation(instance)
     #     representation['course'] = CourseSerializer(instance.course).data
     #     return representation
+        def to_representation(self, instance):
+            representation = super().to_representation(instance)
+            elements = []
+
+            # Добавляем видео в список с порядком
+            for video in representation['videos']:
+                video['type'] = 'video'
+                elements.append(video)
+
+            # Добавляем текст в список с порядком
+            for text in representation['text']:
+                text['type'] = 'text'
+                elements.append(text)
+
+            # Сортируем элементы по полю 'order'
+            elements = sorted(elements, key=lambda x: x['order'])
+
+            representation['elements'] = elements
+            del representation['videos']  # Убираем оригинальные несортированные поля
+            del representation['text']
+
+            return representation
 
 class LessonShortSerializer(serializers.ModelSerializer):
     # course = serializers.PrimaryKeyRelatedField(queryset=Course.objects.all())

@@ -16,8 +16,7 @@ import {useNavigate, useLocation} from 'react-router-dom'
 // Step1 of registration process
 export default function Step1() {
     const [formData, setFormData] = useState({ password: '', repeated_password: '', email: '' });
-    const [code, setCode] = useState("");
-    const [enteredCode, setEnteredCode] = useState(null)
+    // const [code, setCode] = useState("");
 
     const [emailError, setEmailError] = useState("");
     const navigate = useNavigate();
@@ -47,9 +46,9 @@ export default function Step1() {
             setEmailError(response.data['message'])
           }
           else {
-            setCode(response.data['code']);
-            let ver = prompt("please enter your code")
-            setEnteredCode(ver);
+            let code = response.data['code'];
+            let enteredCode = prompt("please enter your code")
+            // setEnteredCode(ver);
   
   
             if(enteredCode == code){

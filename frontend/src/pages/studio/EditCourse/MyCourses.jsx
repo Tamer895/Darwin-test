@@ -36,7 +36,7 @@ export default function MyCourses() {
   return (
     <Flexbox direction="row" items="flex-start" justify="space-between" className="px-40 py-16 bg-light_bg">
       <Sidebar focused="0" />
-      <Content width="78%" className="bg-white border-black-10 border-solid border-2 rounded-xl">
+      <Content width="78%" className="bg-white border-black-10 border-solid border rounded-xl">
         <Flexbox className="w-full p-6" items="flex-start" justify="space-between" wrap="wrap">
           {datas.length > 0 ? (
             datas.map((data, index) => (
@@ -49,7 +49,7 @@ export default function MyCourses() {
                 name={data.name}
                 to={`/intro_lesson/${data.id}`}
                 img={"http://localhost:8000"+data.preview}
-                avatar={""}
+                avatar={"http://localhost:8000"+data.author.profile_photo}
                 language={data.language}
                 is_verified={data.author.is_verificated} // Added is_verified prop
                 username={data.author.username}

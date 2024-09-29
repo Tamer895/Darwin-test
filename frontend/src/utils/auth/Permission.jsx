@@ -1,6 +1,7 @@
 import React, {useEffect} from 'react'
 import { useNavigate } from 'react-router-dom'
 
+
 function PermissionForCourse(courseAuthorID) {
     const navigate = useNavigate();
     useEffect(() => {
@@ -9,10 +10,11 @@ function PermissionForCourse(courseAuthorID) {
             if(parseInt(user_id) !== parseInt(courseAuthorID)) {
               navigate('/')
             }
-          }
+        }
           
           checkAuth();
     }, []) 
 }
+
 
 export default PermissionForCourse;

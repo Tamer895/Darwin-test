@@ -15,7 +15,7 @@ export default function Sidebar(props) {
   ]
 
   return (
-    <Flexbox direction="column" items="center" justify="left" className='w-1/5 border-2 p-3 bg-white border-black-10 border-solid rounded-xl'>
+    <Flexbox direction="column" items="center" justify="left" className='w-1/5 border p-3 bg-white border-black-10 border-solid rounded-xl'>
 
         {blocks.map((e, index) => (
             <Link className='w-full' key={index} to={e.href}>
