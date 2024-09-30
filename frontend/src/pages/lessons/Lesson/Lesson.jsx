@@ -18,7 +18,9 @@ export default function Lesson() {
   const { id } = useParams(); 
   const dispatch = useDispatch();
   const lesson = useSelector((state) => state.lessons.lessonData);
-  const courseData = useSelector((state) => state.courseID.courseData) == undefined ? null : "";
+  const courseData = useSelector((state) => state.courseID.courseData) == undefined ? null : '';
+
+  console.log("Course data sadsadsad", courseData);
 
 
 
@@ -69,7 +71,6 @@ export default function Lesson() {
         
         // Set the sorted elements in state
         setElements(sortedElements);
-        localStorage.setItem('currentLesson', lessonData.id);
 
       } catch (error) {
         console.error('Error fetching lesson data:', error);
@@ -83,12 +84,14 @@ export default function Lesson() {
     <div className='w-full my-0 mx-auto bg-light_bg p-5'>
       <Flexbox direction="row" items="flex-start" justify="space-between">
         <LessonsBar />
-        <Content className="flex flex-col items-start bg-white p-5 rounded-xl border border-black-10 border-solid" width="78%">
+        <Content className="flex flex-col items-start bg-white p-10 px-[10%] rounded-xl border border-black-10 border-solid" width="78%">
           <div className="w-full">
 
 
-            <MainTitle>{lesson.title}</MainTitle>
-            <p className='text-gray text-sm'>{lesson.description}</p>
+            <div className="w-full mb-20">
+              <MainTitle>{lesson.title}</MainTitle>
+              <p className='text-gray text-sm'>{lesson.description}</p>
+            </div>
 
             <br />
 
@@ -99,9 +102,15 @@ export default function Lesson() {
               {elements.map((element) => (
                 <li key={element.id}>
                   {element.type === 'video' ? (
-                    <Video src={element.video} width="70%" height="400px"/>
+                    <div className="w-full mb-20">
+                      <h1 className='font-bold text-3xl mb-5'>{element.title}</h1>
+                      <Video src={element.video} width="100%" height="400px"/>
+                    </div>
                   ) : (
-                    <p>{element.title}: {element.text}</p>
+                    <div className="w-full mb-20">
+                      <h1 className='font-bold text-3xl mb-5'>{element.title}</h1>
+                      <p>{element.text}</p>
+                    </div>
                   )}
                 </li>
               ))}

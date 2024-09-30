@@ -36,23 +36,22 @@ export default function LessonsBar() {
     return `${day}.${month}.${year}`;
   }
 
-  const handleRightClick = (event) => {
-    event.preventDefault(); // Disable default context menu
-    alert('Right click detected on the block');
+  const handleClick = (index) => {
+    localStorage.setItem('currentLesson', index);
   };
 
   return (
     <div className="w-1/5">
       <div className="w-full bg-white duration-200 ease-linear cursor-pointer rounded-xl overflow-hidden border border-black-10 border-solid mb-5">
         {/* Introduction lesson */}
-        <Link to={`/intro_lesson/${courseData.id}`}>
+        <a href={`/intro_lesson/${courseData.id}`}>
           <div className={`w-full p-3 border-b border-b-black-10 border-b-solid last:border-b-0 ${currentLesson === 0 ? 'bg-primary-def' : 'bg-white hover:bg-primary-5'}`}>
             <p className={`text-sm font-semibold ${currentLesson === 0 ? 'text-white' : 'text-black-def'}`}>
               <span className={currentLesson === 0 ? 'text-white' : 'text-primary-def'}>{t('lesson')} 0</span> Introduction
             </p>
             <span className={`text-[12px] ${currentLesson === 0 ? 'text-white' : 'text-gray'}`}>{localizer(courseData.created_at)}</span>
           </div>
-        </Link>
+        </a>
       </div>
 
       <div className="w-full bg-white rounded-xl overflow-hidden border border-black-10 border-solid">
@@ -61,7 +60,7 @@ export default function LessonsBar() {
           ? lessons.map((e, index) => (
               <Link to={`/lesson/${e.id}`} key={e.id}>
                 <div
-                  onContextMenu={handleRightClick}
+                  onClick={() => handleClick(index+1)}
                   className={`w-full p-3 border-b border-b-black-10 border-b-solid last:border-b-0 ${currentLesson === index + 1 ? 'bg-primary-def' : 'bg-white hover:bg-primary-5'} `}
                 >
                   <p className={`text-sm font-semibold ${currentLesson === index + 1 ? 'text-white' : 'text-black-def'}`}>
