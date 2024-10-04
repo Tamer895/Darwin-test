@@ -2,5 +2,12 @@
     "lesson": "Lesson",
     "add_new": "Add new lesson",
 
-    "next_lesson": "Next lesson"
+    "next_lesson": "Next lesson",
+
+    "create_lesson": {
+        "title": "Create lesson",
+        "title_field": "Title",
+        "description_field": "Description",
+        "create": "Create"
+    }
 }

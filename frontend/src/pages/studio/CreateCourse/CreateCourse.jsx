@@ -9,7 +9,6 @@ import Content from '@components/layouts/Stacks/Content/Content';
 import Form from '@components/layouts/Stacks/Form/Form';
 
 import InputContainer from '@components/UI/Inputs/InputContainer/InputContainer';
-import FileField from '@components/UI/Inputs/FileField/FileField';
 import TextInput from '@components/UI/Inputs/TextInput/TextInput';
 import Textarea from '@components/UI/Inputs/Textarea/Textarea';
 import SelectComponent from '@components/UI/Select/Select';
@@ -18,6 +17,9 @@ import Button from '@components/UI/Buttons/Button/Button';
 import ChipsInput from '@components/UI/Inputs/ChipsInput/ChipsInput';
 import Course from '@components/UI/Cards/Course/Course';
 import fetchDataID from '@utils/api/users/datasets/fetchDataID';
+
+import ImageField from '@components/UI/Inputs/FileField/ImageField';
+import VideoField from '@components/UI/Inputs/FileField/VideoField';
 
 
 
@@ -73,6 +75,9 @@ export default function CreateCourse() {
     // Preparing datas for formDATA
     const [image, setImage] = useState();
     const [imageURL, setImageURL] = useState();
+
+    const [introVideo, setIntroVideo] = useState();
+
     const [name, setName] = useState('');
     const [desc, setDesc] = useState('');
     const [language, setLang] = useState('ru');
@@ -94,7 +99,8 @@ export default function CreateCourse() {
       formData.append('language', language);
       formData.append('is_private', status);
       formData.append('category', JSON.stringify(chips))
-      formData.append('preview', image);  // Added image to FormData
+      formData.append('preview', image);  
+      formData.append('intro_video', introVideo);  
       formData.append('level', level);
 
       try {
@@ -144,7 +150,14 @@ export default function CreateCourse() {
           />
 
 
-          <FileField className="w-full" setURL={setImageURL} setImage={setImage} />
+          <ImageField className="w-full" setURL={setImageURL} setImage={setImage} />
+
+          <br />
+
+          <InputContainer className="w-full" for="intro_video" title={t('create_courses.intro_video')}>
+            <VideoField className="w-full" setVideo={setIntroVideo} />
+          </InputContainer>
+
 
           <br />
           

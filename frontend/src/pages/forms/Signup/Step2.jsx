@@ -11,7 +11,7 @@ import Button from '@components/UI/Buttons/Button/Button';
 import Textarea from "@components/UI/Inputs/Textarea/Textarea";
 import Radio from '@components/UI/Inputs/Radio/Radio';
 import ChipsInput from '@components/UI/Inputs/ChipsInput/ChipsInput';
-import FileField from '@components/UI/Inputs/FileField/FileField';
+import ImageField from '@components/UI/Inputs/FileField/ImageField';
 
 
 import { useTranslation } from 'react-i18next';

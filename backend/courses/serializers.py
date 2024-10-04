@@ -7,8 +7,8 @@ from users.models import User
 
 
 class LessonSerializer(serializers.ModelSerializer):
-    videos = VideoSerializer(many=True)
-    text = TextSerializer(many=True)
+    videos = VideoSerializer(many=True, required=False)
+    text = TextSerializer(many=True, required=False)
     # course = serializers.PrimaryKeyRelatedField(queryset=Course.objects.all())
 
     class Meta:
@@ -22,6 +22,7 @@ class LessonSerializer(serializers.ModelSerializer):
             'text',
             'created_at',
             'updated_at',
+            'is_active'
         ]
     # def to_representation(self, instance):
     #     representation = super().to_representation(instance)
@@ -62,6 +63,7 @@ class LessonShortSerializer(serializers.ModelSerializer):
             'course',
             'created_at',
             'updated_at',
+            'is_active'
         ]
 
 

@@ -11,6 +11,8 @@ import Content from '@components/layouts/Stacks/Content/Content';
 import Video from '@components/UI/Media/Video/Video';
 import MainTitle from '@components/UI/Typography/MainTitle/MainTitle';
 
+import CenteredForm from '@components/layouts/Stacks/Form/CenteredForm/CenteredForm';
+
 import { setLesson } from '@store/Lessons';
 import { setCourse } from '@store/CourseID';
 
@@ -86,7 +88,6 @@ export default function Lesson() {
         <LessonsBar />
         <Content className="flex flex-col items-start bg-white p-10 px-[10%] rounded-xl border border-black-10 border-solid" width="78%">
           <div className="w-full">
-
 
             <div className="w-full mb-20">
               <MainTitle>{lesson.title}</MainTitle>

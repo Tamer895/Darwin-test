@@ -8,21 +8,23 @@ from elements.models import *
 class Lesson(models.Model):
 
     # Basic datas
-    title = models.CharField(verbose_name="Title", max_length=100)
-    description = models.CharField(verbose_name="Description", max_length=1000)
+    title = models.CharField(verbose_name="Title", max_length=100, default="")
+    description = models.CharField(verbose_name="Description", max_length=1000, default="")
 
     course = models.ForeignKey('courses.Course', related_name="lessons", on_delete=models.CASCADE)
 
     # Structure 
-    videos = models.ManyToManyField(Video, blank=True)
+    videos = models.ManyToManyField(Video, blank=True, null=True)
     # images = models.ManyToManyField(Image, blank=True)
     # audios = models.ManyToManyField(Audio, blank=True)
     # PDFs = models.ManyToManyField(PDF, blank=True)
-    text = models.ManyToManyField(Text, blank=True)
+    text = models.ManyToManyField(Text, blank=True, null=True)
 
 
     created_at = models.DateTimeField(verbose_name="Created at", auto_now_add=True)
     updated_at = models.DateTimeField(verbose_name="Updated at", auto_now_add=True)
+
+    is_active = models.BooleanField(default=False)
 
 
 

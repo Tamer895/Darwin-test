@@ -2,5 +2,12 @@
     "lesson": "Урок",
     "add_new": "Создать новый урок",
 
-    "next_lesson": "Следующий урок"
+    "next_lesson": "Следующий урок",
+
+    "create_lesson": {
+        "title": "Создать урок",
+        "title_field": "Заголовок",
+        "description_field": "Описание",
+        "create": "Создать"
+    }
 }

@@ -53,7 +53,7 @@ function Header() {
 
 
   return (
-    <header className='w-full fixed flex-col-center bg-white z-10 top-0'>
+    <header className='w-full fixed flex-col-center bg-white z-50 top-0'>
 
       {/* Up stage */}
       <div className="w-full h-16 flex-center-between bg-white px-5">

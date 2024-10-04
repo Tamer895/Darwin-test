@@ -2,5 +2,12 @@
     "lesson": "Сабақ",
     "add_new": "Жаңа сабақ құру",
 
-    "next_lesson": "Келесі сабақ"
+    "next_lesson": "Келесі сабақ",
+
+    "create_lesson": {
+        "title": "Сабақты құру",
+        "title_field": "Атауы",
+        "description_field": "Сипаттамасы",
+        "create": "Құру"
+    }
 }
