@@ -134,7 +134,7 @@ export default function Lesson() {
                   ) : (
                     <div className="w-full mb-20">
                       <h1 className='font-bold text-3xl mb-5'>{element.title}</h1>
-                      <p>{element.text}</p>
+                      <p className='whitespace-pre-line'>{element.text}</p>
                     </div>
                   )}
                 </li>
@@ -143,10 +143,20 @@ export default function Lesson() {
 
 
 
-            <CreateElement/>
 
+
+
+            
+            
+
+                
             {lesson.is_active == false ? 
-              <Button onClick={pushLesson}>Push the lesson</Button>
+              <>
+                <CreateElement/>
+                <div className=" w-full flex items-center justify-end mt-5">
+                  <Button onClick={pushLesson}>Push the lesson</Button>
+                </div>
+              </>
             : ""}
 
           </div>
