@@ -10,21 +10,22 @@ import Flexbox from '@components/layouts/Stacks/Flexbox/Flexbox';
 import Content from '@components/layouts/Stacks/Content/Content';
 import Video from '@components/UI/Media/Video/Video';
 import MainTitle from '@components/UI/Typography/MainTitle/MainTitle';
+import CreateElement from '@components/Elements/Create/CreateElement';
 
 import CenteredForm from '@components/layouts/Stacks/Form/CenteredForm/CenteredForm';
 
 import { setLesson } from '@store/Lessons';
 import { setCourse } from '@store/CourseID';
 
+import axios from 'axios';
+
+import Button from '@components/UI/Buttons/Button/Button';
+
 export default function Lesson() {
   const { id } = useParams(); 
   const dispatch = useDispatch();
   const lesson = useSelector((state) => state.lessons.lessonData);
   const courseData = useSelector((state) => state.courseID.courseData) == undefined ? null : '';
-
-  console.log("Course data sadsadsad", courseData);
-
-
 
 
   // Fetch the course data if it's missing from the store
@@ -82,6 +83,29 @@ export default function Lesson() {
     fetchData();
   }, [id, dispatch]);
 
+
+
+  async function pushLesson(e) {
+      e.preventDefault();
+
+      const formData = new FormData();
+
+      formData.append('is_active', true)
+  
+      try {
+        const response = await axios.patch(`http://127.0.0.1:8000/courses/lesson/${lesson.id}/`, formData, {
+          headers: {
+            'Content-Type': 'multipart/form-data'
+          }
+        });
+  
+        window.location.reload();
+      } catch (error) {
+        // console.error('Error submitting the form:', error);
+      }
+  }
+
+
   return (
     <div className='w-full my-0 mx-auto bg-light_bg p-5'>
       <Flexbox direction="row" items="flex-start" justify="space-between">
@@ -119,6 +143,11 @@ export default function Lesson() {
 
 
 
+            <CreateElement/>
+
+            {lesson.is_active == false ? 
+              <Button onClick={pushLesson}>Push the lesson</Button>
+            : ""}
 
           </div>
         </Content>
