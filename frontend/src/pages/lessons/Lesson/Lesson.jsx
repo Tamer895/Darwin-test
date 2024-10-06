@@ -115,7 +115,7 @@ export default function Lesson() {
 
             <div className="w-full mb-20">
               <MainTitle>{lesson.title}</MainTitle>
-              <p className='text-gray text-sm'>{lesson.description}</p>
+              <p className='text-gray text-sm whitespace-pre-line mt-5'>{lesson.description}</p>
             </div>
 
             <br />

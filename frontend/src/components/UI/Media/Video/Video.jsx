@@ -157,10 +157,10 @@ export default function Video(props) {
 
           {isPlaying == true ? "" : 
             <div className="flex-center absolute">
-            <div className="bg-primary-def w-20 h-20 rounded-full flex-center">
-              <span className="material-symbols-rounded text-white text-5xl">play_arrow</span>
+              <div className="bg-primary-def hover:bg-primary-darker w-20 h-20 rounded-full flex-center">
+                <span className="material-symbols-rounded text-white text-5xl">play_arrow</span>
+              </div>
             </div>
-          </div>
           }
 
       </div>

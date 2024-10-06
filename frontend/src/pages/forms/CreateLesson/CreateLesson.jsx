@@ -15,6 +15,7 @@ import { useDispatch, useSelector } from'react-redux';
 import { useTranslation } from 'react-i18next';
 
 import axios from 'axios';
+import Textarea from '@components/UI/Inputs/Textarea/Textarea';
 
 
 export default function CreateLesson(props) {
@@ -75,7 +76,7 @@ export default function CreateLesson(props) {
             <br />
 
             <InputContainer className="w-full" title={t('create_lesson.description_field')}>
-                <TextInput onChange={(e) => setDesc(e.target.value)} className="w-full"/>
+                <Textarea onChange={(e) => setDesc(e.target.value)} className="w-full"/>
             </InputContainer>
 
             <br />
