@@ -11,6 +11,7 @@ import MyCourses from '@pages/studio/EditCourse/MyCourses';
 import IntroLesson from '@pages/lessons/IntroLesson/IntroLesson';
 import Lesson from '@pages/lessons/Lesson/Lesson';
 import Courses from '@pages/main_pages/Courses/Courses';
+import Results from '@pages/main_pages/Search/Results/Results';
 
 // forms
 import Login from '@pages/forms/Login/Login';
@@ -37,6 +38,9 @@ export default function Routing() {
       <Route path="/editor"element={<IsAuthenticated><MyCourses/></IsAuthenticated>} />
       <Route path="/intro_lesson/:id" element={<IntroLesson/>} />
       <Route path="/lesson/:id" element={<Lesson/>} />
+
+      {/* Search */}
+      <Route path="/search/results/:query" element={<Results/>} />
 
       {/* Lessons */}
     </Routes>
