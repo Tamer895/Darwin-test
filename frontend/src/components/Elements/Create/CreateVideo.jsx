@@ -17,6 +17,8 @@ export default function CreateVideo() {
   const [order, setOrder] = useState(null);
   const [error, setError] = useState('');
 
+  const {t} = useTranslation('lesson');
+
 
   const handleChange = (e) => {
     const value = e.target.value;
@@ -64,19 +66,19 @@ export default function CreateVideo() {
 
   return (
     <form className='w-full' onSubmit={handleSubmit}>
-      <InputContainer className="w-full" title="Title">
+      <InputContainer className="w-full" title={t('create_element.video.title_field')}>
         <TextInput onChange={(e) => setTitle(e.target.value)} className="w-full" />
       </InputContainer>
 
       <br />
 
-      <InputContainer className="w-full" title="Video">
+      <InputContainer className="w-full" title={t('create_element.video.content_field')}>
       <VideoField className="w-full" setVideo={setVideo} />
       </InputContainer>
 
       <br />
 
-      <InputContainer className="w-full" title="Order number">
+      <InputContainer className="w-full" title={t('create_element.video.order_field')}>
             <TextInput value={order} onChange={handleChange} className="w-full"/>
             {error && <p className='text-sm' style={{color: 'red'}}>{error}</p>}
       </InputContainer>
@@ -85,7 +87,7 @@ export default function CreateVideo() {
       <br />
 
       <Button type="submit" className="w-full">
-        Create
+        {t('create_element.create')}
       </Button>
     </form>
   );

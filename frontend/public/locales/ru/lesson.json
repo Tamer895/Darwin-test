@@ -9,5 +9,24 @@
         "title_field": "Заголовок",
         "description_field": "Описание",
         "create": "Создать"
+    },
+
+    "create_element": {
+        "title": "Создать элемент",
+        "elements": {
+            "text": "Текст",
+            "Video": "Видео"
+        },
+        "text": {
+            "title_field": "Заголовок",
+            "content_field": "Контент",
+            "order_field": "Очередность"
+        },
+        "video": {
+            "title_field": "Заголовок",
+            "content_field": "Видео",
+            "order_field": "Очередность"
+        },
+        "create": "Создать"  
     }
 }

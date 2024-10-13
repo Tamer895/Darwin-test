@@ -10,6 +10,7 @@ import CreateCourse from '@pages/studio/CreateCourse/CreateCourse';
 import MyCourses from '@pages/studio/EditCourse/MyCourses';
 import IntroLesson from '@pages/lessons/IntroLesson/IntroLesson';
 import Lesson from '@pages/lessons/Lesson/Lesson';
+import Courses from '@pages/main_pages/Courses/Courses';
 
 // forms
 import Login from '@pages/forms/Login/Login';
@@ -27,6 +28,9 @@ export default function Routing() {
       <Route path="/login" element={<Login/>} />
       <Route path="/step1" element={<Step1/>} />
       <Route path="/step2" element={<Step2/>} />
+
+      {/* courses */}
+      <Route path="/courses" element={<Courses/>} />
 
       {/* studio */}
       <Route path="/createcourse" element={<IsAuthenticated><CreateCourse/></IsAuthenticated>} />

@@ -9,5 +9,24 @@
         "title_field": "Атауы",
         "description_field": "Сипаттамасы",
         "create": "Құру"
+    },
+
+    "create_element": {
+        "title": "Элементті құру",
+        "elements": {
+            "text": "Текст",
+            "Video": "Бейне"
+        },
+        "text": {
+            "title_field": "Тақырыбы",
+            "content_field": "Контент",
+            "order_field": "Реті"
+        },
+        "video": {
+            "title_field": "Атауы",
+            "content_field": "Бейнематериал",
+            "order_field": "Реті"
+        },
+        "create": "Құру"  
     }
 }

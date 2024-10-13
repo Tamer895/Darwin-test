@@ -9,5 +9,24 @@
         "title_field": "Title",
         "description_field": "Description",
         "create": "Create"
+    },
+
+    "create_element": {
+        "title": "Create element",
+        "elements": {
+            "text": "Text",
+            "Video": "Video"
+        },
+        "text": {
+            "title_field": "Title",
+            "content_field": "Content",
+            "order_field": "Order"
+        },
+        "video": {
+            "title_field": "Title",
+            "content_field": "Video",
+            "order_field": "Order"
+        },
+        "create": "Create"  
     }
 }

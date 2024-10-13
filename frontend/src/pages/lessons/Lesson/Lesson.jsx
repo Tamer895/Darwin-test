@@ -106,6 +106,7 @@ export default function Lesson() {
   }
 
 
+
   return (
     <div className='w-full my-0 mx-auto bg-light_bg p-5'>
       <Flexbox direction="row" items="flex-start" justify="space-between">

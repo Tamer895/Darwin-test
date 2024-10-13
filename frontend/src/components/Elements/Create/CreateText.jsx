@@ -20,6 +20,8 @@ export default function CreateText() {
     const [text, setText] = useState();
     const [order, setOrder] = useState(null);
 
+    const {t} = useTranslation('lesson');
+
     const lesson = useSelector((state) => state.lessons.lessonData);
   
 
@@ -75,19 +77,19 @@ export default function CreateText() {
     <form className='w-full' onSubmit={handleSubmit}>
 
 
-        <InputContainer className="w-full" title="Title">
+        <InputContainer className="w-full" title={t('create_element.text.title_field')}>
             <TextInput onChange={(e) => setTitle(e.target.value)} className="w-full"/>
         </InputContainer>
 
         <br />
 
-        <InputContainer className="w-full" title="Text">
+        <InputContainer className="w-full" title={t('create_element.text.content_field')}>
             <Textarea onChange={(e) => setText(e.target.value)} className="w-full"/>
         </InputContainer>
 
         <br />
 
-        <InputContainer className="w-full" title="Order number">
+        <InputContainer className="w-full" title={t('create_element.text.order_field')}>
             <TextInput value={order} onChange={handleChange} className="w-full"/>
             {error && <p className='text-sm' style={{color: 'red'}}>{error}</p>}
         </InputContainer>
@@ -96,7 +98,7 @@ export default function CreateText() {
 
         <br />
 
-        <Button type="submit" className="w-full">Create</Button>
+        <Button type="submit" className="w-full">{t('create_element.create')}</Button>
     </form>
   )
 }
