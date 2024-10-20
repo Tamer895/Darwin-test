@@ -1,11 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 import Course from '@components/UI/Cards/Course/Course';
+import Button from '@components/UI/Buttons/Button/Button';
 
 export default function LastCourses() {
   const [courses, setCourses] = useState([]); // Store course data
   const [currentPage, setCurrentPage] = useState(1); // Current page number
   const [totalPages, setTotalPages] = useState(1); // Total number of pages
+  const scrollRef = useRef(null); // Ref to the scrollable container
+  const scrollAmount = 400; // The amount to scroll when clicking arrows
 
   useEffect(() => {
     fetchCourses(currentPage);
@@ -22,23 +25,33 @@ export default function LastCourses() {
     }
   };
 
-  // Handle page change when user clicks on next/previous buttons
-  const handlePageChange = (newPage) => {
-    if (newPage >= 1 && newPage <= totalPages) {
-      setCurrentPage(newPage);
+  // Function to handle scrolling the container to the left or right
+  const handleScroll = (direction) => {
+    if (scrollRef.current) {
+      const newScrollPosition =
+        direction === 'left'
+          ? scrollRef.current.scrollLeft - scrollAmount
+          : scrollRef.current.scrollLeft + scrollAmount;
+
+      scrollRef.current.scrollTo({
+        left: newScrollPosition,
+        behavior: 'smooth', // Smooth scrolling effect
+      });
     }
   };
 
   return (
-    <section className="w-full p-10">
+    <section className="w-full p-10 relative">
       <h1 className="text-2xl font-semibold text-black-def">Последние добавленные уроки</h1>
 
+      {/* Scrollable container */}
       <div
-        className="w-full flex items-center justify-start overflow-x-auto pb-10 pt-5"
+        ref={scrollRef}
+        className="w-full flex items-center justify-start overflow-hidden pb-10 pt-5"
         style={{
           whiteSpace: 'nowrap',
-          overflowX: 'auto', // Ensure horizontal scrolling
           WebkitOverflowScrolling: 'touch', // Smooth scrolling for mobile devices
+          scrollBehavior: 'smooth', // Ensure smooth scroll behavior
         }}
       >
         {courses.map((data, index) => (
@@ -66,24 +79,25 @@ export default function LastCourses() {
         ))}
       </div>
 
-      {/* Pagination Controls */}
-      {/* <div className="pagination-controls mt-4">
-        <button
-          onClick={() => handlePageChange(currentPage - 1)}
-          disabled={currentPage === 1}
-          className="px-4 py-2 mr-2 bg-gray-300 rounded disabled:opacity-50"
-        >
-          Previous
-        </button>
-        <span> Page {currentPage} of {totalPages} </span>
-        <button
-          onClick={() => handlePageChange(currentPage + 1)}
-          disabled={currentPage === totalPages}
-          className="px-4 py-2 ml-2 bg-gray-300 rounded disabled:opacity-50"
-        >
-          Next
-        </button>
-      </div> */}
+      {/* Left and Right arrow buttons */}
+      <Button
+        onClick={() => handleScroll('left')}
+        style={{borderRadius: "100px"}}
+        className="w-16 h-16 absolute left-2 top-1/2 transform -translate-y-1/2 bg-gray-300 p-2 z-10"
+      >
+        <span class="material-symbols-rounded">
+        arrow_back
+        </span>
+      </Button>
+      <Button
+        onClick={() => handleScroll('right')}
+        style={{borderRadius: "100px"}}
+        className="w-16 h-16 absolute right-2 top-1/2 transform -translate-y-1/2 bg-gray-300 rounded-full p-2 z-10"
+      >
+        <span class="material-symbols-rounded">
+        arrow_forward
+        </span>
+      </Button>
     </section>
   );
 }

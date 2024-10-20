@@ -49,7 +49,7 @@ export default function IntroLesson() {
     <div className='w-full my-0 mx-auto bg-light_bg p-5'>
       <Flexbox direction="row" items="flex-start" justify="space-between">
         <LessonsBar/>
-        <Content className="flex flex-col items-start bg-white p-5 rounded-xl border border-black-10 border-solid" width="78%">
+        <Content className="flex flex-col items-start bg-white p-5 pb-10 rounded-xl border border-black-10 border-solid" width="78%">
           
           
 

@@ -14,11 +14,11 @@ class Lesson(models.Model):
     course = models.ForeignKey('courses.Course', related_name="lessons", on_delete=models.CASCADE)
 
     # Structure 
-    videos = models.ManyToManyField(Video, blank=True, null=True)
+    videos = models.ManyToManyField(Video, blank=True)
     # images = models.ManyToManyField(Image, blank=True)
     # audios = models.ManyToManyField(Audio, blank=True)
     # PDFs = models.ManyToManyField(PDF, blank=True)
-    text = models.ManyToManyField(Text, blank=True, null=True)
+    text = models.ManyToManyField(Text, blank=True)
 
 
     created_at = models.DateTimeField(verbose_name="Created at", auto_now_add=True)

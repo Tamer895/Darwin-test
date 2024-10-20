@@ -105,6 +105,7 @@ export default function LessonsBar() {
 
       {/* Active Lessons */}
       <div className="w-full bg-white rounded-xl overflow-hidden border border-black-10 border-solid">
+
         {lessons && lessons
           .filter(e => e.is_active)
           .map((e, index) => (
@@ -129,7 +130,9 @@ export default function LessonsBar() {
                 </div>
               </Link>
 
-              {isOpen === index + 1 && (
+
+
+              {isOpen === index + 1 && author_id == user_id &&(
                 <div ref={divRef}>
                   <Menu id="active_lesson" isOpen={true}>
                     <li><button onClick={() => deactivate(e.id)}>Deactivate</button></li>
@@ -168,6 +171,7 @@ export default function LessonsBar() {
                   </div>
                 </Link>
 
+
                 {isOpen === -(index + 1) && (
                   <div ref={divRef}>
                     <Menu id="active_lesson" isOpen={true}>
@@ -175,6 +179,8 @@ export default function LessonsBar() {
                     </Menu>
                   </div>
                 )}
+
+                
               </React.Fragment>
             ))}
         </div>

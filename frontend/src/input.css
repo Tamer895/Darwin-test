@@ -39,4 +39,9 @@
     box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.05);
 }
 
-
+.blurred-background {
+    background-color: rgba(255, 255, 255, 0.3); /* Прозрачный фон */
+    backdrop-filter: blur(10px); /* Размытие фона за блоком */
+    -webkit-backdrop-filter: blur(10px); /* Поддержка для Safari */
+  }
+  

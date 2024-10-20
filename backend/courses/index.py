@@ -5,5 +5,5 @@ from .models import Course
 
 @register(Course)  # замените ModelName на имя вашей модели
 class CourseIndex(AlgoliaIndex):
-    fields = ('name', 'description', 'category')  # Укажите поля, которые должны индексироваться
+    fields = ('name', 'description', 'category', 'author')  # Укажите поля, которые должны индексироваться
     settings = {'searchableAttributes': ['name', 'description']}

@@ -37,11 +37,11 @@ export default function Results() {
                 key={index} // Added key prop
                 name={data.name}
                 to={`/intro_lesson/${data.objectID}`}
-                img={"http://localhost:8000"+data.preview}
+                img={"http://localhost:8000/media/"+data.preview}
                 // avatar={"http://localhost:8000"+data.author.profile_photo}
                 language={data.language}
                 // is_verified={data.author.is_verificated} // Added is_verified prop
-                // username={data.author.username}
+                username={data.username}
                 rating={5}
                 level={data.level}
                 categories={data.category}
