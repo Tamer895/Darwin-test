@@ -65,7 +65,7 @@ function Header() {
   ];
 
   return (
-    <header className="w-full fixed bg-white top-0 z-50">
+    <header className="w-full fixed bg-white top-0 z-40">
       {/* Нижняя часть (она будет фиксирована, занимает всё место) */}
       <div className="w-full">
         {/* Верхняя часть хедера, которая скрывается */}
