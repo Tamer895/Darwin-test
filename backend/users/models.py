@@ -28,5 +28,7 @@ class User(AbstractUser):
     saved_courses = models.ManyToManyField('courses.Course', blank=True, related_name='saved_courses')
 
 
+   
+
     def __str__(self):
         return self.username

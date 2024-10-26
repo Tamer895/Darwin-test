@@ -54,4 +54,13 @@ class Course(models.Model):
     created_at = models.DateTimeField(verbose_name="Created at", auto_now_add=True)
     updated_at = models.DateTimeField(verbose_name="Updated at", auto_now_add=True)
 
+    @property
+    def author_data(self):
+        return {
+            "username": self.author.username,
+            "profile_photo": self.author.profile_photo,
+            "first_name": self.author.first_name,
+            "last_name": self.author.last_name,
+        }
+
 

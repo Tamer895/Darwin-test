@@ -108,12 +108,14 @@ class CourseShortSerializer(serializers.ModelSerializer):
         return None
 
 
-
 class CourseSerializer(serializers.ModelSerializer):
     preview_url = serializers.SerializerMethodField('get_preview_url')
     author = serializers.PrimaryKeyRelatedField(queryset=User.objects.all())
-    lessons = LessonShortSerializer(many=True, read_only=True) 
+    
+    # Add author_data as a SerializerMethodField
+    # author_data = serializers.SerializerMethodField()
 
+    lessons = LessonShortSerializer(many=True, read_only=True) 
 
     class Meta:
         model = Course
@@ -134,6 +136,7 @@ class CourseSerializer(serializers.ModelSerializer):
             'updated_at',
             'preview',
             'preview_url',
+            # 'author_data',  # Add this field to the response
         ]
 
     def to_representation(self, instance):
@@ -145,3 +148,7 @@ class CourseSerializer(serializers.ModelSerializer):
         if obj.preview:
             return obj.preview.url
         return None
+
+    # Define the method to retrieve author_data
+    def get_author_data(self, obj):
+        return obj.author_data

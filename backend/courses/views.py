@@ -13,7 +13,7 @@ from algoliasearch.search_client import SearchClient
 class AlgoliaSearchView(APIView):
     def get(self, request, *args, **kwargs):
         query = request.GET.get('query', '')  # Поисковый запрос из параметров URL
-        client = SearchClient.create('STSBTLQKH1', '1b37eab2e487bf4aab36024f7bc5333f')
+        client = SearchClient.create('6U35HQJ5SA', '9276ceb51d9567d339989fedb166128c')
         index = client.init_index('Course')
         results = index.search(query)
         return Response(results['hits'])

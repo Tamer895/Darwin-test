@@ -30,7 +30,7 @@ export default function Results() {
     }, [query, data.length]);
 
     return (
-        <div className='w-full flex items-center justify-between'>
+        <div className='w-[1200px] mx-auto flex flex-wrap py-5 items-center justify-between'>
             {loading ? (
                 <Loading />
             ) : (
@@ -47,7 +47,8 @@ export default function Results() {
                       to={`/intro_lesson/${course.objectID}`}
                       img={"http://localhost:8000/media/" + course.preview}
                       language={course.language}
-                      username={course.username}
+                      username={course.author_data.username}
+                      avatar={`http://localhost:8000/media/${course.author_data.profile_photo}`}
                       rating={5}
                       level={course.level}
                       categories={course.category}
