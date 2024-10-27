@@ -16,8 +16,8 @@ import axios from 'axios';
 
 export default function CreateText() {
     
-    const [title, setTitle] = useState();
-    const [text, setText] = useState();
+    const [title, setTitle] = useState("");
+    const [text, setText] = useState("");
     const [order, setOrder] = useState(null);
 
     const {t} = useTranslation('lesson');
@@ -85,6 +85,7 @@ export default function CreateText() {
 
         <InputContainer className="w-full" title={t('create_element.text.content_field')}>
             <Textarea onChange={(e) => setText(e.target.value)} className="w-full"/>
+            <span className={`text-sm ${text.length > 1000 ? "text-red-500" : ""}`}>{text.length}/1000</span>
         </InputContainer>
 
         <br />

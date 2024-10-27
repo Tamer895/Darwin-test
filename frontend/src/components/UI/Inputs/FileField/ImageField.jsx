@@ -33,6 +33,7 @@ export default function ImageField({ ...props }) {
           {imageTitle == '' ? "Выберите файл" : imageTitle}
         </label>
         <input
+          {...props.required}
           id="file-upload"
           accept=".png, .jpg, .jpeg"
           onChange={imagename}

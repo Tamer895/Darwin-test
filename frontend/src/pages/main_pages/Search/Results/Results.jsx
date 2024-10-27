@@ -30,7 +30,7 @@ export default function Results() {
     }, [query, data.length]);
 
     return (
-        <div className='w-[1200px] mx-auto flex flex-wrap py-5 items-center justify-between'>
+        <div className='w-[1400px] mx-auto flex flex-wrap py-5 items-center justify-left'>
             {loading ? (
                 <Loading />
             ) : (
@@ -39,7 +39,7 @@ export default function Results() {
                 (data.length > 0 ? data.map((course, index) => (
                   <Course
                       style={{
-                          width: '400px',
+                          width: '350px',
                           padding: "10px"
                       }}
                       key={index}

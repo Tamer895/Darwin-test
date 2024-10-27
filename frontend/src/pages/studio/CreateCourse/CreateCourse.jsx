@@ -25,7 +25,7 @@ import VideoField from '@components/UI/Inputs/FileField/VideoField';
 
 export default function CreateCourse() {
 
-  const { t } = useTranslation('studio');
+  const { t } = useTranslation(['studio', 'errors']);
 
 
   const lang = [
@@ -52,7 +52,7 @@ export default function CreateCourse() {
 
 
     const [userdatas, setData] = useState([]);
-    const [error, setError] = useState(null); // Added error state
+    const [error, setError] = useState(false);
 
 
     // Fetching user('author') datas from Server
@@ -62,8 +62,8 @@ export default function CreateCourse() {
           const result = await fetchDataID(user_id); // Await the result of the async function
           setData(result);
         } catch (error) {
-          setError(error); // Handle error
-          console.error('Error fetching data:', error);
+           // Handle error
+          // console.error('Error fetching data:', error);
         }
       };
 
@@ -84,6 +84,7 @@ export default function CreateCourse() {
     const [status, setStatus] = useState(false);
     const [chips, setChips] = useState([]);
     const [level, setLevel] = useState('beginner');
+
   
   
     // Submitting datas
@@ -112,6 +113,7 @@ export default function CreateCourse() {
 
         window.location.href = '/editor';
       } catch (error) {
+        setError(true);
         // console.error('Error submitting the form:', error);
       }
     };
@@ -150,25 +152,25 @@ export default function CreateCourse() {
           />
 
 
-          <ImageField className="w-full" setURL={setImageURL} setImage={setImage} />
+          <ImageField required className="w-full" setURL={setImageURL} setImage={setImage} />
 
           <br />
 
           <InputContainer className="w-full" for="intro_video" title={t('create_courses.intro_video')}>
-            <VideoField className="w-full" setVideo={setIntroVideo} />
+            <VideoField required className="w-full" setVideo={setIntroVideo} />
           </InputContainer>
 
 
           <br />
           
           <InputContainer className="w-full" for="name" title={t('create_courses.name')}>
-            <TextInput onChange={(e) => setName(e.target.value)} className="w-full" type="text" name="name" />
+            <TextInput required onChange={(e) => setName(e.target.value)} className="w-full" type="text" name="name" />
           </InputContainer>
 
           <br />
 
           <InputContainer className="w-full" for="description" title={t('create_courses.description')}>
-            <Textarea onChange={(e) => setDesc(e.target.value)} className="w-full" type="text" name="description"></Textarea>
+            <Textarea required onChange={(e) => setDesc(e.target.value)} className="w-full" type="text" name="description"></Textarea>
           </InputContainer>
 
           <br />
@@ -189,17 +191,19 @@ export default function CreateCourse() {
           <br />
 
           <InputContainer className="w-full" for="categories" title={t('create_courses.categories')}>
-            <ChipsInput onChange={setChips} items={chips} placeholder="Category" />
+            <ChipsInput required onChange={setChips} items={chips} placeholder="Category" />
           </InputContainer>
 
           <br />
 
           <InputContainer className="w-full" for="level" title={t('create_courses.level')}>
-            <Radio items={levels} setValue={setLevel} />
+            <Radio required items={levels} setValue={setLevel} />
           </InputContainer>
 
           <br />
           <br />
+          
+          {error ? <div className="text-red-500 text-center">{t('errors:fill_all_fields')}</div> : ""}
 
           <Button type="submit">{t('create_courses.submit')}</Button>
 
