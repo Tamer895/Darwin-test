@@ -11,6 +11,7 @@ import AvatarCircle from '@UI/Avatar/Avatar';
 
 export default function Account() {
   const [isOpen, setIsOpen] = useState(false);
+  const userData = JSON.parse(localStorage.getItem('user'));
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -23,6 +24,7 @@ export default function Account() {
       localStorage.removeItem('access_token');
       localStorage.removeItem('refresh_token');
       localStorage.removeItem('user_id');
+      localStorage.removeItem('user');
       window.location.href = '/';
     } catch (error) {
       console.error(error);
@@ -32,7 +34,7 @@ export default function Account() {
   return (
     <div>
       <div id="menu" className="cursor-pointer" onClick={toggleMenu}>
-        <AvatarCircle alt="Nuralim Tamerlan" />
+        <AvatarCircle src={'http://127.0.0.1:8000/'+userData.profile_photo} alt={userData.username.toUpperCase()} />
       </div>
 
       <Menu id="menu" className="right-0" isOpen={isOpen} onOpen={setIsOpen}>

@@ -42,7 +42,7 @@ export default function LastCourses() {
 
   return (
     <section className="w-full p-10 relative">
-      <h1 className="text-2xl font-semibold text-black-def">Последние добавленные уроки</h1>
+      <h1 className="text-2xl text-black-def">Последние добавленные уроки</h1>
 
       {/* Scrollable container */}
       <div

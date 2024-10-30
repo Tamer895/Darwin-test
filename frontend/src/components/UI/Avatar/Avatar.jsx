@@ -46,7 +46,7 @@ export default function AvatarCircle({...props}) {
     // variant="dot"
       // {...props}
     >
-        <Avatar {...props} alt={props.alt} src={props.avatar} />
+        <Avatar {...props} alt={props.alt} avatar={props.avatar} />
       
     </StyledBadge>
   )

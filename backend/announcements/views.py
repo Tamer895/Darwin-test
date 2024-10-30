@@ -8,5 +8,5 @@ from .serializers import *
 
 # Create your views here.
 class AnnouncementModelViewSet(viewsets.ModelViewSet):
-    queryset = Announcement.objects.all()
+    queryset = Announcement.objects.all().order_by('-created_at') 
     serializer_class = AnnouncementSerializer

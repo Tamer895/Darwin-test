@@ -12,6 +12,9 @@ import IntroLesson from '@pages/lessons/IntroLesson/IntroLesson';
 import Lesson from '@pages/lessons/Lesson/Lesson';
 import Courses from '@pages/main_pages/Courses/Courses';
 import Results from '@pages/main_pages/Search/Results/Results';
+import CreateAnnouncement from '@pages/main_pages/Admin/CreateAnnouncement/CreateAnnouncement'
+import Announcements from '@pages/main_pages/BulletinBoard/Announcements/Announcements';
+import AnnouncementID from '@pages/main_pages/BulletinBoard/AnnouncementID/AnnouncementID';
 
 // forms
 import Login from '@pages/forms/Login/Login';
@@ -41,6 +44,11 @@ export default function Routing() {
 
       {/* Search */}
       <Route path="/search/results/:query" element={<Results/>} />
+
+      {/* Announcements */}
+      <Route path="/create_announcement" element={<CreateAnnouncement/>}/>
+      <Route path="/bulletin_board" element={<Announcements/>} />
+      <Route path="/bulletin_board/:id" element={<AnnouncementID />} />
 
       {/* Lessons */}
     </Routes>

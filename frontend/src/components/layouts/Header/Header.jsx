@@ -15,7 +15,10 @@ function Header() {
   const [scrollDirection, setScrollDirection] = useState('up');
   const [prevScrollPos, setPrevScrollPos] = useState(window.scrollY);
   const [hideTop, setHideTop] = useState(false);
+
+
   const accessToken = getAccessToken();
+
 
   useEffect(() => {
     const handleScroll = () => {
@@ -45,6 +48,7 @@ function Header() {
     };
   }, [prevScrollPos, scrollDirection]);
 
+
   const links = [
     {
       title: t('links.my_edu'),
@@ -64,8 +68,9 @@ function Header() {
     }
   ];
 
+
   return (
-    <header className="w-full fixed bg-white top-0 z-40">
+    <header className="w-full fixed bg-white top-0 z-40 ">
       {/* Нижняя часть (она будет фиксирована, занимает всё место) */}
       <div className="w-full">
         {/* Верхняя часть хедера, которая скрывается */}
@@ -98,7 +103,7 @@ function Header() {
         </div>
 
         {/* Нижняя часть хедера, которая остаётся на месте и занимает место верхней при её скрытии */}
-        <div className={`flex items-center justify-start w-full border-b bg-white border-black-10 transition-all duration-300 ${hideTop ? 'mt-0' : 'mt-16'}`}>
+        <div className={`flex items-center justify-start w-full border-b bg-white border-black-10 transition-all duration-300 ${hideTop ? 'mt-0 shadow-md' : 'mt-16'}`}>
           <div>
             {links.map((elem, index) => (
               <a key={index} href={elem.path}>

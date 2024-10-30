@@ -34,6 +34,7 @@ export default function Login() {
   
 
       setAuthToken(response.data['refresh'], response.data['access'], response.data['id'])
+      localStorage.setItem('user', JSON.stringify(response.data));
 
       // Handle the response
       // console.log('Server Response:', response.data);

@@ -1,0 +1,28 @@
+.announcementsSection {
+    display: flex;
+    flex-wrap: wrap;
+    /* gap: 10px; */
+}
+
+.announcementsSection .item {
+    /* background-color: lightgray; */
+    margin: 5px;
+}
+
+/* Первые два элемента в первой строке */
+.announcementsSection .item:nth-child(1),
+.announcementsSection .item:nth-child(2) {
+    flex: 0 0 calc(50% - 10px) !important; /* 50% ширины с учетом отступов */
+}
+
+/* Три элемента во второй строке */
+.announcementsSection .item:nth-child(3),
+.announcementsSection .item:nth-child(4),
+.announcementsSection .item:nth-child(5) {
+    flex: 0 0 calc(33.33% - 10px) !important; /* 33.33% ширины */
+}
+
+/* Остальные элементы — по 20% ширины */
+.announcementsSection .item:nth-child(n+6) {
+    flex: 0 0 calc(25% - 10px) !important; /* 20% ширины */
+}

@@ -10,8 +10,14 @@ class CustomTokenObtainPairSerializer(TokenObtainPairSerializer):
     def validate(self, attrs):
         data = super().validate(attrs)
         
+
+        # user = User.objects.get(id=self.user.id)
+        
         # Add user ID to the response
         data['id'] = self.user.id
+        data['username'] = self.user.username
+        data['profile_photo'] = self.user.profile_photo.url if self.user.profile_photo else None,
+        data['is_staff'] = self.user.is_staff
 
         return data
 

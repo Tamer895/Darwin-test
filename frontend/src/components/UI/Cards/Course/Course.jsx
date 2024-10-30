@@ -45,14 +45,13 @@ export default function Course(props) {
 
                     <p className='font-medium mt-3 mb-2 text-md text-black-def'>{truncatedText}</p>
 
-                    <span className='text-sm text-black-50'>{t(`levels.${props.level}`)} | {langs[props.language]}</span>
+                    <span className='text-sm text-black-50'>{t(`levels.${props.level}`)} - {langs[props.language]}</span>
 
                     <div className="flex-col">
                         <div className="flex items-center mb-3 mt-2">
                             <span className='mr-1 text-primary-def font-medium'>{props.rating}</span>
                             <Rating size="small" precision={0.5} name="read-only" value={props.rating} readOnly />
                         </div>
-
                         <div className="flex items-center flex-wrap">
                         {chips.map((elem, index) => (
                             <Chip 

@@ -2,10 +2,17 @@ from rest_framework import serializers
 from .models import *
 
 
-class AnnouncementSerializer(serializers.Serializer):
+# python manage.py migrate announcements zero
+# python manage.py makemigrations
+# python manage.py migrate
+
+
+
+class AnnouncementSerializer(serializers.ModelSerializer):
 
     preview_url = serializers.SerializerMethodField('get_preview_url')
     video_url = serializers.SerializerMethodField('get_video_url')
+    source_avatar_url = serializers.SerializerMethodField('get_source_url')
 
     class Meta:
         model = Announcement
@@ -15,6 +22,10 @@ class AnnouncementSerializer(serializers.Serializer):
             'description',
             'category',
 
+            'source_name',
+            'source_avatar',
+            'source_avatar_url',
+
             'preview',
             'preview_url',
 
@@ -23,7 +34,6 @@ class AnnouncementSerializer(serializers.Serializer):
 
             'link',
             'created_at',
-            'term'
         ]
 
     def get_preview_url(self, obj):
@@ -35,3 +45,17 @@ class AnnouncementSerializer(serializers.Serializer):
         if obj.video:
             return obj.video.url
         return None
+    
+    def get_source_url(self, obj):
+        if obj.source_avatar:
+            return obj.source_avatar.url
+        return None
+    
+
+
+
+
+class CategorySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Category
+        fields = ['id', 'name']
