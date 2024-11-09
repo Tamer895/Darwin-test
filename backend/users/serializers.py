@@ -3,7 +3,7 @@ from .models import *
 from rest_framework_simplejwt.views import TokenObtainPairView
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 from courses.models import Course
-
+from django.conf import settings
 
 
 class CustomTokenObtainPairSerializer(TokenObtainPairSerializer):
@@ -16,8 +16,11 @@ class CustomTokenObtainPairSerializer(TokenObtainPairSerializer):
         # Add user ID to the response
         data['id'] = self.user.id
         data['username'] = self.user.username
-        data['profile_photo'] = self.user.profile_photo.url if self.user.profile_photo else None,
+        data['first_name'] = self.user.first_name
+        data['last_name'] = self.user.last_name
+        data['profile_photo'] = settings.DOMAIN + self.user.profile_photo.url if self.user.profile_photo else None,
         data['is_staff'] = self.user.is_staff
+        data['role'] = self.user.role
 
         return data
 

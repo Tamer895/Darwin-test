@@ -113,7 +113,7 @@ class CourseSerializer(serializers.ModelSerializer):
     author = serializers.PrimaryKeyRelatedField(queryset=User.objects.all())
     
     # Add author_data as a SerializerMethodField
-    # author_data = serializers.SerializerMethodField()
+    # author_data = serializers.SerializerMethodField('get_author_data')
 
     lessons = LessonShortSerializer(many=True, read_only=True) 
 

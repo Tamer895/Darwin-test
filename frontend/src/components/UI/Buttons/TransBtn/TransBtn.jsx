@@ -4,7 +4,7 @@ export default function TransBtn({children, ...props}) {
   return (
     <button className="trans-button rounded-md flex-center-between" {...props}>
         {children}
-        <span className="material-symbols-rounded ml-2">
+        <span className={`material-symbols-rounded ${props.icon !== undefined ? "ml-2" : ""}`}>
           {props.icon}
         </span>
     </button>

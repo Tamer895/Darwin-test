@@ -37,6 +37,8 @@ export default defineConfig({
       '@layouts': path.resolve(__dirname, './src/components/layouts'),
       '@pages': path.resolve(__dirname, './src/pages'),
       '@Stacks': path.resolve(__dirname, './src/components/layouts/Stacks'),
+      '@configs': path.resolve(__dirname, './src/configs'),
+      '@services': path.resolve(__dirname, './src/services'),
     },
   },
 })

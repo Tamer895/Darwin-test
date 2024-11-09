@@ -4,6 +4,7 @@ import Button from '@components/UI/Buttons/Button/Button';
 import InputContainer from '@components/UI/Inputs/InputContainer/InputContainer';
 import TextInput from '@components/UI/Inputs/TextInput/TextInput';
 import VideoField from '@UI/Inputs/FileField/VideoField';
+import { ELEMENTS_API_ROUTES } from '@configs/api/Elements/elements';
 
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -52,7 +53,7 @@ export default function CreateVideo() {
     formData.append('lesson_id', lesson.id);
 
     try {
-      const response = await axios.post('http://127.0.0.1:8000/elements/create-video/', formData, {
+      const response = await axios.post(ELEMENTS_API_ROUTES.VIDEO.CREATE, formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },

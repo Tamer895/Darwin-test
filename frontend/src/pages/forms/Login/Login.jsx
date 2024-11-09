@@ -7,6 +7,8 @@ import Password from "@UI/Inputs/Password/Password"
 import Button from '@components/UI/Buttons/Button/Button';
 import { useTranslation } from 'react-i18next'
 
+import { USERS_API_ROUTES } from '@configs/api/Users/users';
+
 import { setAuthToken } from '@utils/auth/auth';
 import axios from 'axios';
 
@@ -30,7 +32,7 @@ export default function Login() {
 
     try {
       // Send the POST request with the FormData
-      const response = await axios.post('http://127.0.0.1:8000/users/login/', formData);
+      const response = await axios.post(USERS_API_ROUTES.LOGIN, formData);
   
 
       setAuthToken(response.data['refresh'], response.data['access'], response.data['id'])

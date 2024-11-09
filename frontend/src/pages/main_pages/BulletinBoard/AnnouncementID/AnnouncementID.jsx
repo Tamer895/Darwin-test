@@ -8,6 +8,8 @@ import Button from '@components/UI/Buttons/Button/Button';
 import RoundedBtn from '@components/UI/Buttons/RoundedBtn/RoundedBtn';
 import Video from '@components/UI/Media/Video/Video';
 
+import { ANNOUNCEMENTS_API_ROUTES } from '@configs/api/Announcements/announcements';
+
 
 export default function AnnouncementID() {
   const { id } = useParams(); 
@@ -42,7 +44,7 @@ export default function AnnouncementID() {
     // Function to fetch courses based on the page number
     const fetchAnnouncement= async () => {
       try {
-        const response = await axios.get(`http://localhost:8000/announcements/announcement/${id}/`);
+        const response = await axios.get(ANNOUNCEMENTS_API_ROUTES.GET_BY_ID+`${id}/`);
         setData(response.data); // Update courses data
       } catch (error) {
         // console.error('Error fetching courses:', error);

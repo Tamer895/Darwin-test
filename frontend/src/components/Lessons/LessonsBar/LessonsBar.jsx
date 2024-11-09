@@ -7,6 +7,8 @@ import Menu from '@UI/Menu/Menu';
 import CreateLesson from '@pages/forms/CreateLesson/CreateLesson';
 import TextWithEllipsis from '@UI/Typography/Text/TextWithEllipsis';
 
+import { LESSONS_API_ROUTES } from '../../../configs/api/Lessons/lessons';
+
 import FilterCourseID from "@utils/api/courses/datasets/FilterCourseID";
 import PermissionForCourse from "@utils/auth/Permission";
 
@@ -68,7 +70,7 @@ export default function LessonsBar() {
     formData.append('is_active', false);
 
     try {
-      await axios.patch(`http://127.0.0.1:8000/courses/lesson/${id}/`, formData, {
+      await axios.patch(LESSONS_API_ROUTES.PATCH + `${id}/`, formData, {
         headers: {
           'Content-Type': 'multipart/form-data'
         }
@@ -82,7 +84,7 @@ export default function LessonsBar() {
   // Delete lesson
   async function deleteLesson(id) {
     try {
-      await axios.delete(`http://127.0.0.1:8000/courses/lesson/${id}/`);
+      await axios.delete(LESSONS_API_ROUTES.DELETE+`${id}/`);
       window.location.reload();
     } catch (error) {
       // console.error('Error deleting the lesson:', error);

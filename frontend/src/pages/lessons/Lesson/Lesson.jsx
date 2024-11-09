@@ -15,6 +15,8 @@ import CreateElement from '@components/Elements/Create/CreateElement';
 import CenteredForm from '@components/layouts/Stacks/Form/CenteredForm/CenteredForm';
 import Button from '@components/UI/Buttons/Button/Button';
 
+import { LESSONS_API_ROUTES } from '@configs/api/Lessons/lessons';
+
 import VideoElement from '@components/Elements/View/Video/VideoElement';
 import TextElement from '@components/Elements/View/Text/TextElement';
 
@@ -85,7 +87,7 @@ export default function Lesson() {
     formData.append('is_active', true);
 
     try {
-      await axios.patch(`http://127.0.0.1:8000/courses/lesson/${lesson.id}/`, formData, {
+      await axios.patch(LESSONS_API_ROUTES.PATCH+`${lesson.id}/`, formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },

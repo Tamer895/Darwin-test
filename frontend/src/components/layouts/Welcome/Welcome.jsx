@@ -1,4 +1,7 @@
 import React from 'react'
+
+import ReactTypingEffect from 'react-typing-effect';
+
 import "./styles/style.css"
 import Button from "@UI/Buttons/Button/Button"
 import TransBtn from "@UI/Buttons/TransBtn/TransBtn"
@@ -15,9 +18,20 @@ export default function Welcome() {
     <div className="welcome px-[10%]">
       <div className="w-1/2 flex-col items-start">
 
-        <h1 className='font-black text-5xl'>{t('welcome.title1')}<span className='text-primary-def underline'>Darwin</span>{t('welcome.title2')}</h1>
+        <h1 className=' font-black text-black-def text-[400%] leading-[70px] uppercase'>{t('welcome.title1')}<span className='text-primary-def underline'>Darwin</span><ReactTypingEffect
+            text={[`${t('welcome.title2')}`]}
+            speed={100}
+            eraseSpeed={50}
+            typingDelay={200}
+            className="text-black-def underline"
+            cursor=" "
+          /></h1>
 
-        <p className='text-gray text-md my-7'>{t('welcome.description')}</p>
+        {/* <h1 className='font-black text-black-def text-[400%] leading-[70px] uppercase'>
+          
+        </h1> */}
+
+        <p className='text-black-def text-md my-7'>{t('welcome.description')}</p>
 
 
         <div className="buttons flex items-center">

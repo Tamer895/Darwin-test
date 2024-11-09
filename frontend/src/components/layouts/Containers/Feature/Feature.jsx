@@ -7,7 +7,7 @@ export default function Feature({children, ...props}) {
         <h4 className='font-semibold text-2xl' style={{color: props.color}}>{props.feature}</h4>
         <h1 className='font-semibold text-6xl mt-4 mb-6'>{props.title}</h1>
 
-        <p className='text-gray text-lg font-normal'>{props.text}</p>
+        <p className='text-gray text-lg font-light'>{props.text}</p>
 
         <br />
 

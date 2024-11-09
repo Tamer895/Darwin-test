@@ -4,6 +4,8 @@ import axios from 'axios'
 import Announcement from '@components/UI/Cards/Announcement/Announcement';
 import TextWithEllipsis from '@UI/Typography/Text/TextWithEllipsis';
 
+import { ANNOUNCEMENTS_API_ROUTES } from '@configs/api/Announcements/announcements';
+
 import {Link} from 'react-router-dom';
 
 import "./styles/style.css";
@@ -19,7 +21,7 @@ export default function Announcements() {
     // Function to fetch courses based on the page number
     const fetchAnnouncements= async () => {
       try {
-        const response = await axios.get('http://localhost:8000/announcements/announcement/');
+        const response = await axios.get(ANNOUNCEMENTS_API_ROUTES.GET_ALL);
         setAnnouncements(response.data.results); // Update courses data
       } catch (error) {
         // console.error('Error fetching courses:', error);

@@ -28,6 +28,14 @@ class CourseModelViewSet(viewsets.ModelViewSet):
     pagination_class = CoursePagination  
 
 
+
+class LatestCourseView(APIView):
+    def get(self, request):
+        # Retrieve only Course instances that have at least one related Lesson, ordered by created_at
+        courses = Course.objects.all().order_by('-created_at')
+        serializer = CourseSerializer(courses, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+
 class LessonModelViewSet(viewsets.ModelViewSet):
     queryset = Lesson.objects.all()
     serializer_class = LessonSerializer

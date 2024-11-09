@@ -2,7 +2,8 @@
     "sidebar": {
         "edit_courses": "Редактировать курсы",
         "create_courses": "Создать курсы",
-        "give_access": "Дать доступ"
+        "give_access": "Дать доступ",
+        "delete_course": "Удалить курс"
     },
 
     "create_courses": {

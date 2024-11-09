@@ -11,7 +11,8 @@ export default function Sidebar(props) {
   const blocks = [
     {title: t('sidebar.edit_courses'), href: "/editor"},
     {title: t('sidebar.create_courses'), href: "/createcourse"},
-    {title: t('sidebar.give_access'), href: "/editor"},
+    {title: t('sidebar.give_access'), href: "/giveaccess"},
+    {title: t('sidebar.delete_course'), href: "/deletecourse"},
   ]
 
   return (

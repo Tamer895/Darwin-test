@@ -4,6 +4,10 @@ import { useParams, Link } from 'react-router-dom';
 import Course from '@components/UI/Cards/Course/Course';
 import Loading from '@components/layouts/Loading/Loading';
 
+
+import { domain } from '@configs/api/domain';
+import { COURSES_API_ROUTES } from '@configs/api/Courses/courses';
+
 import axios from 'axios';
 
 export default function Results() {
@@ -16,7 +20,7 @@ export default function Results() {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get(`http://localhost:8000/courses/search/?query=${query}`);
+                const response = await axios.get(COURSES_API_ROUTES.SEARCH+`?query=${query}`);
                 setData(response.data);
             } catch (err) {
                 setError(err.message);
@@ -45,10 +49,10 @@ export default function Results() {
                       key={index}
                       name={course.name}
                       to={`/intro_lesson/${course.objectID}`}
-                      img={"http://localhost:8000/media/" + course.preview}
+                      img={domain+"media/" + course.preview}
                       language={course.language}
                       username={course.author_data.username}
-                      avatar={`http://localhost:8000/media/${course.author_data.profile_photo}`}
+                      avatar={domain+`media/${course.author_data.profile_photo}`}
                       rating={5}
                       level={course.level}
                       categories={course.category}

@@ -30,7 +30,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-
+# APPEND_SLASH=False
+DOMAIN = "http://127.0.0.1:8000/"
 
 
 # Application definition
@@ -41,6 +42,7 @@ INSTALLED_APPS = [
     'users',
     'categories',
     'elements',
+    # 'courses.apps.CoursesConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

@@ -95,7 +95,7 @@ function Header() {
               </div>
             ) : (
               <div className="flex items-center">
-                <i className="fi fi-rr-bell text-2xl mt-2 mx-4 text-gray"></i>
+                {/* <i className="fi fi-rr-bell text-2xl mt-2 mx-4 text-gray"></i> */}
                 <Account />
               </div>
             )}

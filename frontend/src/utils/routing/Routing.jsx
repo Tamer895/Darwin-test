@@ -15,6 +15,8 @@ import Results from '@pages/main_pages/Search/Results/Results';
 import CreateAnnouncement from '@pages/main_pages/Admin/CreateAnnouncement/CreateAnnouncement'
 import Announcements from '@pages/main_pages/BulletinBoard/Announcements/Announcements';
 import AnnouncementID from '@pages/main_pages/BulletinBoard/AnnouncementID/AnnouncementID';
+import MyProfile from '@pages/main_pages/MyProfile/MyProfile';
+import EditProfile from '@pages/main_pages/MyProfile/EditProfile';
 
 // forms
 import Login from '@pages/forms/Login/Login';
@@ -49,6 +51,10 @@ export default function Routing() {
       <Route path="/create_announcement" element={<CreateAnnouncement/>}/>
       <Route path="/bulletin_board" element={<Announcements/>} />
       <Route path="/bulletin_board/:id" element={<AnnouncementID />} />
+
+      {/* Profile */}
+      <Route path="/myprofile/" element={<IsAuthenticated><MyProfile/></IsAuthenticated>} />
+      <Route path="/editprofile/" element={<IsAuthenticated><EditProfile/></IsAuthenticated>} />
 
       {/* Lessons */}
     </Routes>

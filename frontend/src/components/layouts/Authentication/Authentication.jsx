@@ -2,6 +2,7 @@ import React from 'react'
 import classes from "./styles/style.module.css"
 
 import Title from "@UI/Typography/Title/Title"
+import AuthHeader from '../Header/AuthHeader/AuthHeader'
 
 import { useTranslation } from 'react-i18next'
 
@@ -20,10 +21,11 @@ export default function Authentication({children, ...props}) {
 
   return (
     <section className={classes.auth_section}>
+        {/* <AuthHeader/> */}
 
 
       
-        <div className="flex-center bg-white p-8 rounded-xl box-shadow">
+        <div className="flex-center bg-white bg-opacity-80 p-8 rounded-xl box-shadow">
             <div style={{width: "400px"}}>
               {children}
             </div>

@@ -6,6 +6,9 @@ import InputContainer from '@components/UI/Inputs/InputContainer/InputContainer'
 import TextInput from '@components/UI/Inputs/TextInput/TextInput';
 import NumberInput from '@components/UI/Inputs/NumberInput/NumberInput';
 import Textarea from '@UI/Inputs/Textarea/Textarea';
+import { ELEMENTS_API_ROUTES } from '@configs/api/Elements/elements';
+
+import RichTextarea from '@components/UI/Inputs/RichTextarea/RichTextarea';
 
 import { useDispatch, useSelector } from'react-redux';
 
@@ -61,7 +64,7 @@ export default function CreateText() {
       formData.append('lesson_id', lesson.id)
   
       try {
-        const response = await axios.post('http://127.0.0.1:8000/elements/create-text/', formData, {
+        const response = await axios.post(ELEMENTS_API_ROUTES.TEXT.CREATE, formData, {
           headers: {
             'Content-Type': 'multipart/form-data'
           }
@@ -84,8 +87,11 @@ export default function CreateText() {
         <br />
 
         <InputContainer className="w-full" title={t('create_element.text.content_field')}>
-            <Textarea onChange={(e) => setText(e.target.value)} className="w-full"/>
-            <span className={`text-sm ${text.length > 1000 ? "text-red-500" : ""}`}>{text.length}/1000</span>
+            {/* <Textarea onChange={(e) => setText(e.target.value)} className="w-full"/> */}
+            <RichTextarea onChange={(newContent) => setText(newContent)} className="w-full" placeholder="Введите текст...">
+            
+            </RichTextarea>
+            <span className={`text-sm ${text.length > 1500 ? "text-red-500" : ""}`}>{text.length}/1500</span>
         </InputContainer>
 
         <br />
@@ -94,6 +100,8 @@ export default function CreateText() {
             <TextInput value={order} onChange={handleChange} className="w-full"/>
             {error && <p className='text-sm' style={{color: 'red'}}>{error}</p>}
         </InputContainer>
+
+
 
         <br />
 

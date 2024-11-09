@@ -9,6 +9,9 @@ import ImageField from '@components/UI/Inputs/FileField/ImageField';
 import VideoField from '@components/UI/Inputs/FileField/VideoField';
 import { useTranslation } from 'react-i18next';
 
+import { ANNOUNCEMENTS_API_ROUTES } from '@configs/api/Announcements/announcements';
+
+
 function CreateAnnouncement() {
   const userData = JSON.parse(localStorage.getItem('user'));
 
@@ -56,7 +59,7 @@ function CreateAnnouncement() {
     formData.append('video', video);
 
     try {
-      const response = await axios.post('http://localhost:8000/announcements/announcement/', formData, {
+      const response = await axios.post(ANNOUNCEMENTS_API_ROUTES.POST, formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },

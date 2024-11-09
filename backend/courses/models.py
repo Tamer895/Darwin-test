@@ -9,7 +9,7 @@ class Lesson(models.Model):
 
     # Basic datas
     title = models.CharField(verbose_name="Title", max_length=100, default="")
-    description = models.CharField(verbose_name="Description", max_length=1000, default="")
+    description = models.CharField(verbose_name="Description", max_length=1500, default="")
 
     course = models.ForeignKey('courses.Course', related_name="lessons", on_delete=models.CASCADE)
 

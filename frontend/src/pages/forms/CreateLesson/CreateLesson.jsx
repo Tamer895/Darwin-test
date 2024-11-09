@@ -10,6 +10,8 @@ import Title from '@components/UI/Typography/Title/Title'
 import TextInput from '@components/UI/Inputs/TextInput/TextInput';
 import CenteredForm from '@components/layouts/Stacks/Form/CenteredForm/CenteredForm'
 
+import { LESSONS_API_ROUTES } from '../../../configs/api/Lessons/lessons';
+
 import { useDispatch, useSelector } from'react-redux';
 
 import { useTranslation } from 'react-i18next';
@@ -39,7 +41,7 @@ export default function CreateLesson(props) {
     formData.append('course', courseData.id);
 
     try {
-      const response = await axios.post('http://127.0.0.1:8000/courses/lesson/', formData, {
+      const response = await axios.post(LESSONS_API_ROUTES.POST, formData, {
         headers: {
           'Content-Type': 'multipart/form-data'
         }

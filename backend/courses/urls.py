@@ -14,5 +14,8 @@ urlpatterns = [
     path('', include(router.urls)),
     path('author_id/<int:pk>/', CourseAuthorID.as_view()),
     path('lesson_by_course_id/<int:pk>/', LessonID.as_view()),
+
+    path('latest_courses/', LatestCourseView.as_view()),
+
     path('search/', AlgoliaSearchView.as_view(), name='algolia-search'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

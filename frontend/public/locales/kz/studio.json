@@ -2,7 +2,8 @@
     "sidebar": {
         "edit_courses": "Курстарды өңдеу",
         "create_courses": "Курсты жасау",
-        "give_access": "Адамдарды қосу"
+        "give_access": "Адамдарды қосу",
+        "delete_course": "Курсты өшіру"
     },
 
     "create_courses": {

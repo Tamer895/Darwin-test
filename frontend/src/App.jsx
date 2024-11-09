@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, Suspense } from 'react'
 import Header from '@layouts/Header/Header'
 import Routing from '@utils/routing/Routing';
 import Footer from '@components/layouts/Footer/Footer';
@@ -8,30 +8,25 @@ import Provider from '@utils/alert/Provider';
 
 import Snowfall from 'react-snowfall';
 
-import Loading from './components/layouts/Loading/Loading';
 
 function App( ) {
 
+
   // console.log = function() {}
-  // useEffect(() => {
-  //   localStorage.removeItem('access_token');
-  //   localStorage.removeItem('refresh_token');
-  //   localStorage.removeItem('user_id');
-  // }, []);
 
   return (
     <HelmetProvider>
-      {/* <Snowfall snowflakeCount={150} /> */}
-      <Header />
-      {/* <Loader/> */}
-      {/* <Message severity="error">This is a custom alert component.</Message> */}
+        {/* <Snowfall snowflakeCount={150} /> */}
+        <Header />
+        {/* <Loader/> */}
+        {/* <Message severity="error">This is a custom alert component.</Message> */}
 
-      <div style={{marginTop: "121px"}} className="w-full">
-        <Provider/>
-        <Routing/>
-      </div>
-      
-      <Footer/>
+        <div style={{marginTop: "121px"}} className="w-full">
+          <Provider/>
+          <Routing/>
+        </div>
+        
+        <Footer/>
     </HelmetProvider>
   )
 }

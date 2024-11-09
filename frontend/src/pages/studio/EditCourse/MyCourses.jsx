@@ -8,6 +8,9 @@ import Sidebar from '@components/layouts/Sidebar/Sidebar';
 import Content from '@components/layouts/Stacks/Content/Content';
 import Course from '../../../components/UI/Cards/Course/Course';
 
+
+import { domain } from '@configs/api/domain';
+
 export default function MyCourses() {
   const { t } = useTranslation('studio');
   const [datas, setData] = useState([]);
@@ -19,7 +22,6 @@ export default function MyCourses() {
         const user_id = localStorage.getItem('user_id'); // Get user_id from local storage
 
         const result = await FilterAuthorID(user_id);
-        console.log(result);
         setData(result);
 
       } catch (error) {
@@ -48,13 +50,14 @@ export default function MyCourses() {
                 key={index} // Added key prop
                 name={data.name}
                 to={`/intro_lesson/${data.id}`}
-                img={"http://localhost:8000"+data.preview}
-                avatar={"http://localhost:8000"+data.author.profile_photo}
+                img={domain+data.preview}
+                avatar={domain+data.author.profile_photo}
                 language={data.language}
                 is_verified={data.author.is_verificated} // Added is_verified prop
                 username={data.author.username}
                 rating={5}
                 level={data.level}
+                id={data.id}
                 categories={data.category}
               />
             ))

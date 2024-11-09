@@ -9,6 +9,7 @@ from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from random import randint
 from rest_framework_simplejwt.views import TokenObtainPairView
+from django.conf import settings
 
 
 
@@ -81,16 +82,31 @@ class RegisterView(APIView):
                 'id': user.id,
                 'refresh': str(refresh),
                 'access': str(refresh.access_token),
+                'username': user.username,
+                'first_name': user.first_name,
+                'last_name': user.last_name,
+                'is_staff': user.is_staff,
+                'role': user.role,
+                'profile_photo': settings.DOMAIN + user.profile_photo.url if user.profile_photo else None,
             })
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 class LogoutView(APIView):
     def post(self, request):
+        refresh_token = request.data.get("refresh_token")
+        if not refresh_token:
+            return Response({"error": "Refresh token is missing"}, status=status.HTTP_400_BAD_REQUEST)
+        
         try:
-            refresh_token = request.data["refresh_token"]
             token = RefreshToken(refresh_token)
             token.blacklist()
             return Response(status=status.HTTP_205_RESET_CONTENT)
         except Exception as e:
-            return Response(status=status.HTTP_400_BAD_REQUEST)
+            return Response({"error": str(e)}, status=status.HTTP_400_BAD_REQUEST)
+
+
+
+class UserModelViewSet(viewsets.ModelViewSet):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
         

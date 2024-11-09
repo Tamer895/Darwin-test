@@ -10,6 +10,7 @@ import Button from '@components/UI/Buttons/Button/Button';
 import { useTranslation } from 'react-i18next'
 import axios from 'axios';
 import {useNavigate, useLocation} from 'react-router-dom'
+import { USERS_API_ROUTES } from '@configs/api/Users/users';
 
 
 
@@ -39,7 +40,7 @@ export default function Step1() {
 
       if(formData.password == formData.repeated_password){
         try {
-          const response = await axios.post('http://127.0.0.1:8000/users/getcode/', formData);
+          const response = await axios.post(USERS_API_ROUTES.GET_CODE, formData);
 
 
           if(response.data['boolean']) {

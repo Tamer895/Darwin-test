@@ -2,7 +2,8 @@
     "sidebar": {
         "edit_courses": "Edit courses",
         "create_courses": "Create courses",
-        "give_access": "Give an access"
+        "give_access": "Give an access",
+        "delete_course": "Delete course"
     },
 
     "create_courses": {

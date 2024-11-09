@@ -3,23 +3,27 @@ import axios from 'axios';
 import Course from '@components/UI/Cards/Course/Course';
 import Button from '@components/UI/Buttons/Button/Button';
 
+import { domain } from '@configs/api/domain';
+// import Skeletom from '@mui'
+
+import { COURSES_API_ROUTES } from '@configs/api/Courses/courses';
+
+
 export default function LastCourses() {
   const [courses, setCourses] = useState([]); // Store course data
-  const [currentPage, setCurrentPage] = useState(1); // Current page number
-  const [totalPages, setTotalPages] = useState(1); // Total number of pages
   const scrollRef = useRef(null); // Ref to the scrollable container
   const scrollAmount = 400; // The amount to scroll when clicking arrows
 
   useEffect(() => {
-    fetchCourses(currentPage);
-  }, [currentPage]);
+    fetchCourses();
+  }, []);
 
   // Function to fetch courses based on the page number
-  const fetchCourses = async (page) => {
+  const fetchCourses = async () => {
     try {
-      const response = await axios.get(`http://localhost:8000/courses/course/?page=${page}`);
-      setCourses(response.data.results); // Update courses data
-      setTotalPages(Math.ceil(response.data.count / response.data.results.length)); // Calculate total pages
+      const response = await axios.get(COURSES_API_ROUTES.LATEST_COURSES);
+      // console.log(response.data)
+      setCourses(response.data); // Update courses data
     } catch (error) {
       console.error('Error fetching courses:', error);
     }
@@ -58,16 +62,20 @@ export default function LastCourses() {
           <div
             key={index}
             style={{
-              minWidth: '400px', // Ensures that the card has a minimum width
+              minWidth: '350px', // Ensures that the card has a minimum width
               marginRight: '20px', // Adds some spacing between cards
-              display: 'inline-block',
+              // display: 'inline-block',
             }}
           >
             <Course
+              style={{
+                  width: '350px',
+                  padding: "10px"
+              }}
               name={data.name}
               to={`/intro_lesson/${data.id}`}
-              img={data.preview}
-              avatar={`http://localhost:8000${data.author.profile_photo}`}
+              img={domain+data.preview}
+              avatar={`${domain}${data.author.profile_photo}`}
               language={data.language}
               is_verified={data.author.is_verificated}
               username={data.author.username}

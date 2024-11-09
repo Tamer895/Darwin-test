@@ -19,6 +19,7 @@
     "@reduxjs/toolkit": "",
     "aos": "",
     "axios": "",
+    "draft-js": "^0.11.7",
     "i18next": "",
     "i18next-browser-languagedetector": "",
     "i18next-chained-backend": "",
@@ -34,7 +35,8 @@
     "react-router": "",
     "react-router-dom": "",
     "react-snowfall": "",
-    "react-transition-group": ""
+    "react-transition-group": "",
+    "react-typing-effect": "^2.0.5"
   },
   "devDependencies": {
     "@babel/preset-env": "",

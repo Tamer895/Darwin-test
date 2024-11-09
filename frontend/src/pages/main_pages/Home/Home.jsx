@@ -66,7 +66,7 @@ export default function Home() {
 
       {/* What we can offer */}
 
-      <div className="w-full py-10 bg-none flex-col-center mb-32">
+      <div className="w-full py-10 bg-none flex-col-center mb-32 bg-light_bg">
 
         <Title className="font-bold" size="2">What we can offer</Title>
         <p className='text-gray'>Three main opportunities we can offer to you</p>
@@ -118,7 +118,7 @@ export default function Home() {
 
 
       {/* Frequently asked questions */}
-      <section className='w-4/5 mx-auto flex items-start justify-between py-40'>
+      <section className='w-4/5 mx-auto flex items-center justify-between py-40'>
 
         <div className="flex-col">
           <img width={300} src={faqIcon} alt="" loading='lazy' />

@@ -22,6 +22,7 @@ export default function Course(props) {
 
   return (
     <a className='box-border' style={props.style} href={props.to}>
+
         <div className="w-full box-border card card-hover flex-col-center border-2 border-black-10 rounded-2xl overflow-hidden text-sm">
 
             {/* Image  */}
@@ -46,6 +47,12 @@ export default function Course(props) {
                     <p className='font-medium mt-3 mb-2 text-md text-black-def'>{truncatedText}</p>
 
                     <span className='text-sm text-black-50'>{t(`levels.${props.level}`)} - {langs[props.language]}</span>
+
+                    {props.id == undefined ? "" :
+                    <div className='mt-[10px]'>
+                        <span className='text-sm text-primary-def'>ID: {props.id}</span>
+                    </div>
+                    }
 
                     <div className="flex-col">
                         <div className="flex items-center mb-3 mt-2">

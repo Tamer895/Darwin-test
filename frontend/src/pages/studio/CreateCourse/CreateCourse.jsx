@@ -18,6 +18,8 @@ import ChipsInput from '@components/UI/Inputs/ChipsInput/ChipsInput';
 import Course from '@components/UI/Cards/Course/Course';
 import fetchDataID from '@utils/api/users/datasets/fetchDataID';
 
+import { COURSES_API_ROUTES } from '../../../configs/api/Courses/courses';
+
 import ImageField from '@components/UI/Inputs/FileField/ImageField';
 import VideoField from '@components/UI/Inputs/FileField/VideoField';
 
@@ -105,7 +107,7 @@ export default function CreateCourse() {
       formData.append('level', level);
 
       try {
-        const response = await axios.post('http://127.0.0.1:8000/courses/course/', formData, {
+        const response = await axios.post(COURSES_API_ROUTES.CREATE, formData, {
           headers: {
             'Content-Type': 'multipart/form-data'
           }
@@ -152,7 +154,7 @@ export default function CreateCourse() {
           />
 
 
-          <ImageField required className="w-full" setURL={setImageURL} setImage={setImage} />
+          <ImageField id="preview_field" className="w-full" setURL={setImageURL} setImage={setImage} />
 
           <br />
 

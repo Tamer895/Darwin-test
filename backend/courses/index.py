@@ -16,7 +16,7 @@ class CourseIndex(AlgoliaIndex):
         'created_at', 
         'updated_at',
         'preview',
-        'author_data',  # Добавляем вычисляемое свойство
+        'author_data', 
     ]
     settings = {
         'searchableAttributes': ['name', 'description', 'language', 'category', 'level', 'author_data'],

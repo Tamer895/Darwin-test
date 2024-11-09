@@ -18,6 +18,8 @@ import { useTranslation } from 'react-i18next';
 import { setAuthToken } from '@utils/auth/auth';
 import {useNavigate, useLocation} from 'react-router-dom';
 
+import { USERS_API_ROUTES } from '@configs/api/Users/users';
+
 import "./styles/style.css"
 
 import axios from 'axios';
@@ -108,7 +110,7 @@ export default function Step2() {
 
     try {
       // Send the POST request with the FormData
-      const response = await axios.post('http://127.0.0.1:8000/users/register/', formData);
+      const response = await axios.post(USERS_API_ROUTES.REGISTER, formData);
   
 
       setAuthToken(response.data['refresh'], response.data['access'], response.data['id'])
@@ -148,7 +150,7 @@ export default function Step2() {
                       onChange={imagename}
                     />
                     <label htmlFor="avatar-upload">
-                      <AvatarCircle className="hover:cursor-pointer" sx={{ width: 100, height: 100 }} avatar={imageURL} />
+                      <AvatarCircle className="hover:cursor-pointer" sx={{ width: 100, height: 100 }} src={imageURL} />
                     </label>
                   </div>
 
