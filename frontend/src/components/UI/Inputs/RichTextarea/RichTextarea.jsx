@@ -2,6 +2,8 @@ import React, { useRef, useEffect, useState } from 'react';
 
 export default function RichTextarea({ children, onChange, ...props }) {
   const contentEditableRef = useRef(null);
+  const [bold, setBold] = useState(false);
+  const [italic, setItalic] = useState(false);
   const [height, setHeight] = useState('auto');
   const [content, setContent] = useState(children || ''); // Храним текст
 
@@ -25,6 +27,13 @@ export default function RichTextarea({ children, onChange, ...props }) {
   }, [content]); // Обновляем высоту при изменении контента
 
   const formatText = (command) => {
+    if(command == "bold"){
+      setBold(!bold);
+    }
+    else if(command == "italic"){
+      setItalic(!italic);
+    }
+
     document.execCommand(command, false, null);
     contentEditableRef.current.focus();
   };
@@ -43,13 +52,13 @@ export default function RichTextarea({ children, onChange, ...props }) {
     <div>
       <div className="flex items-center w-16 box-border border border-black-10">
         <button 
-          className="w-8 h-8 m-0 p-0 box-border bg-light_bg hover:bg-primary-def ease-linear duration-200 hover:text-white" 
+          className={`w-8 h-8 m-0 p-0 box-border bg-light_bg hover:bg-primary-def ease-linear duration-200 hover:text-white`} 
           onClick={() => formatText('bold')}
         >
           <b>B</b>
         </button>
         <button 
-          className="w-8 h-8 m-0 p-0 box-border bg-light_bg hover:bg-primary-def ease-linear duration-200 hover:text-white" 
+          className={`w-8 h-8 m-0 p-0 box-border bg-light_bg hover:bg-primary-def ease-linear duration-200 hover:text-white`} 
           onClick={() => formatText('italic')}
         >
           <i>I</i>
