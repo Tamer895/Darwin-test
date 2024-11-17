@@ -24,3 +24,15 @@ class TextModelViewSet(viewsets.ModelViewSet):
     queryset = Text.objects.all()
     serializer_class = TextSerializer
 
+
+# View for creating an Image and associating it with a Lesson
+class CreateImageView(generics.CreateAPIView):
+    queryset = Image.objects.all()
+    serializer_class = ImageCreateSerializer
+
+
+# ModelViewSet for managing Image objects
+class ImageModelViewSet(viewsets.ModelViewSet):
+    queryset = Image.objects.all()
+    serializer_class = ImageSerializer
+

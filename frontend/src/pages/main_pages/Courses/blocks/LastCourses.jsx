@@ -62,7 +62,8 @@ export default function LastCourses() {
           <div
             key={index}
             style={{
-              minWidth: '350px', // Ensures that the card has a minimum width
+              minWidth: '350px',
+              maxWidth: '350px', // Ensures that the card has a minimum width
               marginRight: '20px', // Adds some spacing between cards
               // display: 'inline-block',
             }}

@@ -18,6 +18,8 @@ import AnnouncementID from '@pages/main_pages/BulletinBoard/AnnouncementID/Annou
 import MyProfile from '@pages/main_pages/MyProfile/MyProfile';
 import EditProfile from '@pages/main_pages/MyProfile/EditProfile';
 
+import ForgotMyPassword from '@pages/forms/Login/ForgotMyPassword';
+
 // forms
 import Login from '@pages/forms/Login/Login';
 import Step1 from '@pages/forms/Signup/Step1';
@@ -55,6 +57,7 @@ export default function Routing() {
       {/* Profile */}
       <Route path="/myprofile/" element={<IsAuthenticated><MyProfile/></IsAuthenticated>} />
       <Route path="/editprofile/" element={<IsAuthenticated><EditProfile/></IsAuthenticated>} />
+      <Route path="/forgotmypassword" element={<ForgotMyPassword/>} />
 
       {/* Lessons */}
     </Routes>

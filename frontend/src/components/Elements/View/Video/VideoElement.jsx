@@ -2,6 +2,8 @@ import React from 'react'
 import Video from '@UI/Media/Video/Video'
 
 export default function VideoElement(props) {
+
+  
   return (
     <div className={`w-full mb-20 rounded-2xl ease-linear duration-100 ${props.is_active ? "" : "hover:scale-105 cursor-pointer"}`}>
       <h1 className="font-bold text-3xl mb-5">{props.title}</h1>

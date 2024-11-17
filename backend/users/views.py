@@ -54,22 +54,69 @@ class GetCode(APIView):
 
         else:
             try:    
-                sender_email = "ahantamer@gmail.com"
+                sender_email = settings.SENDER_EMAIL
                 rec_email = request.data['email']
-                password = 'xdst losn hpas aroh'
+                password = settings.SENDER_PASSWORD
                 code = randint(100000, 999999)
                 message = f'{code}'
                 server = smtplib.SMTP('smtp.gmail.com', 587)
                 server.starttls()
                 server.login(sender_email, password)
-                print('login successful')
                 server.sendmail(sender_email, rec_email, message)
-                print(request.data['email'])
                 return Response(
                     {'code': code}
                 )
             except:
                 return Response(status=status.HTTP_400_BAD_REQUEST)
+
+
+
+class ForgotPassword(APIView):
+    def post(self, request):
+        email = request.data.get('email')
+        if not email:
+            return Response({"error": "Email is required."}, status=status.HTTP_400_BAD_REQUEST)
+
+        user = User.objects.filter(email=email).first()
+        if user:
+            try:
+                sender_email = settings.SENDER_EMAIL
+                sender_password = settings.SENDER_PASSWORD
+                code = randint(100000, 999999)
+                rec_email = request.data['email']
+
+                # Send email
+                server = smtplib.SMTP('smtp.gmail.com', 587)
+                server.starttls()
+                server.login(sender_email, sender_password)
+                message = f'{code}'
+                server.sendmail(sender_email, rec_email, message)
+                server.quit()
+
+
+                return Response({"message": "Password reset code sent.", "boolean": True, "code": code}, status=status.HTTP_200_OK)
+            except Exception as e:
+                return Response({"error": str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+        else:
+            return Response({"boolean": False, "error": "User with this email does not exist."}, status=status.HTTP_404_NOT_FOUND)
+
+
+class ResetPassword(APIView):
+    def post(self, request):
+        email = request.data.get('email')
+        new_password = request.data.get('password')
+        
+        user = User.objects.filter(email=email).first()
+        if not user:
+            return Response({"error": "User not found."}, status=status.HTTP_404_NOT_FOUND)
+
+        try:
+            user.set_password(new_password)
+            user.save()
+            return Response({"success": True, "message": "Password reset successful."}, status=status.HTTP_200_OK)
+        except Exception as e:
+            return Response({"error": str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
 
 
 class RegisterView(APIView):
@@ -85,6 +132,7 @@ class RegisterView(APIView):
                 'username': user.username,
                 'first_name': user.first_name,
                 'last_name': user.last_name,
+                'description': user.description,
                 'is_staff': user.is_staff,
                 'role': user.role,
                 'profile_photo': settings.DOMAIN + user.profile_photo.url if user.profile_photo else None,

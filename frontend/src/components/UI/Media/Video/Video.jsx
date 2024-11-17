@@ -92,6 +92,9 @@ export default function Video(props) {
 
 
 
+  let height = parseInt(parentWidth) * 0.8;
+  
+
 
   return (
     // <div style={{width: props.width}} className="">

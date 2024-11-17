@@ -13,6 +13,9 @@ function App( ) {
 
 
   // console.log = function() {}
+  // localStorage.removeItem("user");
+  // localStorage.removeItem("refresh_token");
+  // localStorage.removeItem("access_token");
 
   return (
     <HelmetProvider>

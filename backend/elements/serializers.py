@@ -2,6 +2,8 @@ from rest_framework import serializers
 from courses.models import *
 from .models import *
 
+
+# Video Element
 class VideoSerializer(serializers.ModelSerializer):
 
     video_url = serializers.SerializerMethodField('get_video_url')
@@ -39,6 +41,9 @@ class VideoCreateSerializer(serializers.ModelSerializer):
 
 
 
+
+
+# Text Element
 class TextSerializer(serializers.ModelSerializer):
     class Meta:
         model = Text
@@ -58,3 +63,34 @@ class TextCreateSerializer(serializers.ModelSerializer):
         text = Text.objects.create(**validated_data)  # Создаем текстовый элемент
         lesson.text.add(text)  # Добавляем текст в ManyToMany связь урока
         return text
+    
+
+
+
+# Image Element
+class ImageSerializer(serializers.ModelSerializer):
+    image_url = serializers.SerializerMethodField('get_image_url')  # URL for accessing the image
+
+    class Meta:
+        model = Image
+        fields = ['id', 'title', 'image', 'image_url', 'order']
+
+    def get_image_url(self, obj):
+        if obj.image:
+            return obj.image.url  # Return the URL if the image exists
+        return None  # Return None otherwise
+
+
+class ImageCreateSerializer(serializers.ModelSerializer):
+    lesson_id = serializers.IntegerField(write_only=True)  # Accept lesson ID for linking
+
+    class Meta:
+        model = Image
+        fields = ['title', 'image', 'order', 'lesson_id']  # Fields for creating an image
+
+    def create(self, validated_data):
+        lesson_id = validated_data.pop('lesson_id')  # Extract the lesson ID
+        lesson = Lesson.objects.get(id=lesson_id)  # Fetch the related lesson
+        image = Image.objects.create(**validated_data)  # Create the Image instance
+        lesson.images.add(image)  # Add the image to the lesson
+        return image

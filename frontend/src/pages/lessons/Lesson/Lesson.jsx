@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import axios from 'axios';
@@ -14,6 +14,7 @@ import MainTitle from '@components/UI/Typography/MainTitle/MainTitle';
 import CreateElement from '@components/Elements/Create/CreateElement';
 import CenteredForm from '@components/layouts/Stacks/Form/CenteredForm/CenteredForm';
 import Button from '@components/UI/Buttons/Button/Button';
+import GrayBtn from '@components/UI/Buttons/GrayBtn/GrayBtn';
 
 import { LESSONS_API_ROUTES } from '@configs/api/Lessons/lessons';
 
@@ -31,6 +32,40 @@ export default function Lesson() {
   const courseData = useSelector((state) => state.courseID.courseData) === undefined ? null : '';
 
   const [elements, setElements] = useState([]);
+
+
+
+  const divRef = useRef(null); // Reference to the div
+  const [isFullscreen, setIsFullscreen] = useState(false); // State to track fullscreen
+
+  const toggleFullscreen = () => {
+    if (!isFullscreen) {
+      // Enter fullscreen
+      if (divRef.current.requestFullscreen) {
+        divRef.current.requestFullscreen();
+      } else if (divRef.current.webkitRequestFullscreen) {
+        divRef.current.webkitRequestFullscreen(); // Safari
+      } else if (divRef.current.msRequestFullscreen) {
+        divRef.current.msRequestFullscreen(); // IE/Edge
+      }
+      setIsFullscreen(true);
+    } else {
+      // Exit fullscreen
+      if (document.exitFullscreen) {
+        document.exitFullscreen();
+      } else if (document.webkitExitFullscreen) {
+        document.webkitExitFullscreen(); // Safari
+      } else if (document.msExitFullscreen) {
+        document.msExitFullscreen(); // IE/Edge
+      }
+      setIsFullscreen(false);
+    }
+  };
+
+
+
+
+
 
   // Fetch the course data if it's missing from the store
   const setLessons = async () => {
@@ -103,10 +138,21 @@ export default function Lesson() {
     <div className="w-full my-0 mx-auto bg-light_bg p-5">
       <Flexbox direction="row" items="flex-start" justify="space-between">
         <LessonsBar />
-        <Content className="flex flex-col items-start bg-white p-10 px-[10%] rounded-xl border border-black-10 border-solid" width="78%">
+        
+        <div ref={divRef} className="w-[78%] overflow-scroll flex flex-col items-start bg-white p-10 px-[10%] rounded-xl border border-black-10 border-solid">
           <div className="w-full">
             <div className="w-full mb-20">
-              <MainTitle>{lesson.title}</MainTitle>
+
+              <div className="flex items-center justify-between">
+                <MainTitle>{lesson.title}</MainTitle>
+
+                <GrayBtn onClick={toggleFullscreen}>
+                  <span class="material-symbols-outlined">
+                  {isFullscreen ? "fullscreen_exit" : "fullscreen"}
+                  </span>
+                </GrayBtn>
+              </div>
+
               <p className="text-gray text-sm whitespace-pre-line mt-5">{lesson.description}</p>
             </div>
 
@@ -133,7 +179,7 @@ export default function Lesson() {
               </>
             )}
           </div>
-        </Content>
+        </div>
       </Flexbox>
     </div>
   );

@@ -74,7 +74,7 @@ export default function Login() {
 
                     <br />
 
-                    <Link>
+                    <Link to="/forgotmypassword">
                       <span className='font-normal text-sm text-primary-def hover:underline'>{t('login.forgot_password')}</span>
                     </Link>
 

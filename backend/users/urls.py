@@ -27,4 +27,6 @@ urlpatterns = [
     path('user_info/<int:pk>/', UserDetailInfo.as_view(), name='user_info'),
     
     path("getcode/", GetCode.as_view(), name='getcode'),
+    path("forgot_password/", ForgotPassword.as_view(), name='forgot_password'),
+    path("reset_password/", ResetPassword.as_view(), name='reset_password'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

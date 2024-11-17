@@ -9,5 +9,7 @@ export const USERS_API_ROUTES = {
     LOGOUT: `${domain}/users/logout/`,
     LOGIN: `${domain}/users/login/`,
     REGISTER: `${domain}/users/register/`,
-    GET_CODE: `${domain}/users/getcode/`
+    GET_CODE: `${domain}/users/getcode/`,
+    FORGOT_PASSWORD: `${domain}/users/forgot_password/`,
+    RESET_PASSWORD: `${domain}/users/reset_password/`,
 }

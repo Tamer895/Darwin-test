@@ -3,6 +3,7 @@ import AvatarCircle from '@components/UI/Avatar/Avatar'
 import Button from '@components/UI/Buttons/Button/Button';
 import TransBtn from '@components/UI/Buttons/TransBtn/TransBtn';
 import about from "@media/images/svg/about.svg";
+import Description from '@components/layouts/Profile/Description';
 
 import { Helmet } from "react-helmet-async";
 
@@ -51,21 +52,7 @@ export default function MyProfile() {
       <br />
 
       {/* Improve my preview */}
-      <div className="box-border flex items-start justify-left p-5 w-3/5 mx-auto bg-white border border-dashed border-black-10 rounded-lg">
-        <img className='mr-10' width="200" src={about} alt="" />
-
-        <div className="">
-          <h1 className='text-2xl font-medium m-0 text-black-def'>Write a description text about you</h1>
-
-          <p className='text-md my-5 text-black-def'>To craft an engaging, authentic introduction of yourself, start by highlighting key aspects of your personality, interests, and experiences in a way that feels natural and unique. Think of the traits and experiences that genuinely define you and set you apart, offering a balance between your professional and personal sides. Mention your field of expertise or passions, current goals, and what excites you most about what you do. This could be tied to a hobby, a work project, or even a cause you care about deeply.</p>
-        
-          <Button style={{height: "40px"}}>Write</Button>
-        </div>
-      <br />
-
-
-      
-      </div>
+      <Description/>
     </section>
   )
 }

@@ -17,6 +17,7 @@ class CustomTokenObtainPairSerializer(TokenObtainPairSerializer):
         data['id'] = self.user.id
         data['username'] = self.user.username
         data['first_name'] = self.user.first_name
+        data['description'] = self.user.description
         data['last_name'] = self.user.last_name
         data['profile_photo'] = settings.DOMAIN + self.user.profile_photo.url if self.user.profile_photo else None,
         data['is_staff'] = self.user.is_staff
