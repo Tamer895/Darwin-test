@@ -15,6 +15,7 @@ import axios from 'axios';
 export default function CreateImage() {
   const [title, setTitle] = useState();
   const [image, setImage] = useState();
+  const [imgURL, setImageURL] = useState();
   const [order, setOrder] = useState(null);
   const [error, setError] = useState('');
 
@@ -71,7 +72,7 @@ export default function CreateImage() {
       <br />
 
       <InputContainer className="w-full" title={t('create_element.image.content_field')}>
-        <ImageField className="w-full" setImage={setImage} />
+        <ImageField id="element" className="w-full" setURL={setImageURL} setImage={setImage} />
       </InputContainer>
 
       <br />

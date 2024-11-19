@@ -1,7 +1,7 @@
 # serializers.py
 from rest_framework import serializers
 from .models import Course, Lesson
-from elements.serializers import VideoSerializer, TextSerializer
+from elements.serializers import VideoSerializer, TextSerializer, ImageSerializer
 from users.serializers import UserSerializer
 from users.models import User
 
@@ -9,6 +9,7 @@ from users.models import User
 class LessonSerializer(serializers.ModelSerializer):
     videos = VideoSerializer(many=True, required=False)
     text = TextSerializer(many=True, required=False)
+    images = ImageSerializer(many=True, required=False)
     # course = serializers.PrimaryKeyRelatedField(queryset=Course.objects.all())
 
     class Meta:
@@ -19,6 +20,7 @@ class LessonSerializer(serializers.ModelSerializer):
             'description',
             'course',
             'videos',
+            'images',
             'text',
             'created_at',
             'updated_at',
@@ -42,12 +44,17 @@ class LessonSerializer(serializers.ModelSerializer):
                 text['type'] = 'text'
                 elements.append(text)
 
+            for image in representation['images']:
+                image['type'] = 'image'
+                elements.append(image)
+
             # Сортируем элементы по полю 'order'
             elements = sorted(elements, key=lambda x: x['order'])
 
             representation['elements'] = elements
             del representation['videos']  # Убираем оригинальные несортированные поля
             del representation['text']
+            del representation['images']
 
             return representation
 

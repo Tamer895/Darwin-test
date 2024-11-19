@@ -27,7 +27,7 @@ export default function ImageField({ setImage, setURL, className, id, ...props }
       <input
         id={id}
         type="file"
-        accept=".png, .jpg, .jpeg"
+        accept=".png, .jpg, .jpeg, .webp"
         onChange={handleImageChange}
         className="hidden"
         {...props}

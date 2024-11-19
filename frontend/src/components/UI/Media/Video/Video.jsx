@@ -30,10 +30,12 @@ export default function Video(props) {
 
   const videoRef = useRef(null);
   const [isPlaying, setIsPlaying] = useState(false);
+  const [control, setControl] = useState(false);
   const [volume, setVolume] = useState(1); 
   const [progress, setProgress] = useState(0);
 
   const togglePlayPause = () => {
+    setControl(true)
     if (isPlaying) {
       videoRef.current.pause();
     } else {
@@ -76,6 +78,7 @@ export default function Video(props) {
   const handleFullscreen = () => {
     const videoElement = videoRef.current;
 
+
     if (videoElement) {
       // Проверка на доступность метода полноэкранного режима
       if (videoElement.requestFullscreen) {
@@ -108,13 +111,13 @@ export default function Video(props) {
 
 
 
-          <div style={{width: parentWidth, height: props.height}} className="flex flex-col justify-end absolute">
+          <div style={{width: parentWidth, height: props.height}} className={`flex flex-col justify-end absolute`}>
 
             <div onClick={togglePlayPause} style={{width: parentWidth, height: props.height}} className="absolute z-10">
             
             </div>
 
-            <div style={{borderRadius: "0 0 12px 12px"}} className="bg-black-25 box-border px-2 flex items-center justify-between z-20">
+            <div style={{borderRadius: "0 0 12px 12px"}} className={`bg-black-25 box-border px-2 flex items-center justify-between z-20 ${control?"":"hidden"}`}>
 
               <button onClick={togglePlayPause} className="bg-gray-800 text-white pt-[5px] rounded mx-[10px]">
                 {isPlaying ? <span className="material-symbols-rounded">pause</span> : <span className="material-symbols-rounded">play_arrow</span>}

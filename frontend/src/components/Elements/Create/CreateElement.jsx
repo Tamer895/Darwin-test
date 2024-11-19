@@ -3,6 +3,7 @@ import CenteredForm from '@layouts/Stacks/Form/CenteredForm/CenteredForm'
 
 import CreateText from './CreateText';
 import CreateVideo from './CreateVideo';
+import CreateImage from './CreateImage';
 
 import { useTranslation } from 'react-i18next'
 
@@ -40,6 +41,7 @@ function CreateElementForm(props) {
     const buttons = [
         {text: t('create_element.elements.text'), onClick: ()=>setCurrentElement(0)},
         {text: t('create_element.elements.Video'), onClick: ()=>setCurrentElement(1)},
+        {text: "Image", onClick: ()=>setCurrentElement(2)},
     ]
 
     return (
@@ -66,7 +68,15 @@ function CreateElementForm(props) {
             <br />
 
             
-            {currentElement == 0 ? <CreateText/> : <CreateVideo/>}
+            {
+            currentElement === 0 ? (
+              <CreateText />
+            ) : currentElement === 1 ? (
+              <CreateVideo />
+            ) : (
+              <CreateImage />
+            )
+          }
 
        </div>
     );

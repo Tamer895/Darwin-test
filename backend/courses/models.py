@@ -15,7 +15,7 @@ class Lesson(models.Model):
 
     # Structure 
     videos = models.ManyToManyField(Video, blank=True)
-    # images = models.ManyToManyField(Image, blank=True)
+    images = models.ManyToManyField(Image, blank=True)
     # audios = models.ManyToManyField(Audio, blank=True)
     # PDFs = models.ManyToManyField(PDF, blank=True)
     text = models.ManyToManyField(Text, blank=True)

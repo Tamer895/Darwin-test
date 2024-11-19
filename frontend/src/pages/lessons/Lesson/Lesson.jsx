@@ -20,6 +20,7 @@ import { LESSONS_API_ROUTES } from '@configs/api/Lessons/lessons';
 
 import VideoElement from '@components/Elements/View/Video/VideoElement';
 import TextElement from '@components/Elements/View/Text/TextElement';
+import ImageElement from '@components/Elements/View/Image/ImageElement';
 
 import { setLesson } from '@store/Lessons';
 import { setCourse } from '@store/CourseID';
@@ -40,25 +41,17 @@ export default function Lesson() {
 
   const toggleFullscreen = () => {
     if (!isFullscreen) {
-      // Enter fullscreen
-      if (divRef.current.requestFullscreen) {
-        divRef.current.requestFullscreen();
-      } else if (divRef.current.webkitRequestFullscreen) {
-        divRef.current.webkitRequestFullscreen(); // Safari
-      } else if (divRef.current.msRequestFullscreen) {
-        divRef.current.msRequestFullscreen(); // IE/Edge
-      }
+      // Make div full-page
+      divRef.current.style.position = "fixed";
+      divRef.current.style.top = "0";
+      divRef.current.style.left = "0";
+      divRef.current.style.width = "100vw";
+      divRef.current.style.height = "100vh";
+      divRef.current.style.zIndex = "9999"; // Ensures it's on top
+      divRef.current.style.padding = "50px 15%";
       setIsFullscreen(true);
     } else {
-      // Exit fullscreen
-      if (document.exitFullscreen) {
-        document.exitFullscreen();
-      } else if (document.webkitExitFullscreen) {
-        document.webkitExitFullscreen(); // Safari
-      } else if (document.msExitFullscreen) {
-        document.msExitFullscreen(); // IE/Edge
-      }
-      setIsFullscreen(false);
+      window.location.reload();
     }
   };
 
@@ -98,6 +91,7 @@ export default function Lesson() {
         const mergedElements = [
           ...lessonData.videos.map((video) => ({ ...video, type: 'video' })),
           ...lessonData.text.map((text) => ({ ...text, type: 'text' })),
+          ...lessonData.images.map((image) => ({ ...image, type: 'image' }))
         ];
 
         // Sort elements by the 'order' field
@@ -139,9 +133,9 @@ export default function Lesson() {
       <Flexbox direction="row" items="flex-start" justify="space-between">
         <LessonsBar />
         
-        <div ref={divRef} className="w-[78%] overflow-scroll flex flex-col items-start bg-white p-10 px-[10%] rounded-xl border border-black-10 border-solid">
+        <div ref={divRef} className="w-[78%] overflow-scroll flex flex-col items-start bg-white py-10 rounded-xl border border-black-10 border-solid">
           <div className="w-full">
-            <div className="w-full mb-20">
+            <div className="w-full mb-20 px-[12%]">
 
               <div className="flex items-center justify-between">
                 <MainTitle>{lesson.title}</MainTitle>
@@ -160,11 +154,28 @@ export default function Lesson() {
             <ul>
               {elements.map((element) => (
                 <li key={element.id}>
-                  {element.type === 'video' ? (
-                    <VideoElement is_active={lesson.is_active} id={element.id} video={element.video} title={element.title}/>
-                  ) : (
-                    <TextElement is_active={lesson.is_active} id={element.id} title={element.title} text={element.text} />
-                  )}
+                {element.type === 'video' ? (
+                  <VideoElement 
+                    is_active={lesson.is_active} 
+                    id={element.id} 
+                    video={element.video} 
+                    title={element.title} 
+                  />
+                ) : element.type === 'text' ? (
+                  <TextElement 
+                    is_active={lesson.is_active} 
+                    id={element.id} 
+                    title={element.title} 
+                    text={element.text} 
+                  />
+                ) : element.type === 'image' ? (
+                  <ImageElement 
+                    is_active={lesson.is_active} 
+                    id={element.id} 
+                    title={element.title} 
+                    image={element.image} 
+                  />
+                ) : null}
                 </li>
               ))}
             </ul>

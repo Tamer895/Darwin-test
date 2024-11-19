@@ -106,6 +106,11 @@ export default function CreateCourse() {
       formData.append('intro_video', introVideo);  
       formData.append('level', level);
 
+      for (let [key, value] of formData.entries()) {
+        console.log(`${key}:`, value);
+      }
+
+
       try {
         const response = await axios.post(COURSES_API_ROUTES.CREATE, formData, {
           headers: {

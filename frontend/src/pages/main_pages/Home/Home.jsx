@@ -118,7 +118,7 @@ export default function Home() {
 
 
       {/* Frequently asked questions */}
-      <section className='w-4/5 mx-auto flex items-center justify-between py-40'>
+      <section className='w-4/5 mx-auto flex items-start justify-between py-40'>
 
         <div className="flex-col">
           <img width={300} src={faqIcon} alt="" loading='lazy' />
