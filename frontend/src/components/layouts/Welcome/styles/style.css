@@ -1,8 +1,17 @@
 .welcome {
+    box-sizing: border-box;
     height: calc(100vh - 105px);
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
+
+    padding-bottom: 100px;
+
+
+    background: url('../../../../media/images/background/services-bg.png');
+    background-position:center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .welcome .buttons .btn:last-child {

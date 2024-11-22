@@ -1,0 +1,41 @@
+.offer_bg {
+
+    background: url('../../../media/images/background/offer_bg.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.effort {
+    display: flex;
+    align-items: flex-start;
+    justify-content: end;
+    box-sizing: border-box;
+
+    padding: 50px;
+    margin: 100px 0;
+
+    width: 100%;
+    height: 100vh;
+
+    background: url('../../../media/images/background/effort.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+}
+
+.effort h1 span {
+    font-size: 48px; /* Размер шрифта */
+    font-weight: bold; /* Толщина шрифта */
+    color: white; /* Цвет текста */
+    text-shadow: 
+      1px 1px 0 #3447f6,  
+      -1px -1px 0 #3447f6,  
+      1px -1px 0 #3447f6,  
+      -1px 1px 0 #3447f6; /* Контур черного цвета */
+  }
+
+.effort h1 {
+    width: 650px;
+    font-size: 48px;
+}

@@ -4,4 +4,13 @@
     transition: max-height 0.3s ease-in-out;
 }
 
+.accordion-component:first-child {
+    border-radius: 25px 25px 0 0;
+}
+.accordion-component:last-child {
+    border-radius: 0 0 25px 25px;
+}
+.accordion-component:hover {
+    background-color: rgb(236, 236, 236) !important;
+}
   

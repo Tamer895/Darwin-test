@@ -22,7 +22,7 @@ export default function Description() {
 
 
   const handleSave = async (e) => {
-    e.preventDefault();
+    // e.preventDefault();
 
     const formData = new FormData();
     formData.append('description', description);

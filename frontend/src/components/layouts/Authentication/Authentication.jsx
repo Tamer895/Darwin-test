@@ -25,7 +25,7 @@ export default function Authentication({children, ...props}) {
 
 
       
-        <div className="flex-center bg-white bg-opacity-80 p-8 rounded-xl box-shadow">
+        <div className="flex-center bg-white p-8 rounded-[30px] shadow-2xl">
             <div style={{width: "400px"}}>
               {children}
             </div>

@@ -32,7 +32,7 @@ class CourseModelViewSet(viewsets.ModelViewSet):
 class LatestCourseView(APIView):
     def get(self, request):
         # Retrieve only Course instances that have at least one related Lesson, ordered by created_at
-        courses = Course.objects.all().order_by('-created_at')
+        courses = Course.objects.filter(is_private=False).order_by('-created_at')
         serializer = CourseSerializer(courses, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
 

@@ -136,25 +136,6 @@ export default function EditProfile() {
         <br />
         <br />
 
-        <div className="w-3/5 mx-auto">
-          <h1 className="text-2xl text-black-def">Change Password</h1>
-
-          <br />
-
-          <InputContainer className="w-full" title="Password">
-            <TextInput type="password" value={password} onChange={(e) => setPassword(e.target.value)} className="w-full" />
-          </InputContainer>
-
-          <br />
-
-          <InputContainer className="w-full" title="Confirm Password">
-            <TextInput type="password" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} className="w-full" />
-          </InputContainer>
-
-          <br />
-
-          <Button>Change</Button>
-        </div>
       </div>
     </section>
   );

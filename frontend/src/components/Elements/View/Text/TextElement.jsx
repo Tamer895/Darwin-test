@@ -22,12 +22,13 @@ export default function TextElement(props) {
 
 
   return (
-    <div className={`w-full mb-20 py-5 px-[12%] ease-linear duration-100 ${props.is_active ? "" : "hover:bg-primary-5 cursor-pointer"}`}>
+    <div className={`w-full mb-20 py-5 ease-linear duration-100 ${props.is_active ? "" : " cursor-pointer"}`}>
       <div className={`w-full ${props.is_active ? "":"flex-center-between"}`}>
         <h1 className="font-bold text-3xl mb-5">{props.title}</h1>
 
-        <div className={`flex flex-row items-center justify-center ${author_id==user_id ? "" : "hidden"}`}>
+        <div className={`flex flex-row items-center justify-center ${props.is_active ? "hidden" : ""} ${author_id==user_id ? "" : "hidden"}`}>
           <GrayBtn onClick={()=>Delete(props.id)}>
+            
             <span class="material-symbols-outlined">
             delete
             </span>

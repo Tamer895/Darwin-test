@@ -16,16 +16,9 @@ export default function Welcome() {
 
   return (
     <div className="welcome px-[10%]">
-      <div className="w-1/2 flex-col items-start">
+      <div className="w-full flex-col items-center text-center">
 
-        <h1 className=' font-black text-black-def text-[400%] leading-[70px] uppercase'>{t('welcome.title1')}<span className='text-primary-def underline'>Darwin</span><ReactTypingEffect
-            text={[`${t('welcome.title2')}`]}
-            speed={100}
-            eraseSpeed={50}
-            typingDelay={200}
-            className="text-black-def underline"
-            cursor=" "
-          /></h1>
+        <h1 className=' font-black text-black-def text-[400%] leading-[70px] uppercase'>{t('welcome.title1')}<span className='text-primary-def'>Darwin</span>{t('welcome.title2')}</h1>
 
         {/* <h1 className='font-black text-black-def text-[400%] leading-[70px] uppercase'>
           
@@ -34,7 +27,7 @@ export default function Welcome() {
         <p className='text-black-def text-md my-7'>{t('welcome.description')}</p>
 
 
-        <div className="buttons flex items-center">
+        <div className="buttons flex items-center justify-center">
 
             <Link className='btn' to="/login">
               <TransBtn icon="arrow_forward">
@@ -48,9 +41,9 @@ export default function Welcome() {
         </div>       
       </div>
 
-      <div>
+      {/* <div>
         <img width={400} src={studyIcon} alt="" loading='lazy' />
-      </div>
+      </div> */}
     </div>
   )
 }

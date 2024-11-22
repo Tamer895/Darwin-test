@@ -16,6 +16,7 @@
     "@flaticon/flaticon-uicons": "",
     "@mui/icons-material": "",
     "@mui/material": "",
+    "@mui/system": "^6.1.8",
     "@reduxjs/toolkit": "",
     "aos": "",
     "axios": "",

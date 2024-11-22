@@ -28,6 +28,7 @@ export default {
         purple: '#732459',
         blue: {
           def: "#003584",
+          soft: "rgb(74, 92, 251)",
           dark: "#051043",
           title: "0C29AB",
         },

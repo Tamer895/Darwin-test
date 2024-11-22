@@ -7,9 +7,11 @@
     align-items: center;
     justify-content: center;
 
-    @apply bg-light_bg;
-    /* background-image: url('../../../../media/images/background/auth_bg.png');
+    /* background: rgb(74, 92, 251); */
+
+    /* @apply bg-primary-5; */
+    background-image: url('../../../../media/images/background/auth_background.png');
     background-position: center;
     background-repeat: no-repeat;
-    background-size: cover; */
+    background-size: cover;
 }

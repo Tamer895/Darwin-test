@@ -16,5 +16,19 @@
 
         "q2": "How to create a course?",
         "a2": "Курсы на Student.com строятся с использованием инструментов и сервисов, таких как Coursera, Udemy, и LinkedIn Learning. Вы можете создать свой курс, добавляя видео, текстовые упражнения, игры, и делиться его с сообществом."
+    },
+    "features": {
+        "course": {
+            "feature": "Courses",
+            "title": "Course Creation and Learning",
+            "description": "Darwin allows you to create courses with custom lessons and content. They can be studied online or used offline on large screens in educational institutions.",
+            "button": "Learn more"
+        },
+        "b_board": {
+            "feature": "Announcements",
+            "title": "Announcement Board",
+            "description": "Darwin provides a platform for posting information about extracurricular activities and important events to engage participants and maintain communication.",
+            "button": "Learn more"
+        }
     }
 }

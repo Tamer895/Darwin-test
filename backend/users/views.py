@@ -129,13 +129,16 @@ class RegisterView(APIView):
                 'id': user.id,
                 'refresh': str(refresh),
                 'access': str(refresh.access_token),
-                'username': user.username,
-                'first_name': user.first_name,
-                'last_name': user.last_name,
-                'description': user.description,
-                'is_staff': user.is_staff,
-                'role': user.role,
-                'profile_photo': settings.DOMAIN + user.profile_photo.url if user.profile_photo else None,
+                'user': {
+                    'id': user.id,
+                    'username': user.username,
+                    'first_name': user.first_name,
+                    'last_name': user.last_name,
+                    'description': user.description,
+                    'is_staff': user.is_staff,
+                    'role': user.role,
+                    'profile_photo': settings.DOMAIN + user.profile_photo.url if user.profile_photo else None,
+                }
             })
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 

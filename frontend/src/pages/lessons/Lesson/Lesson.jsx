@@ -48,7 +48,8 @@ export default function Lesson() {
       divRef.current.style.width = "100vw";
       divRef.current.style.height = "100vh";
       divRef.current.style.zIndex = "9999"; // Ensures it's on top
-      divRef.current.style.padding = "50px 15%";
+      divRef.current.style.padding = "100px 15%";
+      divRef.current.style.overflow = "scroll";
       setIsFullscreen(true);
     } else {
       window.location.reload();
@@ -133,9 +134,9 @@ export default function Lesson() {
       <Flexbox direction="row" items="flex-start" justify="space-between">
         <LessonsBar />
         
-        <div ref={divRef} className="w-[78%] overflow-scroll flex flex-col items-start bg-white py-10 rounded-xl border border-black-10 border-solid">
+        <div ref={divRef} className="w-[78%] flex flex-col items-center justify-center bg-white py-10 px-[10%] rounded-xl border border-black-10 border-solid">
           <div className="w-full">
-            <div className="w-full mb-20 px-[12%]">
+            <div className="w-full mb-20">
 
               <div className="flex items-center justify-between">
                 <MainTitle>{lesson.title}</MainTitle>

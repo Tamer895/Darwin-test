@@ -5,10 +5,11 @@ import {useNavigate} from "react-router-dom"
 import search from "@media/icons/search.svg";
 
 export default function Search(props) {
-  const [query, setQuery] = useState('');
+  const [query, setQuery] = useState(localStorage.getItem('search'));
   const navigate = useNavigate();
 
   function AlgoliaSearch() {
+    localStorage.setItem('search', query);
    // Algolia search logic goes here
     navigate(`/search/results/${query}`);
   }

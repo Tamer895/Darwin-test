@@ -11,13 +11,13 @@ function AccordionItem({ title, content }) {
   };
 
   return (
-    <div className={`container px-5 rounded-lg ease-in-out duration-300 hover:bg-light_bg ${isOpen ? 'bg-light_bg' : 'bg-white'}`}>
+    <div className={`container accordion-component px-5 py-3 mb-1 ease-in-out duration-300 bg-white`}>
       <button
         className="w-full text-left p-4 bg-gray-100 hover:bg-gray-200"
         onClick={toggleAccordion}
       >
         <div className="flex justify-between items-center">
-          <span className='text-lg font-bold'>{title}</span>
+          <span className='text-lg font-regular'>{title}</span>
           <span className='text-2xl'>{isOpen ? '-' : '+'}</span>
         </div>
       </button>

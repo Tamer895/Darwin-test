@@ -104,16 +104,17 @@ function Header() {
 
         {/* Нижняя часть хедера, которая остаётся на месте и занимает место верхней при её скрытии */}
         <div className={`flex items-center justify-start w-full border-b bg-white border-black-10 transition-all duration-300 ${hideTop ? 'mt-0 shadow-md' : 'mt-16'}`}>
-          <div>
+          <div className='flex-center-between'>
             {links.map((elem, index) => (
-              <a key={index} href={elem.path}>
+              <a className='flex flex-col items-center' key={index} href={elem.path}>
                 <button 
                   onClick={() => setPage(elem.path)} 
                   style={page === elem.path ? { borderBottomWidth: '3px' } : { borderBottomWidth: "0" }}
-                  className={`h-14 px-6 text-gray ${elem.path === page ? 'font-medium text-primary-def border-primary-def' : ''}`}
+                  className={`h-14 px-6 hover:text-primary-def ease-linear duration-200 text-gray ${elem.path === page ? 'font-medium text-primary-def border-white' : ''}`}
                 >
                   {elem.title}
                 </button>
+                {elem.path == page ? <div className='w-full h-[3px] bg-primary-def rounded-ss-full rounded-se-full'></div>  : ""}
               </a>
             ))}
           </div>

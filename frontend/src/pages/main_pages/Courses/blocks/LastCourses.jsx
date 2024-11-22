@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 import Course from '@components/UI/Cards/Course/Course';
 import Button from '@components/UI/Buttons/Button/Button';
+import ArrowBtn from '@components/UI/Buttons/ArrowBtn/ArrowBtn';
 
 import { domain } from '@configs/api/domain';
 // import Skeletom from '@mui'
@@ -46,7 +47,31 @@ export default function LastCourses() {
 
   return (
     <section className="w-full p-10 relative">
-      <h1 className="text-2xl text-black-def">Последние добавленные уроки</h1>
+
+      <div className="flex-center-between">
+        <h1 className="text-2xl text-black-def">Последние добавленные уроки</h1>
+
+        <div className="flex items-center">
+          {/* Left and Right arrow buttons */}
+          <ArrowBtn
+            onClick={() => handleScroll('left')}
+            className="w-10 h-10 bg-gray-300 z-10"
+          >
+            <span class="material-symbols-rounded">
+            arrow_back
+            </span>
+          </ArrowBtn>
+          <ArrowBtn
+            onClick={() => handleScroll('right')}
+            style={{marginLeft: "10px"}}
+            className="w-10 h-10 bg-gray-300 rounded-full z-10"
+          >
+            <span class="material-symbols-rounded">
+            arrow_forward
+            </span>
+          </ArrowBtn>
+        </div>
+      </div>
 
       {/* Scrollable container */}
       <div
@@ -88,25 +113,6 @@ export default function LastCourses() {
         ))}
       </div>
 
-      {/* Left and Right arrow buttons */}
-      <Button
-        onClick={() => handleScroll('left')}
-        style={{borderRadius: "100px"}}
-        className="w-16 h-16 absolute left-2 top-1/2 transform -translate-y-1/2 bg-gray-300 p-2 z-10"
-      >
-        <span class="material-symbols-rounded">
-        arrow_back
-        </span>
-      </Button>
-      <Button
-        onClick={() => handleScroll('right')}
-        style={{borderRadius: "100px"}}
-        className="w-16 h-16 absolute right-2 top-1/2 transform -translate-y-1/2 bg-gray-300 rounded-full p-2 z-10"
-      >
-        <span class="material-symbols-rounded">
-        arrow_forward
-        </span>
-      </Button>
     </section>
   );
 }
