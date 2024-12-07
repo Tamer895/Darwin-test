@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react'
+import React, {useEffect, useState} from 'react'
 
 
 import Feature from '@components/layouts/Containers/Feature/Feature'
@@ -19,6 +19,8 @@ import {useNavigate} from "react-router-dom"
 
 import events from "@media/images/png/undraw/events.png"
 import courses from "@media/images/png/undraw/online_learning.png"
+
+import FeedbackForm from '@components/layouts/Forms/FeedbackForm'
 
 import AOS from 'aos';
 import 'aos/dist/aos.css'; // Import the AOS CSS styles
@@ -53,7 +55,7 @@ export default function Home() {
     {
       to: "",
       icon: "access_time",
-      title: "Quick & Reliable",
+      title: t('offers.title'),
       text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed nonummy mi in neque ullamcorper commodo.",
       value: "15",
       value_text: "Hours",
@@ -61,7 +63,7 @@ export default function Home() {
     {
       to: "",
       icon: "access_time",
-      title: "Quick & Reliable",
+      title: t('offers.title'),
       text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed nonummy mi in neque ullamcorper commodo.",
       value: "15",
       value_text: "Hours",
@@ -69,7 +71,7 @@ export default function Home() {
     {
       to: "",
       icon: "access_time",
-      title: "Quick & Reliable",
+      title: t('offers.title'),
       text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed nonummy mi in neque ullamcorper commodo.",
       value: "15",
       value_text: "Hours",
@@ -99,8 +101,8 @@ export default function Home() {
 
       <div style={{top: "-100px"}} className={`w-[97%] relative mx-auto rounded-[50px] py-14 flex-col-center mb-32 ${classes.offer_bg}`}>
 
-        <Title className="font-bold text-[250%] text-white">What we can offer</Title>
-        <p className='text-white'>Three main opportunities we can offer to you</p>
+        <Title className="font-bold text-[250%] text-white">{t('offers.title')}</Title>
+        <p className='text-white'>{t('offers.subtitle')}</p>
 
         <div className="flex items-center justify-center mt-7">
 
@@ -120,6 +122,8 @@ export default function Home() {
 
         </div>
       </div>
+
+      
 
 
       {/* Features */}
@@ -183,6 +187,10 @@ export default function Home() {
       <section data-aos="fade-up" className={classes.effort}>
           <h1 className='text-primary-def uppercase font-bold'><span>Приложите ваши усилия для создания нового сообщества</span> Станьте частью чего-то большего</h1>
       </section>
+
+
+      {/* FoRM */}
+      <FeedbackForm />
 
     </div>
   )

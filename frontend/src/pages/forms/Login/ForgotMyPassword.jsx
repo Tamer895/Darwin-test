@@ -102,7 +102,7 @@ export default function ForgotMyPassword() {
                 <label className="mb-2 font-medium" htmlFor="email">
                   {t("step1.email")}
                 </label>
-                <TextInput onChange={(e) => setEmail(e.target.value)} type="text" placeholder="example@gmail.com" />
+                <TextInput required onChange={(e) => setEmail(e.target.value)} type="text" placeholder="example@gmail.com" />
                 <br />
                 <Button type="submit" disabled={loading}>
                   {loading ? t('forgot_password.processing') : t("forgot_password.sms")}
@@ -113,11 +113,11 @@ export default function ForgotMyPassword() {
             {isCodeCorrect && (
               <>
                 <InputContainer title={t('step1.password')}>
-                  <Password name="password" onChange={(e) => setPassword(e.target.value)} />
+                  <Password required name="password" onChange={(e) => setPassword(e.target.value)} />
                 </InputContainer>
                 <br />
                 <InputContainer title={t('step1.repeat')}>
-                  <Password name="confirm_password" onChange={(e) => setConfirmPassword(e.target.value)} />
+                  <Password required name="confirm_password" onChange={(e) => setConfirmPassword(e.target.value)} />
                 </InputContainer>
                 <br />
                 <Button type="submit" disabled={loading}>

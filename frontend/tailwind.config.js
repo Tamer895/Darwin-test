@@ -38,7 +38,7 @@ export default {
         },
 
 
-        light_bg: '#F5F7F8',
+        light_bg: 'rgb(242,245,250)',
 
 
         black: {

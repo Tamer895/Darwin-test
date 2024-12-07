@@ -19,9 +19,10 @@ class CustomTokenObtainPairSerializer(TokenObtainPairSerializer):
         data['first_name'] = self.user.first_name
         data['description'] = self.user.description
         data['last_name'] = self.user.last_name
-        data['profile_photo'] = settings.DOMAIN + self.user.profile_photo.url if self.user.profile_photo else None,
+        data['profile_photo'] = settings.DOMAIN + self.user.profile_photo.url if self.user.profile_photo else None
         data['is_staff'] = self.user.is_staff
         data['role'] = self.user.role
+        data['preferences'] = self.user.preferences
 
         return data
 
@@ -33,6 +34,8 @@ class UserSerializer(serializers.ModelSerializer):
 
 
     profile_photo_url = serializers.SerializerMethodField('get_profile_photo_url')
+
+    profile_photo = serializers.ImageField(required=False, allow_null=True)
 
     my_courses = serializers.PrimaryKeyRelatedField(queryset=Course.objects.all(), many=True)
     active_courses = serializers.PrimaryKeyRelatedField(queryset=Course.objects.all(), many=True)
@@ -68,8 +71,7 @@ class UserSerializer(serializers.ModelSerializer):
     def get_profile_photo_url(self, obj):
         if obj.profile_photo:
             return obj.profile_photo.url
-        else:
-            return None
+        return None
         
     def create(self, validated_data):
     # Извлекаем ManyToMany поля отдельно

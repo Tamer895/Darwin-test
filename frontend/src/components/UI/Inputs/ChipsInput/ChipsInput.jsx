@@ -17,7 +17,7 @@ export default function ChipsInput(props) {
     <div className='w-full'>
         <div className="flex-center-between">
             <TextInput value={value} onChange={(e)=>setValue(e.target.value)} style={{width: "100%"}} placeholder={props.placeholder} />
-            <Button onClick={() => add(value)} type="button" style={{marginLeft: "5px"}}>+</Button>
+            <Button onClick={() => add(value)} type="button" style={{marginLeft: "5px", borderRadius: "6px"}}>+</Button>
         </div>
 
         <div className="flex flex-wrap items-center justify-start pt-3">

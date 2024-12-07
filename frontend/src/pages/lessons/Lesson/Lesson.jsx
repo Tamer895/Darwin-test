@@ -48,7 +48,7 @@ export default function Lesson() {
       divRef.current.style.width = "100vw";
       divRef.current.style.height = "100vh";
       divRef.current.style.zIndex = "9999"; // Ensures it's on top
-      divRef.current.style.padding = "100px 15%";
+      divRef.current.style.paddingTop = "200px";
       divRef.current.style.overflow = "scroll";
       setIsFullscreen(true);
     } else {

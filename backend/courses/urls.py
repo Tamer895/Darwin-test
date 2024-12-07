@@ -17,5 +17,7 @@ urlpatterns = [
 
     path('latest_courses/', LatestCourseView.as_view()),
 
+    path('category/<str:category>/', CategoryCourseView.as_view()),
+
     path('search/', AlgoliaSearchView.as_view(), name='algolia-search'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

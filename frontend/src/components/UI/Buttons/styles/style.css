@@ -11,7 +11,6 @@
 }
 
 .trans-button {
-    @apply h-12 px-5 bg-white text-sm text-primary-def font-medium hover:bg-primary-def hover:text-white box-border border border-primary-def; 
-
-    transition: 0.2s;
+    @apply h-12 px-5 bg-white text-sm text-primary-def font-medium box-border border border-primary-def; 
 }
+

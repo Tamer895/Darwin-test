@@ -103,7 +103,7 @@ function Header() {
         </div>
 
         {/* Нижняя часть хедера, которая остаётся на месте и занимает место верхней при её скрытии */}
-        <div className={`flex items-center justify-start w-full border-b bg-white border-black-10 transition-all duration-300 ${hideTop ? 'mt-0 shadow-md' : 'mt-16'}`}>
+        <div className={`flex duration-300 items-center justify-start w-full border-b bg-white border-black-10 transition-all ${hideTop ? 'mt-0 shadow-md' : 'mt-16'}`}>
           <div className='flex-center-between'>
             {links.map((elem, index) => (
               <a className='flex flex-col items-center' key={index} href={elem.path}>

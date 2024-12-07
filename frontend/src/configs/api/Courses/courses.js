@@ -9,5 +9,7 @@ export const COURSES_API_ROUTES = {
     GET_ALL: `${domain}/courses/course/`,
     LATEST_COURSES: `${domain}/courses/latest_courses/`,
     GET_BY_ID: `${domain}/courses/course/`,
-    SEARCH: `${domain}/courses/search/`
+    SEARCH: `${domain}/courses/search/`,
+
+    CATEGORY_COURSE: `${domain}/courses/category/`,
 }

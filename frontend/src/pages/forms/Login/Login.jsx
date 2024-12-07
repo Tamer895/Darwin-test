@@ -20,6 +20,7 @@ export default function Login() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
+  const [error, setError] = useState(false);
 
 
   const handleSubmit = async (e) => {
@@ -42,6 +43,7 @@ export default function Login() {
       // console.log('Server Response:', response.data);
       window.location.href = '/';
     } catch (error) {
+      setError(true);
     }
   };
 
@@ -64,19 +66,23 @@ export default function Login() {
 
                     {/* Email */}
                     <label className='mb-2 font-medium' for="email">{t('login.nickname')}</label>
-                    <TextInput onChange={(e) => setUsername(e.target.value)} type="text" placeholder="Alex" name="username" />
+                    <TextInput required onChange={(e) => setUsername(e.target.value)} type="text" placeholder="Alex" name="username" />
 
                     <br />
 
                     {/* Password  */}
                     <label className='mb-2 font-medium' for="password">{t('login.password')}</label>
-                    <Password onChange={(e) => setPassword(e.target.value)} placeholder={t('login.password')} name="password" />
+                    <Password required onChange={(e) => setPassword(e.target.value)} placeholder={t('login.password')} name="password" />
 
                     <br />
+                    {error&& <div>
+                      <p className="text-sm text-red-500">{t('login.invalid_credentials')}</p>
+                    </div>}
 
                     <Link to="/forgotmypassword">
                       <span className='font-normal text-sm text-primary-def hover:underline'>{t('login.forgot_password')}</span>
                     </Link>
+
 
                     <br />
 

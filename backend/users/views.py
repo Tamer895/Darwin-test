@@ -138,6 +138,7 @@ class RegisterView(APIView):
                     'is_staff': user.is_staff,
                     'role': user.role,
                     'profile_photo': settings.DOMAIN + user.profile_photo.url if user.profile_photo else None,
+                    'preferences': user.preferences
                 }
             })
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)

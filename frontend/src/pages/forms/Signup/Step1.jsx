@@ -20,6 +20,7 @@ export default function Step1() {
     // const [code, setCode] = useState("");
 
     const [emailError, setEmailError] = useState("");
+    const [error, setError] = useState();
     const navigate = useNavigate();
   
     const { t } = useTranslation('auth');
@@ -69,7 +70,7 @@ export default function Step1() {
         }
       }
       else {
-        alert("passwords do not match")
+        setError(t('step1.password_dismatch'))
       }
     };
 
@@ -111,6 +112,9 @@ export default function Step1() {
                 <Password required value={formData.repeated_password} onChange={handleChange}  placeholder={t('step1.password')} name="repeated_password" />
 
                 <br />
+
+                {/* Error message */}
+                {error && <div className="text-sm text-red-500">{error}</div>}
 
                 <Link to="/login"><span className='font-normal text-sm text-primary-def hover:underline'>{t('step1.have_account')}</span></Link>
 

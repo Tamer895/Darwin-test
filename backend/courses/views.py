@@ -46,6 +46,28 @@ class LessonModelViewSet(viewsets.ModelViewSet):
     #     return LessonShortSerializer
 
 
+
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from django.shortcuts import get_object_or_404
+
+class CategoryCourseView(APIView):
+    def get(self, request, category):
+        # Retrieve all courses
+        courses = Course.objects.all()
+
+        # Filter courses manually where category contains the given value
+        filtered_courses = [course for course in courses if category in course.category]
+
+        # Serialize the filtered data
+        serializer = CourseSerializer(filtered_courses, many=True)
+
+        # Return the serialized data
+        return Response(serializer.data)
+
+
+
+
 class LessonID(APIView):
     def get(self, request, pk):
         # Filter courses by author

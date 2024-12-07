@@ -63,7 +63,7 @@ export default function Step2() {
 
 
 
-  const [image, setImage] = useState(null);
+  const [image, setImage] = useState("");
   const [imageURL, setImageURL] = useState();
 
 
@@ -110,7 +110,11 @@ export default function Step2() {
 
     try {
       // Send the POST request with the FormData
-      const response = await axios.post(USERS_API_ROUTES.REGISTER, formData);
+      const response = await axios.post(USERS_API_ROUTES.REGISTER, formData, {
+        headers: {
+            'Content-Type': 'multipart/form-data',
+        },
+    });
   
 
       setAuthToken(response.data['refresh'], response.data['access'], response.data['id'])

@@ -19,7 +19,7 @@ class User(AbstractUser):
     preferences = models.JSONField(default=list, null=True, blank=True)
 
     # Custom datas 
-    profile_photo = models.ImageField(verbose_name="Profile photo", upload_to="profile_photos/")
+    profile_photo = models.ImageField(verbose_name="Profile photo", upload_to="profile_photos/", null=True, blank=True)
 
     # Courses datas
     my_courses = models.ManyToManyField('courses.Course', blank=True, related_name='my_courses')
