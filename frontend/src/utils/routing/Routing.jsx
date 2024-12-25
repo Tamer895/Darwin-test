@@ -6,7 +6,9 @@ import IsAuthenticated from '../auth/IsAuthenticated';
 
 import Home from '@pages/main_pages/Home/Home';
 import About from '@pages/main_pages/About/About';
+import MyEducation from '@pages/main_pages/MyEducation/MyEducation';
 import CreateCourse from '@pages/studio/CreateCourse/CreateCourse';
+import DeleteCourse from '@pages/studio/DeleteCourse/DeleteCourse';
 import MyCourses from '@pages/studio/EditCourse/MyCourses';
 import IntroLesson from '@pages/lessons/IntroLesson/IntroLesson';
 import Lesson from '@pages/lessons/Lesson/Lesson';
@@ -38,10 +40,12 @@ export default function Routing() {
       <Route path="/step2" element={<Step2/>} />
 
       {/* courses */}
+      <Route path="/my_education" element={<IsAuthenticated><MyEducation/></IsAuthenticated>} />
       <Route path="/courses" element={<Courses/>} />
 
       {/* studio */}
       <Route path="/createcourse" element={<IsAuthenticated><CreateCourse/></IsAuthenticated>} />
+      <Route path="/deletecourse" element={<IsAuthenticated><DeleteCourse/></IsAuthenticated>} />
       <Route path="/editor"element={<IsAuthenticated><MyCourses/></IsAuthenticated>} />
       <Route path="/intro_lesson/:id" element={<IntroLesson/>} />
       <Route path="/lesson/:id" element={<Lesson/>} />

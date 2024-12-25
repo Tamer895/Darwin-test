@@ -3,6 +3,7 @@ import AvatarCircle from '@components/UI/Avatar/Avatar';
 import axios from 'axios';
 import TextInput from '@components/UI/Inputs/TextInput/TextInput';
 import ImageField from '@components/UI/Inputs/FileField/ImageField';
+import ChipsInput from '@components/UI/Inputs/ChipsInput/ChipsInput';
 import Button from '@components/UI/Buttons/Button/Button';
 import InputContainer from '@components/UI/Inputs/InputContainer/InputContainer';
 
@@ -15,6 +16,7 @@ export default function EditProfile() {
   const [username, setUsername] = useState('');
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
+  const [chips, setChips] = useState([]);
 
 
   const [image, setImage] = useState();
@@ -32,6 +34,7 @@ export default function EditProfile() {
         setUsername(data.username);
         setFirstName(data.first_name);
         setLastName(data.last_name);
+        setChips(data.preferences);
       })
       .catch(error => {
         console.error("Error fetching user data:", error);
@@ -57,6 +60,7 @@ export default function EditProfile() {
     formData.append('username', username);
     formData.append('first_name', firstName);
     formData.append('last_name', lastName);
+    formData.append('preferences', JSON.stringify(chips));
     if (image) formData.append('profile_photo', image);
 
     try {
@@ -71,6 +75,7 @@ export default function EditProfile() {
         first_name: updatedUser.first_name,
         last_name: updatedUser.last_name,
         role: updatedUser.role,
+        preferences: updatedUser.preferences,
         profile_photo: updatedUser.profile_photo
       }));
       
@@ -109,11 +114,6 @@ export default function EditProfile() {
           <div className="w-3/5 mx-auto">
             <h1 className="text-2xl text-black-def">Basic Information</h1>
 
-            <br />
-
-            <InputContainer className="w-full" title="Username">
-              <TextInput value={username} onChange={(e) => setUsername(e.target.value)} className="w-full" />
-            </InputContainer>
 
             <br />
 
@@ -125,6 +125,12 @@ export default function EditProfile() {
 
             <InputContainer className="w-full" title="Last Name">
               <TextInput value={lastName} onChange={(e) => setLastName(e.target.value)} className="w-full" />
+            </InputContainer>
+
+            <br />
+
+            <InputContainer className="w-full" for="categories" title="Preferences">
+              <ChipsInput required onChange={setChips} items={chips} placeholder="Category" />
             </InputContainer>
 
             <br />

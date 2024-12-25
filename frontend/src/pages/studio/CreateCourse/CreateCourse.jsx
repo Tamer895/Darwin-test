@@ -23,6 +23,8 @@ import { COURSES_API_ROUTES } from '../../../configs/api/Courses/courses';
 import ImageField from '@components/UI/Inputs/FileField/ImageField';
 import VideoField from '@components/UI/Inputs/FileField/VideoField';
 
+import Step from '@components/layouts/Stacks/Step/Step';
+
 
 
 export default function CreateCourse() {
@@ -75,10 +77,11 @@ export default function CreateCourse() {
 
 
     // Preparing datas for formDATA
-    const [image, setImage] = useState();
+    const [image, setImage] = useState("");
     const [imageURL, setImageURL] = useState();
+    const [imageTitle, setImageTitle] = useState('');
 
-    const [introVideo, setIntroVideo] = useState();
+    const [introVideo, setIntroVideo] = useState("");
 
     const [name, setName] = useState('');
     const [desc, setDesc] = useState('');
@@ -86,6 +89,20 @@ export default function CreateCourse() {
     const [status, setStatus] = useState(false);
     const [chips, setChips] = useState([]);
     const [level, setLevel] = useState('beginner');
+
+
+    function handleImageChange(e) {
+      const selectedFile = e.target.files[0];
+      if (selectedFile) {
+        setImageTitle(selectedFile.name);
+        const image = new Image();
+        image.onload = () => {
+          setImage(selectedFile);
+          setImageURL(URL.createObjectURL(selectedFile));
+        };
+        image.src = URL.createObjectURL(selectedFile);
+      }
+    }
 
   
   
@@ -121,28 +138,36 @@ export default function CreateCourse() {
         window.location.href = '/editor';
       } catch (error) {
         setError(true);
-        // console.error('Error submitting the form:', error);
+        console.error('Error submitting the form:', error);
       }
     };
+
+
+    const [active, setActive] = useState(1);
+
+
+
+    function secondStep() {
+      if (name != "" && desc != "") {
+        setActive(active+1);
+      }
+    }
+    function thirdStep() {
+      if (image != "" && introVideo != "") {
+        setActive(active+1);
+      }
+    }
 
 
   return (
     <Flexbox direction="row" items="flex-start" justify="space-between" className="px-40 py-16 bg-light_bg">
       
       <Sidebar focused="1"/>
-      
 
-
-
-      <Content width="78%" className="flex-col items-center bg-white border-black-10 border-solid border rounded-xl py-10">
-
-
-          
-
-          
+      <Content width="78%" className="flex-col items-center bg-white border-black-10 border-solid border rounded-xl py-10">    
 
         {/* Course creating form */}
-        <Form className="w-1/2 mx-auto" onSubmit={handleSubmit}>
+        <Form className="w-1/2 mx-auto">
           {/* Example of course */}
           <Course 
               style={{width: "100%", marginBottom: 25}}      
@@ -158,61 +183,143 @@ export default function CreateCourse() {
               categories={chips}
           />
 
+          <br />
 
-          <ImageField id="preview_field" className="w-full" setURL={setImageURL} setImage={setImage} />
+          <Step onClick={()=>setActive(1)} active={active} number="1" title="Title and description">
+            <InputContainer className="w-full" for="name" title={t('create_courses.name')}>
+              <TextInput required onChange={(e) => setName(e.target.value)} className="w-full" type="text" name="name" />
+            </InputContainer>
+
+            <br />
+
+            <InputContainer className="w-full" for="description" title={t('create_courses.description')}>
+              <Textarea required onChange={(e) => setDesc(e.target.value)} className="w-full" type="text" name="description"></Textarea>
+            </InputContainer>
+
+            <br />
+
+            <Button type="button" onClick={secondStep} className="rounded-md">Next</Button>
+
+            <br />
+          </Step>
 
           <br />
 
-          <InputContainer className="w-full" for="intro_video" title={t('create_courses.intro_video')}>
-            <VideoField required className="w-full" setVideo={setIntroVideo} />
-          </InputContainer>
+          <Step onClick={()=>setActive(2)} active={active} number="2" title="Personalization">
 
+            <div className={`w-full relative inline-block`}>
+              <label
+                htmlFor="poster"
+                className="w-full h-32 border border-input_border block hover:bg-[#f2f2f2] flex-center px-4 text-sm text-gray rounded-md cursor-pointer text-center leading-12"
+              >
+                <div className="flex flex-col items-center">
+                  
+                  <span className={`material-symbols-outlined text-4xl text-green-500 ${imageTitle && "hidden"}`}>
+                  add_circle
+                  </span>
+                  {imageTitle || 'Выберите файл'}
+                </div>
+              </label>
+              <input
+                id="poster"
+                type="file"
+                accept=".png, .jpg, .jpeg, .webp"
+                onChange={handleImageChange}
+                className="hidden"
+              />
+            </div>
 
-          <br />
-          
-          <InputContainer className="w-full" for="name" title={t('create_courses.name')}>
-            <TextInput required onChange={(e) => setName(e.target.value)} className="w-full" type="text" name="name" />
-          </InputContainer>
+            <br />
+            <br />
 
-          <br />
-
-          <InputContainer className="w-full" for="description" title={t('create_courses.description')}>
-            <Textarea required onChange={(e) => setDesc(e.target.value)} className="w-full" type="text" name="description"></Textarea>
-          </InputContainer>
-
-          <br />
-
-
-          <Flexbox direction="row" items='center' justify="center">
-            <InputContainer for="lang" title={t('create_courses.language')}>
-              <SelectComponent items={lang} value={language} onChange={(e) => setLang(e.target.value)} />
+            <InputContainer className="w-full" for="intro_video" title={t('create_courses.intro_video')}>
+              <VideoField required className="w-full" setVideo={setIntroVideo} />
             </InputContainer>
             
+            <br />
+            <Button type="button" onClick={thirdStep} className="rounded-md">Next</Button>
 
-
-            <InputContainer className="ml-5" for="status" title={t('create_courses.status')}>
-              <SelectComponent items={isPrivate} value={status} onChange={(e) => setStatus(e.target.value)} />
-            </InputContainer>
-          </Flexbox>
-
-          <br />
-
-          <InputContainer className="w-full" for="categories" title={t('create_courses.categories')}>
-            <ChipsInput required onChange={setChips} items={chips} placeholder="Category" />
-          </InputContainer>
+            <br />
+          </Step>
 
           <br />
 
-          <InputContainer className="w-full" for="level" title={t('create_courses.level')}>
-            <Radio required items={levels} setValue={setLevel} />
-          </InputContainer>
+          <Step onClick={()=>setActive(3)} active={active} number="3" title="Settings">
+            
+              <Flexbox direction="row" items='center' justify="start">
+                <InputContainer for="lang" title={t('create_courses.language')}>
+                  <SelectComponent items={lang} value={language} onChange={setLang} />
+                </InputContainer>
+                
+
+{/* 
+                <InputContainer className="ml-5" for="status" title={t('create_courses.status')}>
+                  <SelectComponent items={isPrivate} value={status} onChange={setStatus} />
+                </InputContainer> */}
+              </Flexbox>
+
+              <br />
+
+              <InputContainer className="w-full" for="categories" title={t('create_courses.categories')}>
+                <ChipsInput required onChange={setChips} items={chips} placeholder="Category" />
+              </InputContainer>
+
+              <br />
+
+              <InputContainer className="w-full" for="level" title={t('create_courses.level')}>
+                <Radio required items={levels} setValue={setLevel} />
+              </InputContainer>
+
+              <br />
+              
+            <Button type="button" onClick={()=>setActive(active+1)} className="rounded-md">Next</Button>
 
           <br />
+
+          </Step>
+
           <br />
+
+          <Step onClick={()=>setActive(4)} active={active} number="4" title="Others">
+            
+              <Flexbox direction="row" items='center' justify="start">
+                <InputContainer for="lang" title={t('create_courses.language')}>
+                  <SelectComponent items={lang} value={language} onChange={setLang} />
+                </InputContainer>
+                
+
+
+                <InputContainer className="ml-5" for="status" title={t('create_courses.status')}>
+                  <SelectComponent items={isPrivate} value={status} onChange={setStatus} />
+                </InputContainer>
+              </Flexbox>
+
+              <br />
+
+              <InputContainer className="w-full" for="categories" title={t('create_courses.categories')}>
+                <ChipsInput required onChange={setChips} items={chips} placeholder="Category" />
+              </InputContainer>
+
+              <br />
+
+              <InputContainer className="w-full" for="level" title={t('create_courses.level')}>
+                <Radio required items={levels} setValue={setLevel} />
+              </InputContainer>
+
+              <br />
+              
+              {error ? <div className="text-red-500 text-left">{t('errors:fill_all_fields')}</div> : ""}
+              <br />
+
+              <Button onClick={handleSubmit}>{t('create_courses.submit')}</Button>
+
+              <br />
+          </Step>
+
+
+
+
           
-          {error ? <div className="text-red-500 text-center">{t('errors:fill_all_fields')}</div> : ""}
-
-          <Button type="submit">{t('create_courses.submit')}</Button>
 
         </Form>
       </Content>

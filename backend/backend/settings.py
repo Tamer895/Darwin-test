@@ -17,7 +17,7 @@ from pathlib import Path
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
+APPEND_SLASH=False
 
 SENDER_EMAIL = "ahantamer@gmail.com"
 SENDER_PASSWORD = 'xdst losn hpas aroh'
@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'users',
     'categories',
     'elements',
+    'django_filters',
     # 'courses.apps.CoursesConfig',
     'django.contrib.admin',
     'django.contrib.auth',

@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState, useEffect, useRef} from 'react'
 
 import axios from 'axios';
 
@@ -18,6 +18,11 @@ export default function AnnouncementID() {
 
   const [currentSlide, setCurrentSlide] = useState(0);
 
+
+
+
+
+
   const slides = [
     {
       type: 'image',
@@ -28,6 +33,17 @@ export default function AnnouncementID() {
       src: data.video,
     },
   ];
+
+
+  const imageRef = useRef(null);
+  const [imageHeight, setImageHeight] = useState(0);
+
+  useEffect(() => {
+    if (imageRef.current) {
+      setImageHeight(imageRef.current.clientHeight); // Get the current height of the image
+    }
+  }, [currentSlide, slides]);
+
 
   const nextSlide = () => {
     setCurrentSlide((prevSlide) => (prevSlide + 1) % slides.length);
@@ -44,7 +60,7 @@ export default function AnnouncementID() {
     // Function to fetch courses based on the page number
     const fetchAnnouncement= async () => {
       try {
-        const response = await axios.get(ANNOUNCEMENTS_API_ROUTES.GET_BY_ID+`${id}/`);
+        const response = await axios.get(ANNOUNCEMENTS_API_ROUTES.GET_BY_ID(id));
         setData(response.data); // Update courses data
       } catch (error) {
         // console.error('Error fetching courses:', error);
@@ -52,11 +68,11 @@ export default function AnnouncementID() {
     };
 
   return (
-    <section className='w-4/5 py-10 mx-auto flex justify-between'>
+    <section className='w-3/5 py-10 mx-auto flex justify-between'>
 
       {/* Content */}
-      <div className="w-3/4 pr-10">
-        <span>Announcement - <span className='text-gray'>{localizer(data.created_at)}</span></span>
+      <div className="w-full pr-10">
+        <span className='text-gray'>{localizer(data.created_at)}</span>
 
 
         <h1 className='font-bold text-3xl my-5 text-black-def'>{data.title}</h1>
@@ -71,13 +87,15 @@ export default function AnnouncementID() {
             
             <div>
                 {slides[currentSlide].type === 'video' ? (
-                <Video src={slides[currentSlide].src}  width="100%" height="400px" />
+                  <div style={{height: imageHeight}} className="w-full flex-center bg-[#000]">
+                    <Video className="rounded-none" src={slides[currentSlide].src}  width="100%" height="400px" />
+                  </div>
                 // <video className='w-full' controls>
                 //     <source src={slides[currentSlide].src} type="video/mp4" />
                 //     Your browser does not support the video tag.
                 // </video>
                 ) : (
-                <img className='w-full' src={slides[currentSlide].src} alt="slide"/>
+                <img className='w-full' ref={imageRef} src={slides[currentSlide].src} alt="slide" onLoad={() => setImageHeight(imageRef.current.clientHeight)}/>
                 )}
             </div>
             
@@ -98,8 +116,8 @@ export default function AnnouncementID() {
       </div>
 
       {/* Advert */}
-      <div style={advert} className="w-1/4 bg-blue-300 overflow-hidden">
-      </div>
+      {/* <div style={advert} className="w-1/4 bg-blue-300 overflow-hidden">
+      </div> */}
     </section>
   )
 }

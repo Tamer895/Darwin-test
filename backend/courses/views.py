@@ -28,13 +28,33 @@ class CourseModelViewSet(viewsets.ModelViewSet):
     pagination_class = CoursePagination  
 
 
+class DeleteCourseView(APIView):
+    def delete(self, request, course_id):
+        user_id = request.data.get('user_id')  # Parse data from the request body
+        if not user_id:
+            return Response({"error": "User ID is required"}, status=status.HTTP_400_BAD_REQUEST)
+        
+        course = get_object_or_404(Course, id=course_id, author=user_id)
+        course.delete()
+        return Response({"message": "Course deleted successfully"}, status=status.HTTP_204_NO_CONTENT)
+
 
 class LatestCourseView(APIView):
-    def get(self, request):
+    def get(self, request, level):
         # Retrieve only Course instances that have at least one related Lesson, ordered by created_at
-        courses = Course.objects.filter(is_private=False).order_by('-created_at')
-        serializer = CourseSerializer(courses, many=True)
-        return Response(serializer.data, status=status.HTTP_200_OK)
+        courses = Course.objects.filter(is_private=False, level=level).order_by('-created_at')
+
+        # Применяем пагинацию
+        paginator = CoursePagination()
+        paginated_courses = paginator.paginate_queryset(courses, request)
+        
+        # Сериализуем данные
+        serializer = CourseSerializer(paginated_courses, many=True)
+        
+        # Возвращаем результаты с пагинацией
+        return paginator.get_paginated_response(serializer.data)
+
+
 
 class LessonModelViewSet(viewsets.ModelViewSet):
     queryset = Lesson.objects.all()

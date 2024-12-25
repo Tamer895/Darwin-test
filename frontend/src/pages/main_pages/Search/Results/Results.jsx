@@ -7,6 +7,7 @@ import Loading from '@components/layouts/Loading/Loading';
 
 import { domain } from '@configs/api/domain';
 import { COURSES_API_ROUTES } from '@configs/api/Courses/courses';
+import empty from "@media/images/png/undraw/empty.png";
 
 import axios from 'axios';
 
@@ -57,7 +58,12 @@ export default function Results() {
                       level={course.level}
                       categories={course.category}
                   />
-                )) : <p>No courses found</p>)
+                )) : 
+                    <div className="w-full flex flex-col items-center py-24">
+                        <img width={200} src={empty} alt="" />
+                        <h2 className='font-medium text-xl'>No results found</h2>
+                    </div>
+                )
 
 
             )}

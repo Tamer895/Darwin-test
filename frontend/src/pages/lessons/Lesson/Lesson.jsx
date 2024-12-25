@@ -43,12 +43,16 @@ export default function Lesson() {
     if (!isFullscreen) {
       // Make div full-page
       divRef.current.style.position = "fixed";
+      divRef.current.style.display = "flex";
+      divRef.current.style.flexDirection = "column";
+      divRef.current.style.justifyContent = "start";
       divRef.current.style.top = "0";
       divRef.current.style.left = "0";
       divRef.current.style.width = "100vw";
       divRef.current.style.height = "100vh";
       divRef.current.style.zIndex = "9999"; // Ensures it's on top
       divRef.current.style.paddingTop = "200px";
+      divRef.current.style.margin = "0";
       divRef.current.style.overflow = "scroll";
       setIsFullscreen(true);
     } else {

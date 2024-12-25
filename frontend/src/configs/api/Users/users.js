@@ -12,4 +12,5 @@ export const USERS_API_ROUTES = {
     GET_CODE: `${domain}/users/getcode/`,
     FORGOT_PASSWORD: `${domain}/users/forgot_password/`,
     RESET_PASSWORD: `${domain}/users/reset_password/`,
+    ADD_TO_MY_COURSES: `${domain}/users/add-to-my-courses/`
 }

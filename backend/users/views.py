@@ -10,6 +10,7 @@ from email.mime.text import MIMEText
 from random import randint
 from rest_framework_simplejwt.views import TokenObtainPairView
 from django.conf import settings
+from courses.serializers import CourseShortSerializer
 
 
 
@@ -161,4 +162,37 @@ class LogoutView(APIView):
 class UserModelViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all()
     serializer_class = UserSerializer
+
+
+
+
+
+
+from rest_framework.permissions import IsAuthenticated
+
+class AddCourseToMyCoursesAPIView(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def post(self, request, *args, **kwargs):
+        course_id = request.data.get('course_id')
+        if not course_id:
+            return Response({"error": "Course ID is required"}, status=status.HTTP_400_BAD_REQUEST)
+
+        try:
+            course = Course.objects.get(id=course_id)
+            request.user.my_courses.add(course)
+            return Response({"message": "Course added successfully"}, status=status.HTTP_200_OK)
+        except Course.DoesNotExist:
+            return Response({"error": "Course not found"}, status=status.HTTP_404_NOT_FOUND)
+
+class MyCoursesView(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def get(self, request):
+        user = request.user  # Получаем текущего пользователя
+        user_data = UserSerializer(user).data
         
+        # Include full details of courses
+        user_data['my_courses'] = CourseShortSerializer(user.my_courses.all(), many=True).data
+
+        return Response(user_data)

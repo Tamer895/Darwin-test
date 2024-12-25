@@ -1,56 +1,54 @@
-import React, {useState} from 'react'
-import "./styles/style.css";
-import Select from '@mui/material/Select';
-import MenuItem from '@mui/material/MenuItem';
-import FormControl from '@mui/material/FormControl';
-import styled from '@emotion/styled';
-
+import React, { useState, useEffect, useRef } from 'react';
+import './styles/style.css';
 
 export default function SelectComponent(props) {
-
+  const [isOpen, setIsOpen] = useState(false);
   const items = props.items;
+  const selectRef = useRef(null);
 
+  const toggleDropdown = () => {
+    setIsOpen(!isOpen);
+  };
+
+  const handleSelect = (value) => {
+    props.onChange(value);
+    setIsOpen(false);
+  };
+
+  // Закрытие выпадающего списка при клике вне компонента
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (selectRef.current && !selectRef.current.contains(event.target)) {
+        setIsOpen(false);
+      }
+    };
+
+    // Добавляем слушатель события для кликов на документ
+    document.addEventListener('mousedown', handleClickOutside);
+
+    // Убираем слушатель при размонтировании компонента
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
 
   return (
-
-    <FormControl>
-    <Select
-          // sx={{borderColor: "#4f46e5"}
-         
-          value={props.value}
-          onChange={props.onChange}
-          displayEmpty
-          inputProps={{ 'aria-label': 'Without label' }}
-
-          sx={{
-            height: '3rem', // h-12 (12 * 4px = 48px)
-            padding: '0 1rem', // px-4
-            backgroundColor: '#fff', // bg-white
-            fontSize: '0.875rem', // text-sm
-            border: '2px solid rgb(202, 213, 226)',
-            outline: 'none', // outline-none
-            boxSizing: "border-box", // box-sizing
-            borderRadius: '0.375rem', // rounded-md
-            '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
-              border: 'none', // focus:border-primary-def
-            },
-            '.MuiOutlinedInput-notchedOutline': {
-              border: 0,
-            },
-            '& .MuiSelect-root': {
-              '&::placeholder': {
-                color: '#9e9e9e', // placeholder:text-black-50
-              },
-            },
-          }}
-        >
-        {items.map((elem, index) => (
- 
-          <MenuItem className='border-none' key={index} value={elem.value}>{elem.label}</MenuItem>
-        ))}
-    </Select>
-    </FormControl>
-  )
+    <div className="select-container" ref={selectRef}>
+      <div className="select-switcher" onClick={toggleDropdown}>
+        <span>{props.value != undefined ? items.find(item => item.value == props.value).label : 'Select an option'}</span>
+        <span class="material-symbols-outlined">
+        keyboard_arrow_down
+        </span>
+      </div>
+      {isOpen && (
+        <ul className="select-list">
+          {items.map((elem, index) => (
+            <li key={index} onClick={() => handleSelect(elem.value)}>
+              <button className="text-sm select-option">{elem.label}</button>
+            </li>
+          ))}
+        </ul>
+      )}
+    </div>
+  );
 }
-
-

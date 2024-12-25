@@ -5,6 +5,7 @@ import { useTranslation } from 'react-i18next';
 
 import Menu from '@UI/Menu/Menu';
 import CreateLesson from '@pages/forms/CreateLesson/CreateLesson';
+import CourseSettiings from '../../../pages/forms/CourseSettings/CourseSettings';
 import TextWithEllipsis from '@UI/Typography/Text/TextWithEllipsis';
 
 import { LESSONS_API_ROUTES } from '../../../configs/api/Lessons/lessons';
@@ -23,6 +24,7 @@ export default function LessonsBar() {
   
   const divRef = useRef(null);
   const [createLesson, setCreateLesson] = useState(false);
+  const [courseSettings, setCourseSettings] = useState(false);
   const [isOpen, setIsOpen] = useState();
 
   const courseData = useSelector((state) => state.courseID.courseData);
@@ -200,7 +202,18 @@ export default function LessonsBar() {
         </div>
       )}
 
+      {/* General settings */}
+      {author_id == user_id && (
+        <div onClick={() => setCourseSettings(!courseSettings)} className="w-full bg-white hover:scale-105 duration-200 ease-linear cursor-pointer rounded-xl border border-black-10 border-solid mt-5">
+          <div className="flex flex-col items-center w-full p-3">
+            <span className="material-symbols-rounded text-primary-def text-4xl">settings</span>
+            <span className="text-sm mt-2 text-black-def">General settings</span>
+          </div>
+        </div>
+      )}
+
       {createLesson && <CreateLesson setState={setCreateLesson} />}
+      {courseSettings && <CourseSettiings setState={setCourseSettings} />}
     </div>
   );
 }

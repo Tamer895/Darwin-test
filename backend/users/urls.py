@@ -24,6 +24,9 @@ urlpatterns = [
     path('register/', RegisterView.as_view(), name='register'),
     path('logout/', LogoutView.as_view(), name='logout'),
 
+    path('add-to-my-courses/', AddCourseToMyCoursesAPIView.as_view(), name='add-to-my-courses'),
+    path('my-courses/', MyCoursesView.as_view(), name='my-courses'),
+
     path('user_info/<int:pk>/', UserDetailInfo.as_view(), name='user_info'),
     
     path("getcode/", GetCode.as_view(), name='getcode'),

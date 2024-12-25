@@ -32,7 +32,7 @@ class Course(models.Model):
 
     # Basic datas
     name = models.CharField(verbose_name="Name", max_length=255)
-    description = models.CharField(verbose_name="Description", max_length=1000)
+    description = models.TextField(verbose_name="Description")
     author = models.ForeignKey('users.User', on_delete=models.CASCADE, related_name="courses")
     language = models.CharField(verbose_name="Language", max_length=50)
     is_finished = models.BooleanField(verbose_name="Is finished", default=False)
@@ -50,6 +50,14 @@ class Course(models.Model):
     preview = models.ImageField(verbose_name="Preview", upload_to="previews/", blank=True, null=True)
 
     # lessons = models.ManyToManyField('courses.Lesson', null=True, blank=True, related_name="lessons")
+
+
+    # 
+    # 
+    # Characteristcs
+    
+
+
 
     created_at = models.DateTimeField(verbose_name="Created at", auto_now_add=True)
     updated_at = models.DateTimeField(verbose_name="Updated at", auto_now_add=True)

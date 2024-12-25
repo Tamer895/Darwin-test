@@ -4,6 +4,7 @@ import Avatar from '@mui/material/Avatar';
 import Rating from '@mui/material/Rating';
 import Chip from '@mui/material/Chip';
 import { useTranslation } from 'react-i18next';
+import RoundedBtn from '../../Buttons/RoundedBtn/RoundedBtn';
 
 export default function Course(props) {
 
@@ -26,8 +27,10 @@ export default function Course(props) {
         <div className="w-full box-border card card-hover flex-col-center border-2 border-black-10 rounded-2xl overflow-hidden text-sm">
 
             {/* Image  */}
-            <div className="w-full h-52 overflow-hidden flex items-center justify-center border-0">
-                <img className='w-full h-52 object-cover' src={props.img} alt="" />
+            <div className="w-full bg-white h-52 p-2 overflow-hidden flex items-center justify-center border-0">
+                {props.img == undefined ? <div className='w-full h-full bg-black-10 border-0 rounded-[10px] object-cover'></div> : <img className='w-full h-full border-0 rounded-[10px] object-cover' src={props.img} alt="" />}
+                
+                {/* <button className="absolute top-3 right-3 rounded-full bg-white bg-opacity-80 hover:bg-opacity-100 py-2 px-3">Save</button> */}
             </div>
 
             {/* Content */}
@@ -56,8 +59,8 @@ export default function Course(props) {
 
                     <div className="flex-col">
                         <div className="flex items-center mb-3 mt-2">
-                            <span className='mr-1 text-primary-def font-medium'>{props.rating}</span>
-                            <Rating size="small" precision={0.5} name="read-only" value={props.rating} readOnly />
+                            {/* <span className='mr-1 text-primary-def font-medium'>{props.rating}</span> */}
+                            {/* <Rating size="small" precision={0.5} name="read-only" value={props.rating} readOnly /> */}
                         </div>
                         <div className="flex items-center flex-wrap">
                         {chips.map((elem, index) => (

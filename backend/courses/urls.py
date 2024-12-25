@@ -15,7 +15,8 @@ urlpatterns = [
     path('author_id/<int:pk>/', CourseAuthorID.as_view()),
     path('lesson_by_course_id/<int:pk>/', LessonID.as_view()),
 
-    path('latest_courses/', LatestCourseView.as_view()),
+    path('latest_courses/<str:level>/', LatestCourseView.as_view()),
+    path('delete_course/<int:course_id>/', DeleteCourseView.as_view(), name='delete_course'),
 
     path('category/<str:category>/', CategoryCourseView.as_view()),
 

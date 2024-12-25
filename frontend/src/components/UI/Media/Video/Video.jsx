@@ -101,7 +101,7 @@ export default function Video(props) {
 
   return (
     // <div style={{width: props.width}} className="">
-      <div ref={parentRef} style={{width: props.width, height: props.height}} className='flex-center overflow-hidden rounded-xl bg-black'>
+      <div ref={parentRef} style={{width: props.width, height: props.height}} className={`${props.className} flex-center overflow-hidden rounded-xl bg-black`}>
 
           <video ref={videoRef} onTimeUpdate={handleProgress} poster={props.poster} width="100%">
             <source src={props.src} type="video/mp4" />

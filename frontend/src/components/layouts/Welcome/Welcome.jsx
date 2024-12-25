@@ -18,7 +18,7 @@ export default function Welcome() {
     <div className="welcome px-[10%]">
       <div className="w-full flex-col items-center text-center">
 
-        <h1 className=' font-black text-black-def text-[400%] leading-[70px] uppercase'>{t('welcome.title1')}<span className='text-primary-def'>Darwin</span>{t('welcome.title2')}</h1>
+        <h1 className=' font-black text-black-def text-[500%] leading-[70px]'>{t('welcome.title1')}<span className='text-primary-def'>Darwin</span>{t('welcome.title2')}</h1>
 
         {/* <h1 className='font-black text-black-def text-[400%] leading-[70px] uppercase'>
           
