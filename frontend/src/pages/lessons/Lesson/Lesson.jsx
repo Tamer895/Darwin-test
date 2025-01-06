@@ -33,6 +33,7 @@ export default function Lesson() {
   const courseData = useSelector((state) => state.courseID.courseData) === undefined ? null : '';
 
   const [elements, setElements] = useState([]);
+  const [key, setKey] = useState(0);
 
 
 
@@ -55,8 +56,22 @@ export default function Lesson() {
       divRef.current.style.margin = "0";
       divRef.current.style.overflow = "scroll";
       setIsFullscreen(true);
+      setKey(prevKey => prevKey + 1);
     } else {
-      window.location.reload();
+      divRef.current.style.position = "relative";
+      divRef.current.style.display = "flex";
+      divRef.current.style.flexDirection = "column";
+      divRef.current.style.justifyContent = "start";
+      divRef.current.style.top = "0";
+      divRef.current.style.left = "0";
+      divRef.current.style.width = "";
+      divRef.current.style.height = "auto";
+      divRef.current.style.zIndex = "1"; // Ensures it's on top
+      divRef.current.style.paddingTop = "40px";
+      divRef.current.style.margin = "0";
+      divRef.current.style.overflow = "visible";
+      setIsFullscreen(false);
+      setKey(prevKey => prevKey + 1);
     }
   };
 
@@ -161,6 +176,7 @@ export default function Lesson() {
                 <li key={element.id}>
                 {element.type === 'video' ? (
                   <VideoElement 
+                    key={key}
                     is_active={lesson.is_active} 
                     id={element.id} 
                     video={element.video} 

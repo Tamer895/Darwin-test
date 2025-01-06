@@ -1,9 +1,13 @@
-import React, {useState} from 'react'
+import React, { useState, useEffect } from 'react'
 import classes from "./styles/style.module.css"
 
 export default function Radio(props) {
 
   const [selected, setSelected] = useState(0);
+
+  useEffect(() => {
+    setSelected(props.value === undefined ? 0 : props.items.findIndex(item=>item.value === props.value))
+  },[]);
 
   const handleChange = (value, index) => {
     props.setValue(value);

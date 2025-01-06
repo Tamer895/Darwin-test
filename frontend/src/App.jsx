@@ -7,6 +7,7 @@ import { HelmetProvider } from 'react-helmet-async';
 import Provider from '@utils/alert/Provider';
 
 import Snowfall from 'react-snowfall';
+import Loading from '@components/layouts/Loading/Loading';
 
 
 function App( ) {

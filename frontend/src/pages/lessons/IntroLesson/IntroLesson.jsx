@@ -59,7 +59,7 @@ export default function IntroLesson() {
           user_id: user_id},
         {
           headers: {
-            'Authorization': `Bearer ${localStorage.getItem('access_token')}`,
+            // 'Authorization': `Bearer ${localStorage.getItem('access_token')}`,
             'Content-Type': 'application/json',
           },
         }
@@ -106,7 +106,7 @@ export default function IntroLesson() {
           <br />
 
           <div className="w-full flex justify-end">
-            <Button className="rounded-lg" onClick={handleClick}>Start learning</Button>
+            <Button className="rounded-lg" onClick={handleClick}>{t('start_learning')}</Button>
           </div>
 
         </Content>

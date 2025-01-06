@@ -16,6 +16,8 @@ import PermissionForCourse from "@utils/auth/Permission";
 import { setCourse } from '@store/CourseID';
 import { setCurrentLesson } from '@store/CurrentLesson';
 
+import "./style.css"
+
 import axios from 'axios';
 
 export default function LessonsBar() {
@@ -108,17 +110,17 @@ export default function LessonsBar() {
       </div>
 
       {/* Active Lessons */}
-      <div className="w-full bg-white rounded-xl overflow-hidden border border-black-10 border-solid">
+      <div className="w-full bg-white rounded-xl overflow-hidden border border-black-10 border-solid active_lessons">
 
         {lessons && lessons
           .filter(e => e.is_active)
           .map((e, index) => (
-            <React.Fragment key={e.id}>
+            <div key={e.id}>
               <Link to={`/lesson/${e.id}`}>
                 <div
                   onClick={() => handleClick(e.id)}
                   onContextMenu={(e) => handleRightClick(e, index + 1)}
-                  className={`w-full p-3 border-b border-b-black-10 border-b-solid last:border-b-0 ${
+                  className={`w-full p-3 border-b border-b-black-10 border-b-solid ${
                     currentLesson === e.id ? 'bg-primary-def' : 'bg-white hover:bg-primary-5'
                   }`}
                 >
@@ -144,7 +146,7 @@ export default function LessonsBar() {
                   </Menu>
                 </div>
               )}
-            </React.Fragment>
+            </div>
           ))}
       </div>
 
@@ -207,7 +209,7 @@ export default function LessonsBar() {
         <div onClick={() => setCourseSettings(!courseSettings)} className="w-full bg-white hover:scale-105 duration-200 ease-linear cursor-pointer rounded-xl border border-black-10 border-solid mt-5">
           <div className="flex flex-col items-center w-full p-3">
             <span className="material-symbols-rounded text-primary-def text-4xl">settings</span>
-            <span className="text-sm mt-2 text-black-def">General settings</span>
+            <span className="text-sm mt-2 text-black-def">{t('general_settings')}</span>
           </div>
         </div>
       )}

@@ -7,9 +7,16 @@ import { Link } from 'react-router-dom';
 
 import TextInput from '@components/UI/Inputs/TextInput/TextInput'; // Импорт новых компонентов
 import DateInput from '@components/UI/Inputs/DateInput/DateInput';
+import InputContainer from '@components/UI/Inputs/InputContainer/InputContainer';
+import Button from '@components/UI/Buttons/Button/Button';
 import './styles/style.css';
 
+import { useTranslation } from 'react-i18next'
+
+
+
 export default function Announcements() {
+  const {t} = useTranslation('bboard')
   const [announcements, setAnnouncements] = useState([]);
   const [filters, setFilters] = useState({
     dateFrom: '',
@@ -57,44 +64,56 @@ export default function Announcements() {
 
   return (
     <section className="w-4/5 py-10 mx-auto">
-      <h1 className="text-2xl mb-5 text-black-def">Последние объявления</h1>
+      <h1 className="text-2xl mb-5 text-black-def">{t('last_announce')}</h1>
 
       {/* Filter Form */}
-      <div className="filter-form mb-5">
-        <DateInput
-          name="dateFrom"
-          value={filters.dateFrom}
-          onChange={handleFilterChange}
-          placeholder="От"
-          className="mr-2"
+      <div className="flex items-end justify-start mb-5">
+        <InputContainer for="dateForm" title={t('filter.from')}>
+          <DateInput
+            name="dateFrom"
+            value={filters.dateFrom}
+            onChange={handleFilterChange}
+            placeholder="От"
+            className="mr-2"
+          />
+        </InputContainer>
+
+        <InputContainer for="dateForm" title={t('filter.to')}>
+          <DateInput
+            name="dateTo"
+            value={filters.dateTo}
+            onChange={handleFilterChange}
+            placeholder="До"
+            className="mr-2"
         />
-        <DateInput
-          name="dateTo"
-          value={filters.dateTo}
-          onChange={handleFilterChange}
-          placeholder="До"
-          className="mr-2"
-        />
-        <TextInput
-          name="category"
-          value={filters.category}
-          onChange={handleFilterChange}
-          placeholder="Категория"
-          className="mr-2"
-        />
-        <TextInput
-          name="keywords"
-          value={filters.keywords}
-          onChange={handleFilterChange}
-          placeholder="Ключевые слова"
-          className="mr-2"
-        />
-        <button
+        </InputContainer>
+
+        <InputContainer for="dateForm" title={t('filter.category')}>
+          <TextInput
+            name="category"
+            value={filters.category}
+            onChange={handleFilterChange}
+            placeholder="Категория"
+            className="mr-2"
+          />
+        </InputContainer>
+
+        <InputContainer for="dateForm" title={t('filter.keywords')}>
+          <TextInput
+            name="keywords"
+            value={filters.keywords}
+            onChange={handleFilterChange}
+            placeholder="Ключевые слова"
+            className="mr-2"
+          />
+        </InputContainer>
+
+        <Button
+          // className="bg-white hover:bg-white text-black-def"
           onClick={resetFilters}
-          className="bg-gray-300 hover:bg-gray-400 text-black py-2 px-4 rounded"
         >
-          Сбросить
-        </button>
+          {t('reset')}
+        </Button>
       </div>
 
       {/* Announcements List */}

@@ -1,0 +1,12 @@
+{
+    "last_announce": "Latest announcements",
+    "reset": "Reset",
+    "filter": {
+        "from": "From",
+        "to": "To",
+        "category": "Category",
+        "keywords": "Keywords"
+    },
+    "take_part": "I have reviewed the provided information and want to participate"
+
+}

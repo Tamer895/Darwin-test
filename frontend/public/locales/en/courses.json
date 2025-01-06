@@ -1,0 +1,12 @@
+{
+    "last_courses": {
+        "title": "Recently Added Lessons",
+        "subtitle": "Discover the most recently added lessons to enhance your learning"
+    },
+    "category": "Category",
+
+    "search": {
+        "results_for": "Results for",
+        "no_results": "No results found"
+    }
+}

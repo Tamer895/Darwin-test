@@ -14,10 +14,10 @@ export default function Footer() {
 
 
   const column_one = [
-    {title: t('navigation.my_edu'), link: '/my_edu'},
+    {title: t('navigation.my_edu'), link: '/my_education'},
     {title: t('navigation.courses'), link: '/courses'},
     {title: t('navigation.bulletin_board'), link: '/bulletin_board'},
-    {title: t('navigation.studio'), link: '/studio'},
+    {title: t('navigation.studio'), link: '/editor'},
   ]
 
   const column_two = [

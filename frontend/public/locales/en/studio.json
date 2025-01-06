@@ -10,9 +10,7 @@
         "name": "Course name",
         "description": "Course description",
         "language": "Language",
-
         "intro_video": "Intro video",
-
         "status": "Public or Private?",
         "public": "Public",
         "private": "Private",
@@ -21,6 +19,36 @@
         "beginner": "Beginner",
         "intermediate": "Intermediate",
         "advanced": "Advanced",
-        "submit": "Create course"
+        "submit": "Create course",
+
+        "title1": "Course Title and Description",
+        "title2": "Add Preview and Intro Video",
+        "title3": "Key Information About the Course",
+        "back": "Back"
+    },
+
+    "edit_course": {
+        "empty": "No courses"
+    },
+    
+    "delete_courses": {
+        "instructions": "To delete a course, you must provide your data in the following format: ",
+        "instructions2": "After that, slide the toggle to the end to confirm the action.",
+        "note": "Please note:",
+        "details": {
+            "id_info": "The Course ID can be found on the editing page of the respective course.",
+            "important_reminder": "It is important to remember that deleting a course comes with several consequences:"
+        },
+        "consequences": {
+            "title1": "Data Loss",
+            "description1": "All course materials will be permanently deleted.",
+            
+            "title2": "User Dissatisfaction",
+            "description2": "Course participants may be disappointed due to the unavailability of content.",
+            
+            "title3": "Risk of Reputation Damage",
+            "description3": "Frequent or unjustified deletion of courses may affect trust in the platform."
+        },
+        "final_reminder": "Please ensure you are ready to face the consequences before proceeding with the deletion."
     }
 }

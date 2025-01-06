@@ -76,7 +76,33 @@ export default function DeleteCourse() {
         width="78%"
         className="flex-col items-center bg-white border-black-10 border-solid border rounded-xl py-10"
       >
-        <div>
+        <div className='w-[80%] mx-auto'>
+          <p className='text-sm'>{t('delete_courses.instructions')}</p>
+          <br />
+          <p className='text-sm font-semibold text-red-500'>{t('delete_courses.note')}</p>
+
+          <ul style={{listStyleType: "disc", marginLeft: "20px"}}>
+            <li className='text-sm'>{t('delete_courses.details.id_info')}</li>
+            <li className='text-sm'>{t('delete_courses.details.important_reminder')}</li>
+            <ol style={{listStyleType: "decimal"}} start="1" type="1" className='text-sm ml-5 mt-2'>
+              <li className='mb-2'>
+                <p className='font-semibold'>{t('delete_courses.consequences.title1')}</p>
+                <p>{t('delete_courses.consequences.description1')}</p>
+              </li>
+              <li className='mb-2'>
+                <p className='font-semibold'>{t('delete_courses.consequences.title2')}</p>
+                <p>{t('delete_courses.consequences.description2')}</p>
+              </li>
+              <li className='mb-2'>
+                <p className='font-semibold'>{t('delete_courses.consequences.title3')}</p>
+                <p>{t('delete_courses.consequences.description3')}</p>
+              </li>
+            </ol>
+          </ul>
+          <p className='text-sm'>{t('delete_courses.final_reminder')}</p>
+
+          <br />
+
           <div className="flex mb-5">
             <TextInput
               onChange={(e) => setValue(e.target.value)}

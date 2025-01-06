@@ -12,6 +12,7 @@
 }
 .switcher span.lng {
     margin-bottom: -2px;
+    /* transform: scale() */
 }
 
 

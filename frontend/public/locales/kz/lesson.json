@@ -27,6 +27,27 @@
             "content_field": "Бейнематериал",
             "order_field": "Реті"
         },
+        "img": {
+            "title_field": "Атауы",
+            "content_field": "Сурет",
+            "order_field": "Реті"
+        },
         "create": "Құру"  
-    }
+    },
+
+    "course_settings": {
+        "name": "Атауы",
+        "description": "Сипаттамасы",
+        "categories": "Санаттар",
+        "level": "Деңгей",
+        "lang": "Тілі",
+        "update": "Жаңарту",
+        "levels": {
+            "beginner": "Бастауыш",
+            "intermediate": "Орта",
+            "advanced": "Озат"
+        }
+    },
+    "general_settings": "Жалпы баптаулар",
+    "start_learning": "Оқуды бастау"
 }

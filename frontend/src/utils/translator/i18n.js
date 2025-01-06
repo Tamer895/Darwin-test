@@ -16,7 +16,7 @@ i18n
     backend: {
       loadPath: '/locales/{{lng}}/{{ns}}.json',
     },
-    ns: ['header', 'footer', 'studio', 'inputs', 'home', 'auth'],
+    ns: ['header', 'footer', 'studio', 'inputs', 'home', 'auth', 'course'],
     defaultNS: 'header',
     interpolation: {
       escapeValue: false,

@@ -8,7 +8,7 @@ import Sidebar from '@components/layouts/Sidebar/Sidebar';
 import Content from '@components/layouts/Stacks/Content/Content';
 import Course from '../../../components/UI/Cards/Course/Course';
 
-
+import empty from "@media/images/png/undraw/empty.png"
 import { domain } from '@configs/api/domain';
 
 export default function MyCourses() {
@@ -62,7 +62,10 @@ export default function MyCourses() {
               />
             ))
           ) : (
-            <p>No courses found.</p>
+            <div className="w-full flex flex-col items-center">
+              <img style={{width: "150px", height: "150px"}} src={empty} alt="" />
+              <h1 className='font-medium'>{t('edit_course.empty')}</h1>
+            </div>
           )}
         </Flexbox>
       </Content>

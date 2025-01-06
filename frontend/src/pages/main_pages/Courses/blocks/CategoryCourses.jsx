@@ -2,8 +2,10 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { COURSES_API_ROUTES } from '@configs/api/Courses/courses';
 import CoursesRow from '@components/layouts/CoursesRow/CoursesRow';
+import { useTranslation } from 'react-i18next'
 
 function CategoryCourseRow({ category }) {
+  const { t } = useTranslation('courses');
   const [courses, setCourses] = useState([]); // Store course data
 
   useEffect(() => {
@@ -21,7 +23,7 @@ function CategoryCourseRow({ category }) {
     }
   };
 
-  return <CoursesRow title={"Category: "+category} courses={courses} />;
+  return <CoursesRow title={`${t('category')}: `+category} courses={courses} />;
 }
 
 function CategoryCourses() {

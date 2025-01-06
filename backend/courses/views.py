@@ -77,7 +77,9 @@ class CategoryCourseView(APIView):
         courses = Course.objects.all()
 
         # Filter courses manually where category contains the given value
-        filtered_courses = [course for course in courses if category in course.category]
+        filtered_courses = [course for course in courses if category.upper() in [c.upper() for c in course.category]]
+
+
 
         # Serialize the filtered data
         serializer = CourseSerializer(filtered_courses, many=True)

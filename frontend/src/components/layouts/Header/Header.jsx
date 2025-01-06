@@ -65,6 +65,10 @@ function Header() {
     {
       title: t('links.studio'),
       path: '/createcourse',
+    },
+    {
+      title: t("links.about_us"),
+      path: '/aboutus',
     }
   ];
 
@@ -110,7 +114,7 @@ function Header() {
                 <button 
                   onClick={() => setPage(elem.path)} 
                   style={page === elem.path ? { borderBottomWidth: '3px' } : { borderBottomWidth: "0" }}
-                  className={`h-14 px-6 hover:text-primary-def ease-linear duration-200 text-gray ${elem.path === page ? 'font-medium text-primary-def border-white' : ''}`}
+                  className={`h-14 px-6 hover:text-primary-def ease-linear duration-100 text-gray ${elem.path === page ? 'font-medium text-primary-def border-white' : ''}`}
                 >
                   {elem.title}
                 </button>

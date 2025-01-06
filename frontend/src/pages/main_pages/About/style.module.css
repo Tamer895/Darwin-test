@@ -1,0 +1,8 @@
+.bg {
+    background-image: url('../../../media/images/background/bg-about.png');
+    background-position:center;
+    background-size:contain;
+    background-repeat: no-repeat;
+
+    @apply bg-primary-def;
+}

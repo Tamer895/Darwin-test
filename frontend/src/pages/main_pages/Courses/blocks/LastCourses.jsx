@@ -5,8 +5,11 @@ import ButtonRow from '@components/UI/Buttons/ButtonRow/ButtonRow';
 import ArrowBtn from '@components/UI/Buttons/ArrowBtn/ArrowBtn';
 import { domain } from '@configs/api/domain';
 import { COURSES_API_ROUTES } from '@configs/api/Courses/courses';
+import { useTranslation } from 'react-i18next'
+
 
 export default function LastCourses() {
+  const { t } = useTranslation(['courses', 'course']);
   const [courses, setCourses] = useState([]); // Store course data
   const [pagination, setPagination] = useState({ next: null, previous: null, count: 0 }); // Pagination data
   const scrollRef = useRef(null); // Ref to the scrollable container
@@ -14,9 +17,9 @@ export default function LastCourses() {
   const [level, setLevel] = useState('beginner');
 
   const buttonLabels = [
-    { label: "Beginner", onClick: () => setLevel("beginner") },
-    { label: "Intermediate", onClick: () => setLevel("intermediate") },
-    { label: "Advanced", onClick: () => setLevel("advanced") },
+    { label: t('course:levels.beginner'), onClick: () => setLevel("beginner") },
+    { label: t('course:levels.intermediate'), onClick: () => setLevel("intermediate") },
+    { label: t('course:levels.advanced'), onClick: () => setLevel("advanced") },
   ];
 
   useEffect(() => {
@@ -63,8 +66,8 @@ export default function LastCourses() {
         <div className="w-full p-10 relative">
           <div className="flex-center-between">
             <div className="">
-              <h1 className="text-3xl font-medium text-black-def">Последние добавленные уроки</h1>
-              <h2 className='text-md font-normal mt-1 text-gray'>Откройте для себя самые недавно добавленные уроки для улучшения вашего обучения</h2>
+              <h1 className="text-3xl font-medium text-black-def">{t('last_courses.title')}</h1>
+              <h2 className='text-md font-normal mt-1 text-gray'>{t('last_courses.subtitle')}</h2>
               <br />
               <ButtonRow
                 buttons={buttonLabels}

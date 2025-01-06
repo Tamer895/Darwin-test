@@ -54,35 +54,51 @@ export default function Home() {
   const offers = [
     {
       to: "",
-      icon: "access_time",
-      title: t('offers.title'),
-      text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed nonummy mi in neque ullamcorper commodo.",
+      icon: "school",
+      title: t('offers.offer1.title'),
+      text: t('offers.offer1.text'),
       value: "15",
       value_text: "Hours",
     },
     {
       to: "",
-      icon: "access_time",
-      title: t('offers.title'),
-      text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed nonummy mi in neque ullamcorper commodo.",
+      icon: "newspaper",
+      title: t('offers.offer2.title'),
+      text: t('offers.offer2.text'),
       value: "15",
       value_text: "Hours",
     },
     {
       to: "",
-      icon: "access_time",
-      title: t('offers.title'),
-      text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed nonummy mi in neque ullamcorper commodo.",
+      icon: "stacks",
+      title: t('offers.offer3.title'),
+      text: t('offers.offer3.text'),
       value: "15",
       value_text: "Hours",
     },
   ]
 
   // Accordion items
-  const items = [
-    {title: t('FAQ.q1'), content: t('FAQ.a1')},
-    {title: t('FAQ.q2'), content: t('FAQ.a2')},
-    {title: t('FAQ.q1'), content: t('FAQ.a1')},
+  const general_questions = [
+    {title: t('FAQ.for_subtitle1.q1'), content: t('FAQ.for_subtitle1.a1')},
+  ]
+
+  const functionality_questions = [
+    {title: t('FAQ.for_subtitle2.q1'), content: t('FAQ.for_subtitle2.a1')},
+    {title: t('FAQ.for_subtitle2.q2'), content: t('FAQ.for_subtitle2.a2')},
+    {title: t('FAQ.for_subtitle2.q3'), content: t('FAQ.for_subtitle2.a3')},
+  ]
+
+  const payment_questions = [
+    {title: t('FAQ.for_subtitle3.q1'), content: t('FAQ.for_subtitle3.a1')},
+
+  ]
+
+  const others_questions = [
+    {title: t('FAQ.for_subtitle4.q1'), content: t('FAQ.for_subtitle4.a1')},
+    {title: t('FAQ.for_subtitle4.q2'), content: t('FAQ.for_subtitle4.a2')},
+    {title: t('FAQ.for_subtitle4.q3'), content: t('FAQ.for_subtitle4.a3')},
+
   ]
 
 
@@ -101,7 +117,7 @@ export default function Home() {
 
       <div style={{top: "-100px"}} className={`w-[97%] relative mx-auto rounded-[50px] py-14 flex-col-center mb-32 ${classes.offer_bg}`}>
 
-        <Title className="font-bold text-[250%] text-white">{t('offers.title')}</Title>
+        <Title className="font-semibold text-[250%] text-white">{t('offers.title')}</Title>
         <p className='text-white'>{t('offers.subtitle')}</p>
 
         <div className="flex items-center justify-center mt-7">
@@ -111,7 +127,7 @@ export default function Home() {
               data-aos="fade-up"
               key={index}
               to={elem.to}
-              style={{width: "300px", margin: "0 10px"}}
+              style={{width: "300px", height: "350px", margin: "0 10px"}}
               icon={elem.icon}
               title={elem.title}
               text={elem.text}
@@ -168,15 +184,32 @@ export default function Home() {
 
           <div data-aos="fade-up" className="w-full flex flex-col items-start">
 
-            <RoundedText>Functionality</RoundedText>
+            <RoundedText>{t('FAQ.subtitle1')}</RoundedText>
             <br />
-            <AccordionComponent items={items} />
+            <AccordionComponent items={general_questions} />
 
             <br /><br />
 
-            <RoundedText>Functionality</RoundedText>
+            <RoundedText>{t('FAQ.subtitle2')}</RoundedText>
             <br />
-            <AccordionComponent items={items} />
+            <AccordionComponent items={functionality_questions} />
+
+            <br /><br />
+
+            <RoundedText>{t('FAQ.subtitle3')}</RoundedText>
+            <br />
+            <AccordionComponent items={payment_questions} />
+
+            <br /><br />
+
+            <RoundedText>{t('FAQ.subtitle4')}</RoundedText>
+            <br />
+            <AccordionComponent items={others_questions} />
+
+            <br /><br />
+
+
+
           </div>
         </div>
       </section>
@@ -185,7 +218,7 @@ export default function Home() {
 
       {/* Your Effort */}
       <section data-aos="fade-up" className={classes.effort}>
-          <h1 className='text-primary-def uppercase font-bold'><span>Приложите ваши усилия для создания нового сообщества</span> Станьте частью чего-то большего</h1>
+          <h1 className='text-primary-def uppercase font-bold'><span>{t('effort.first_part')}</span> {t('effort.second_part')}</h1>
       </section>
 
 

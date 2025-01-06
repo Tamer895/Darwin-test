@@ -8,7 +8,7 @@ from elements.models import *
 class Lesson(models.Model):
 
     # Basic datas
-    title = models.CharField(verbose_name="Title", max_length=100, default="")
+    title = models.CharField(verbose_name="Title", max_length=500, default="")
     description = models.CharField(verbose_name="Description", max_length=1500, default="")
 
     course = models.ForeignKey('courses.Course', related_name="lessons", on_delete=models.CASCADE)
@@ -31,7 +31,7 @@ class Lesson(models.Model):
 class Course(models.Model):
 
     # Basic datas
-    name = models.CharField(verbose_name="Name", max_length=255)
+    name = models.CharField(verbose_name="Name", max_length=500)
     description = models.TextField(verbose_name="Description")
     author = models.ForeignKey('users.User', on_delete=models.CASCADE, related_name="courses")
     language = models.CharField(verbose_name="Language", max_length=50)

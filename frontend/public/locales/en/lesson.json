@@ -27,6 +27,27 @@
             "content_field": "Video",
             "order_field": "Order"
         },
+        "img": {
+            "title_field": "Title",
+            "content_field": "Image",
+            "order_field": "Order"
+        },
         "create": "Create"  
-    }
+    },
+
+    "course_settings": {
+        "name": "Name",
+        "description": "Description",
+        "categories": "Categories",
+        "level": "Level",
+        "lang": "Language",
+        "update": "Update",
+        "levels": {
+            "beginner": "Beginner",
+            "intermediate": "Intermediate",
+            "advanced": "Advanced"
+        }
+    },
+    "general_settings": "General settings",
+    "start_learning": "Start learning"
 }

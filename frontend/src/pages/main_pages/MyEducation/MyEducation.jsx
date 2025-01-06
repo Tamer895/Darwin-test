@@ -2,20 +2,37 @@ import React, {useEffect, useState} from 'react'
 import ButtonRow from '@components/UI/Buttons/ButtonRow/ButtonRow'
 import axios from 'axios';
 import Course from '@components/UI/Cards/Course/Course';
+import CoursesRow from '@components/layouts/CoursesRow/CoursesRow';
+import { useTranslation } from 'react-i18next';
+
 import { domain } from '@configs/api/domain';
 
 export default function MyEducation() {
+  const { t } = useTranslation('my_education');
 
-  const buttonLabels = [
-    { label: "Started"},
+  const links = [
+    {
+      title: "Started",
+      path: '/my_education',
+    },
+    {
+      title: "Liked",
+      path: '/my_education2',
+    },
   ];
+
+
+
   const [my_courses, setMyCourses] = useState([])
+  const [page, setPage] = useState(window.location.pathname);
 
   const fetchMyCourses = async () => {
     try {
-      const response = await axios.get(`${domain}/users/my-courses/`, {
+      const response = await axios.post(`${domain}/users/my-courses/`, {
+        user_id: localStorage.getItem('user_id'),
+      }, {
         headers: {
-          Authorization: `Bearer ${localStorage.getItem('access_token')}`, // Токен авторизации
+          'Content-Type': 'application/json',
         },
       });
       setMyCourses(response.data.my_courses); // Список курсов
@@ -30,8 +47,9 @@ export default function MyEducation() {
 
 
   return (
-    <div className='w-4/5 mx-auto py-10'>
-      <h1 className="text-2xl mb-5 text-black-def">My learning courses</h1>
+    <div className='w-9/10 mx-auto pb-10'>
+      {/* <h1 className="text-2xl mb-5 text-black-def">My learning courses</h1>
+      
               
       <ButtonRow
         buttons={buttonLabels}
@@ -39,27 +57,15 @@ export default function MyEducation() {
         darkBg="bg-black-def"
         activeTextColor="text-white"
         inactiveTextColor="text-black"
-      />
+      /> */}
 
-        <div className="w-full flex items-center justify-start overflow-hidden pb-10 pt-5">
-            {my_courses.map((data, index) => (
-              <div key={index} style={{ minWidth: '350px', maxWidth: '350px', marginRight: '20px' }}>
-                <Course
-                  style={{ width: '350px', padding: "10px" }}
-                  name={data.name}
-                  to={`/intro_lesson/${data.id}`}
-                  img={domain + data.preview}
-                  avatar={`${domain}${data.author.profile_photo}`}
-                  language={data.language}
-                  is_verified={data.author.is_verificated}
-                  username={data.author.username}
-                  rating={5}
-                  level={data.level}
-                  categories={data.category}
-                />
-              </div>
-            ))}
-          </div>
+      {/* <div className="w-full p-10 pt-12 flex flex-col bg-primary-def">
+        <div className="w-full">
+          <h1 className='text-white font-medium text-4xl'>My education</h1>
+        </div>
+      </div> */}
+
+      <CoursesRow title={t('main_title')} courses={my_courses} />
 
 
     </div>

@@ -8,18 +8,60 @@
     },
     "offers": {
         "title": "What we can offer",
-        "subtitle": "Three main opportunities we can offer to you"
+        "subtitle": "Three main opportunities we can offer to you",
+
+        "offer1": {
+            "title": "Courses",
+            "text": "Unique courses created by users for skill sharing and collaborative learning."
+        },
+        "offer2": {
+            "title": "Bulletin Board",
+            "text": "Discover and participate in exciting events, workshops, and activities."
+        },
+        "offer3": {
+            "title": "Creative Learning",
+            "text": "A non-standard approach to creating courses and mastering skills."
+        }
     },
     "FAQ": {
         "title": "Frequently asked questions",
         "help": "Still need help?",
         "contact": "Contact us",
 
-        "q1": "What is the purpose of the Darwin.kz website?",
-        "a1": "The Darwin platform provides school students and university students with the opportunity to explore various subjects through courses offered by the community and to develop extracurricular activities.",
+        "subtitle1": "General",
+        "subtitle2": "Functionality",
+        "subtitle3": "Payment",
+        "subtitle4": "Others",
 
-        "q2": "How to create a course?",
-        "a2": "Курсы на Student.com строятся с использованием инструментов и сервисов, таких как Coursera, Udemy, и LinkedIn Learning. Вы можете создать свой курс, добавляя видео, текстовые упражнения, игры, и делиться его с сообществом."
+        "for_subtitle1": {
+            "q1": "What is the purpose of the Darwin.kz website?",
+            "a1": "The Darwin.kz website is designed to provide a new approach to learning in Kazakhstan, based on the exchange of skills online. It creates a community where users can learn through courses and participate in events listed on the bulletin board."
+        },
+        "for_subtitle2": {
+            "q1": "How to create a course?",
+            "a1": "To create a course, you need to register on the site, then go to the 'Studio' section, click the 'Create Course' button, and follow the instructions.",
+            
+            "q2": "How to participate in events?",
+            "a2": "Registration on the site is not required. Go to the 'Bulletin Board' tab, select an event that suits you, review the terms, and fill out the form by following the link.",
+            
+            "q3": "How to track progress?",
+            "a3": "Currently, there is no specific feature to track progress, but the Darwin team is working on this feature."
+        },
+        "for_subtitle3": {
+            "q1": "Which courses are paid, and which are free?",
+            "a1": "All courses on the site are free."
+        },
+        "for_subtitle4": {
+            "q1": "How to contact technical support?",
+            "a1": "The easiest way to contact technical support is to scroll down to the footer where there are links to social networks. You can also go to the 'Contacts' section and choose another suitable way to contact us.",
+            
+            "q2": "Is there a mobile application?",
+            "a2": "Currently, there is no mobile application, but the team is working on developing one.",
+            
+            "q3": "How to leave feedback about a course?",
+            "a3": "Currently, there is no option to leave feedback as this is the test version of the project. However, this feature will be added in the future."
+        }
+        
     },
     "features": {
         "course": {
@@ -34,5 +76,17 @@
             "description": "Darwin provides a platform for posting information about extracurricular activities and important events to engage participants and maintain communication.",
             "button": "Learn more"
         }
+    },
+    "effort": {
+        "first_part": "Put your efforts into creating a new community",
+        "second_part": "become part of something bigger"
+    },
+    "feedback_form": {
+        "title": "Join our team",
+        "subtitle": "Fill out the form and take the first step towards joining our team",
+        "name": "Name",
+        "email": "Email",
+        "message": "Message",
+        "submit": "Submit"
     }
 }

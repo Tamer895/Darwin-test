@@ -17,7 +17,7 @@ export default function Description() {
   const [isEditing, setIsEditing] = useState(false);
 
   const userData = JSON.parse(localStorage.getItem('user'));
-  const [description, setDescription] = useState(userData.description);
+  const [description, setDescription] = useState(userData.description ? userData.description : "");
 
 
 

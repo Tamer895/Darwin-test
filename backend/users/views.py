@@ -171,25 +171,27 @@ class UserModelViewSet(viewsets.ModelViewSet):
 from rest_framework.permissions import IsAuthenticated
 
 class AddCourseToMyCoursesAPIView(APIView):
-    permission_classes = [IsAuthenticated]
+    # permission_classes = [IsAuthenticated]
 
     def post(self, request, *args, **kwargs):
         course_id = request.data.get('course_id')
+        user_id = request.data.get('user_id')
         if not course_id:
             return Response({"error": "Course ID is required"}, status=status.HTTP_400_BAD_REQUEST)
 
         try:
             course = Course.objects.get(id=course_id)
-            request.user.my_courses.add(course)
+            user = User.objects.get(id=user_id)
+            user.my_courses.add(course)
             return Response({"message": "Course added successfully"}, status=status.HTTP_200_OK)
         except Course.DoesNotExist:
             return Response({"error": "Course not found"}, status=status.HTTP_404_NOT_FOUND)
 
 class MyCoursesView(APIView):
-    permission_classes = [IsAuthenticated]
+    # permission_classes = [IsAuthenticated]
 
-    def get(self, request):
-        user = request.user  # Получаем текущего пользователя
+    def post(self, request):
+        user = User.objects.get(id=request.data.get("user_id"))  # Получаем текущего пользователя
         user_data = UserSerializer(user).data
         
         # Include full details of courses

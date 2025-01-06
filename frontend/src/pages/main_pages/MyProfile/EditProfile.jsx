@@ -135,7 +135,7 @@ export default function EditProfile() {
 
             <br />
 
-            <Button type="submit">Save</Button>
+            <Button className="w-full" type="submit">Save</Button>
           </div>
         </form>
 

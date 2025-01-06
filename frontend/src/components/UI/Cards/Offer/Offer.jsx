@@ -5,12 +5,12 @@ import "../styles/style.css"
 export default function Offer({...props}) {
   return (
     <Link {...props} to={props.to}>
-      <div style={props.style} className="bg-white flex-col-center card card-hover shadow-lg rounded-2xl overflow-hidden text-sm">
-        <div className="w-full flex-col-center">
+      <div style={props.style} className="bg-white flex-center card card-hover shadow-lg rounded-2xl overflow-hidden text-sm">
+        <div className="w-full h-full flex flex-col items-center justify-between">
 
             {/* Top container */}
             <div className="w-3/4 flex-col-center py-5">
-                <span style={{fontSize: 35}} className="material-symbols-outlined text-primary-def">
+                <span style={{fontSize: 35}} className="material-symbols-rounded text-primary-def">
                   {props.icon}
                 </span>
 

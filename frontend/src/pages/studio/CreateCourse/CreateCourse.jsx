@@ -149,12 +149,12 @@ export default function CreateCourse() {
 
     function secondStep() {
       if (name != "" && desc != "") {
-        setActive(active+1);
+        setActive(2);
       }
     }
     function thirdStep() {
       if (image != "" && introVideo != "") {
-        setActive(active+1);
+        setActive(3);
       }
     }
 
@@ -185,7 +185,7 @@ export default function CreateCourse() {
 
           <br />
 
-          <Step onClick={()=>setActive(1)} active={active} number="1" title="Title and description">
+          <Step setActive={setActive} active={active} number="1" title={t('create_courses.title1')}>
             <InputContainer className="w-full" for="name" title={t('create_courses.name')}>
               <TextInput required onChange={(e) => setName(e.target.value)} className="w-full" type="text" name="name" />
             </InputContainer>
@@ -205,7 +205,7 @@ export default function CreateCourse() {
 
           <br />
 
-          <Step onClick={()=>setActive(2)} active={active} number="2" title="Personalization">
+          <Step setActive={setActive} active={active} number="2" title={t('create_courses.title2')}>
 
             <div className={`w-full relative inline-block`}>
               <label
@@ -244,7 +244,7 @@ export default function CreateCourse() {
 
           <br />
 
-          <Step onClick={()=>setActive(3)} active={active} number="3" title="Settings">
+          <Step setActive={setActive} active={active} number="3" title={t('create_courses.title3')}>
             
               <Flexbox direction="row" items='center' justify="start">
                 <InputContainer for="lang" title={t('create_courses.language')}>
@@ -272,7 +272,7 @@ export default function CreateCourse() {
 
               <br />
               
-            <Button type="button" onClick={()=>setActive(active+1)} className="rounded-md">Next</Button>
+              <Button onClick={handleSubmit}>{t('create_courses.submit')}</Button>
 
           <br />
 
@@ -280,7 +280,7 @@ export default function CreateCourse() {
 
           <br />
 
-          <Step onClick={()=>setActive(4)} active={active} number="4" title="Others">
+          {/* <Step active={active} number="4" title="Others">
             
               <Flexbox direction="row" items='center' justify="start">
                 <InputContainer for="lang" title={t('create_courses.language')}>
@@ -314,7 +314,7 @@ export default function CreateCourse() {
               <Button onClick={handleSubmit}>{t('create_courses.submit')}</Button>
 
               <br />
-          </Step>
+          </Step> */}
 
 
 

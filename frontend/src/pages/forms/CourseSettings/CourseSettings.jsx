@@ -17,7 +17,8 @@ import axios from 'axios';
 
 export default function CourseSettiings(props) {
   const courseData = useSelector((state) => state.courseID.courseData);
-  console.log(courseData)
+  // console.log(courseData)
+  const { t } = useTranslation('lesson');
 
   const lang = [
     { label: 'English', value: 'en' },
@@ -26,9 +27,9 @@ export default function CourseSettiings(props) {
   ];
 
   const levels = [
-    { label: 'beginner', value: 'beginner' },
-    { label: 'intermediate', value: 'intermediate' },
-    { label: 'advanced', value: 'advanced' },
+    { label: t('course_settings.levels.beginner'), value: 'beginner' },
+    { label: t('course_settings.levels.intermediate'), value: 'intermediate' },
+    { label: t('course_settings.levels.advanced'), value: 'advanced' },
   ];
 
   const [title, setTitle] = useState(courseData.name);
@@ -85,7 +86,7 @@ export default function CourseSettiings(props) {
 
         <br />
 
-        <InputContainer className="w-full" title={'create_lesson.title_field'}>
+        <InputContainer className="w-full" title={t('course_settings.name')}>
           <TextInput
             onChange={(e) => setTitle(e.target.value)}
             className="w-full"
@@ -95,7 +96,7 @@ export default function CourseSettiings(props) {
 
         <br />
 
-        <InputContainer className="w-full" title={'create_lesson.description_field'}>
+        <InputContainer className="w-full" title={t('course_settings.description')}>
           <Textarea
             onChange={(e) => setDesc(e.target.value)}
             className="w-full"
@@ -105,7 +106,7 @@ export default function CourseSettiings(props) {
 
         <br />
 
-        <InputContainer className="w-full" for="categories" title={'create_courses.categories'}>
+        <InputContainer className="w-full" for="categories" title={t('course_settings.categories')}>
           <ChipsInput
             required
             onChange={setChips}
@@ -117,7 +118,7 @@ export default function CourseSettiings(props) {
 
         <br />
 
-        <InputContainer className="w-full" for="level" title={'create_courses.level'}>
+        <InputContainer className="w-full" for="level" title={t('course_settings.level')}>
           <Radio
             className="flex flex-wrap"
             required
@@ -130,7 +131,7 @@ export default function CourseSettiings(props) {
         <br />
 
         <Flexbox direction="row" items="center" justify="start">
-          <InputContainer for="lang" title={'create_courses.language'}>
+          <InputContainer for="lang" title={t('course_settings.lang')}>
             <SelectComponent
               items={lang}
               value={language}
@@ -142,7 +143,7 @@ export default function CourseSettiings(props) {
         <br />
 
         <Button type="submit" className="w-full">
-          {'create_lesson.create'}
+          {t('course_settings.update')}
         </Button>
       </form>
     </CenteredForm>

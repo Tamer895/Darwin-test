@@ -1,0 +1,3 @@
+.active_lessons div:last-child div  {
+    border-bottom: none;
+}

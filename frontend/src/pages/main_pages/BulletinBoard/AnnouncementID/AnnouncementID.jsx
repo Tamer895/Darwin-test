@@ -9,10 +9,12 @@ import RoundedBtn from '@components/UI/Buttons/RoundedBtn/RoundedBtn';
 import Video from '@components/UI/Media/Video/Video';
 
 import { ANNOUNCEMENTS_API_ROUTES } from '@configs/api/Announcements/announcements';
+import { useTranslation } from 'react-i18next';
 
 
 export default function AnnouncementID() {
   const { id } = useParams(); 
+  const {t} = useTranslation("bboard");
 
   const [data, setData] = useState([]);
 
@@ -109,8 +111,9 @@ export default function AnnouncementID() {
 
         <p className="leading-7 whitespace-pre-wrap">{data.description}</p>
 
+        <br />
         <a href={data.link}>
-            <Button className="mt-5">Я ознакомился представленной информацией и хочу принять участие</Button>
+            <Button className="mt-5">{t("take_part")}</Button>
         </a>
 
       </div>

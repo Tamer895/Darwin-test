@@ -63,6 +63,9 @@ export default function Routing() {
       <Route path="/editprofile/" element={<IsAuthenticated><EditProfile/></IsAuthenticated>} />
       <Route path="/forgotmypassword" element={<ForgotMyPassword/>} />
 
+      {/* About */}
+      <Route path="/aboutus" element={<About/>} />
+
       {/* Lessons */}
     </Routes>
   )

@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 
 export default function TextInput({ ...props }) {
-    const [type, setType] = useState("text")
+    const [type, setType] = useState("password")
 
 
     function show(currentType) {

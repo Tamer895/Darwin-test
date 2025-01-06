@@ -65,19 +65,19 @@ export default function CreateImage() {
 
   return (
     <form className='w-full' onSubmit={handleSubmit}>
-      <InputContainer className="w-full" title={t('create_element.image.title_field')}>
+      <InputContainer className="w-full" title={t('create_element.img.title_field')}>
         <TextInput onChange={(e) => setTitle(e.target.value)} className="w-full" />
       </InputContainer>
 
       <br />
 
-      <InputContainer className="w-full" title={t('create_element.image.content_field')}>
+      <InputContainer className="w-full" title={t('create_element.img.content_field')}>
         <ImageField id="element" className="w-full" setURL={setImageURL} setImage={setImage} />
       </InputContainer>
 
       <br />
 
-      <InputContainer className="w-full" title={t('create_element.image.order_field')}>
+      <InputContainer className="w-full" title={t('create_element.img.order_field')}>
         <TextInput value={order} onChange={handleChange} className="w-full" />
         {error && <p className='text-sm' style={{ color: 'red' }}>{error}</p>}
       </InputContainer>

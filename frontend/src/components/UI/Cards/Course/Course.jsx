@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Link } from 'react-router-dom';
 import Avatar from '@mui/material/Avatar';
 import Rating from '@mui/material/Rating';
@@ -15,6 +15,8 @@ export default function Course(props) {
 
   const chips = props.categories;
 
+//   console.log(chips)
+
   const langs = {
     en: 'English',
     ru: 'Русский',
@@ -22,7 +24,7 @@ export default function Course(props) {
   }
 
   return (
-    <a className='box-border' style={props.style} href={props.to}>
+    <a className={`box-border p-0 m-0 ${props.className}`} style={props.style} href={props.to}>
 
         <div className="w-full box-border card card-hover flex-col-center border-2 border-black-10 rounded-2xl overflow-hidden text-sm">
 

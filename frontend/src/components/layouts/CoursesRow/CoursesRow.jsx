@@ -10,7 +10,7 @@ import { domain } from '@configs/api/domain';
 import { COURSES_API_ROUTES } from '@configs/api/Courses/courses';
 
 
-export default function LastCourses(props) {
+export default function CoursesRow(props) {
   const courses = props.courses; // Store course data
   const scrollRef = useRef(null); // Ref to the scrollable container
   const scrollAmount = 400; // The amount to scroll when clicking arrows
@@ -34,7 +34,7 @@ export default function LastCourses(props) {
   if(courses.length > 0) {
 
     return (
-      <section className="w-full p-10 relative">
+      <section className="w-full p-10 relative overflow-visible">
 
 
     
@@ -67,7 +67,7 @@ export default function LastCourses(props) {
         {/* Scrollable container */}
         <div
           ref={scrollRef}
-          className="w-full flex items-center justify-start overflow-hidden pb-10 pt-5"
+          className="w-full flex items-center justify-start overflow-visible pb-10 pt-5 sca"
           style={{
             whiteSpace: 'nowrap',
             WebkitOverflowScrolling: 'touch', // Smooth scrolling for mobile devices
@@ -76,6 +76,7 @@ export default function LastCourses(props) {
         >
           {courses.map((data, index) => (
             <div
+              // className=""
               key={index}
               style={{
                 minWidth: '350px',
@@ -85,9 +86,11 @@ export default function LastCourses(props) {
               }}
             >
               <Course
+
                 style={{
                     width: '350px',
-                    padding: "10px"
+                    padding: "10px",
+                    // transform: "scale(1.5)",
                 }}
                 name={data.name}
                 to={`/intro_lesson/${data.id}`}

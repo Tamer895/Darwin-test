@@ -1,73 +1,83 @@
 // src/LanguageSwitcher.js
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
-import "./styles/style.css";
-
+import './styles/style.css';
 
 const LanguageSwitcher = () => {
-
-
-  // Languages list
+  // List of languages
   const langs = {
-    "en": "English",
-    "ru": "Русский",
-    "kz": "Қазақша"
-  }
+    en: 'English',
+    ru: 'Русский',
+    kz: 'Қазақша',
+  };
 
-
-  let currentLanguage = localStorage.getItem('lng');
-
-  useEffect(() => {
-    i18n.changeLanguage(currentLanguage);
-  }, []);
+  // Get current language from localStorage or default to 'en'
+  const currentLanguage = localStorage.getItem('lng') || 'en';
 
   const { i18n } = useTranslation();
 
-
-
   const [selectedLanguage, setSelectedLanguage] = useState(currentLanguage);
-  const [state, setState] = useState("hidden");
+  const [state, setState] = useState('hidden');
 
+  const languageSwitcherRef = useRef(null);
 
+  // Change language when `currentLanguage` changes
+  useEffect(() => {
+    i18n.changeLanguage(selectedLanguage);
+  }, [selectedLanguage, i18n]);
+
+  // Close dropdown when clicking outside the container
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (languageSwitcherRef.current && !languageSwitcherRef.current.contains(event.target)) {
+        setState('hidden');
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
 
   const handleChange = (event) => {
-    setState("hidden")
     const newLanguage = event.target.value;
+    setState('hidden');
     setSelectedLanguage(newLanguage);
-    localStorage.setItem('lng', newLanguage); 
-    i18n.changeLanguage(newLanguage);
+    localStorage.setItem('lng', newLanguage); // Store selected language in localStorage
+    i18n.changeLanguage(newLanguage); // Change language in i18next
   };
 
-
   return (
-    <div className='flex-center-between'>
-      
- 
-      <div 
-        onClick={ state == "hidden" ? () => setState("") : () => setState("hidden") } 
+    <div className='flex-center-between' ref={languageSwitcherRef}>
+      <div
+        onClick={state === 'hidden' ? () => setState('') : () => setState('hidden')}
         className='switcher'
       >
-        <span className="material-symbols-outlined text-black-70 text-2xl">
-        language
-        </span>
+        <span className='material-symbols-outlined text-black-70 text-2xl'>language</span>
 
         <span className='lng'>{langs[selectedLanguage]}</span>
 
-        <span className="material-symbols-outlined">
-          arrow_drop_down
-        </span>
+        <span className='material-symbols-outlined'>arrow_drop_down</span>
       </div>
 
       <ul className={`languages-list ${state}`}>
         <li>
-          <button value="en" onClick={handleChange}>English</button>
+          <button value='en' onClick={handleChange}>
+            {langs.en}
+          </button>
         </li>
         <li>
-          <button value="ru" onClick={handleChange}>Русский</button>
+          <button value='ru' onClick={handleChange}>
+            {langs.ru}
+          </button>
         </li>
         <li>
-          <button value="kz" onClick={handleChange}>Қазақша</button>
+          <button value='kz' onClick={handleChange}>
+            {langs.kz}
+          </button>
         </li>
       </ul>
     </div>

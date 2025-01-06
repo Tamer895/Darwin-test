@@ -12,7 +12,7 @@ class Video(models.Model):
 
 class Text(models.Model):
     title = models.CharField(max_length=200)
-    text = models.CharField(max_length=1000)
+    text = models.TextField()
     order = models.PositiveIntegerField(default=0) 
 
     def __str__(self):
