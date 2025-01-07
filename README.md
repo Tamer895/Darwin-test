@@ -46,5 +46,5 @@ Darwin разрабатывается энтузиастами как неком
 ### Установка
 1. Склонируйте репозиторий:
    ```bash
-   git clone https://github.com/ваш-репозиторий/darwin.git
+   git clone https://github.com/Tamer895/Darwin-test.git
    cd darwin
