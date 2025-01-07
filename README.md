@@ -30,11 +30,6 @@ Darwin разрабатывается энтузиастами как неком
 - Django Rest Framework (DRF)  
 - SQLite  
 
-**Деплой**:  
-- Фронтенд: [Vercel](https://vercel.com) или [Netlify](https://www.netlify.com)  
-- Бэкенд: [Heroku](https://www.heroku.com) или [Railway](https://railway.app)
-
----
 
 ## 📥 Установка и запуск
 
